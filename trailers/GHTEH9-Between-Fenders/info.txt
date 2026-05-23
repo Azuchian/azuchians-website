@@ -2,5 +2,5 @@
 sku: GHTEH9
 category: between-fenders
 price: 13193.00
-thumb: 
+thumb: main
 specs: 
