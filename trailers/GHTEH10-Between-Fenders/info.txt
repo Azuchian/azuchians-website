@@ -1,0 +1,6 @@
+﻿name: 
+sku: GHTEH10
+category: between-fenders
+price: 14333.00
+thumb: 
+specs: 
