@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Azuchian's Triumph Trailers</title>
+  <meta name="description" content="Call Azuchian's Triumph Trailers at 519-550-4584. Serving SW Ontario — Sarnia, Leamington, Windsor, Chatham and surrounding areas to the US border." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background: var(--black); }
+    .p-header { background: var(--dark); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .p-nav { display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 1.5rem; }
+    .p-logo { font-size: 1rem; font-weight: 800; color: var(--white); display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+    .p-logo-mark { background: var(--orange); color: var(--white); font-size: .8rem; font-weight: 900; padding: .25rem .5rem; border-radius: 4px; letter-spacing: .04em; }
+    .p-nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .p-nav-links a { color: var(--muted); font-size: .875rem; font-weight: 600; text-decoration: none; transition: color .15s; }
+    .p-nav-links a:hover { color: var(--white); }
+    .p-nav-links a.active { color: var(--white); }
+
+    .page-wrap { max-width: 600px; margin: 0 auto; padding: 4rem 1.5rem 6rem; text-align: center; }
+    h1 { font-size: 2.2rem; font-weight: 900; color: var(--white); margin-bottom: .75rem; letter-spacing: -.02em; }
+    h1 span { color: var(--orange); }
+    .lead { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 3rem; }
+
+    .phone-block {
+      display: inline-flex; flex-direction: column; align-items: center;
+      background: var(--dark); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2.5rem 3rem; margin-bottom: 2.5rem;
+    }
+    .phone-label { font-size: .75rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--muted); margin-bottom: .6rem; }
+    .phone-number {
+      font-size: 2.4rem; font-weight: 900; color: var(--white);
+      text-decoration: none; letter-spacing: -.02em; transition: color .15s;
+    }
+    .phone-number:hover { color: var(--orange); }
+    .phone-sub { font-size: .85rem; color: var(--muted); margin-top: .6rem; }
+
+    .call-btn {
+      display: inline-block; background: var(--orange); color: var(--white);
+      font-size: 1rem; font-weight: 700; padding: .85rem 2.5rem;
+      border-radius: 8px; text-decoration: none; transition: background .15s;
+      margin-top: 1.5rem;
+    }
+    .call-btn:hover { background: var(--orange2); color: var(--white); }
+
+    .area-note {
+      color: var(--muted); font-size: .875rem; line-height: 1.7;
+      border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 1rem;
+    }
+
+    .p-footer { border-top: 1px solid var(--border); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+    .p-footer p { font-size: .8rem; color: var(--muted); }
+    .p-footer a { color: var(--muted); text-decoration: none; }
+    .p-footer a:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+  <header class="p-header">
+    <div class="p-nav">
+      <a href="index.html" class="p-logo">
+        <span class="p-logo-mark">ATT</span>
+        Azuchian's Triumph Trailers
+      </a>
+      <div class="p-nav-links">
+        <a href="index.html">Trailers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrap">
+    <h1>Give Us a <span>Call</span></h1>
+    <p class="lead">The best way to ask about a trailer, check availability, get a lead time, or place an order is a quick phone call.</p>
+
+    <div class="phone-block">
+      <div class="phone-label">Phone</div>
+      <a href="tel:5195504584" class="phone-number">519-550-4584</a>
+      <div class="phone-sub">Azuchian's Triumph Trailers</div>
+      <a href="tel:5195504584" class="call-btn">Call Now</a>
+    </div>
+
+    <div class="area-note">
+      Serving all of Southwestern Ontario west of London and St. Thomas — including Sarnia, Leamington, Windsor, Chatham-Kent, and surrounding communities up to the US border.
+    </div>
+  </div>
+
+  <footer class="p-footer">
+    <p><a href="tel:5195504584">519-550-4584</a> &nbsp;·&nbsp; No yard, lower overhead &nbsp;·&nbsp; SW Ontario to the US border</p>
+    <p>Azuchian's Triumph Trailers &copy; 2026 &nbsp;·&nbsp; Prices + HST</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Azuchian's Triumph Trailers</title>
+  <meta name="description" content="Azuchian's Triumph Trailers delivers direct from the manufacturer to customers across Southwestern Ontario — Sarnia, Leamington, and everywhere west of London to the US border." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background: var(--black); }
+    .p-header { background: var(--dark); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .p-nav { display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 1.5rem; }
+    .p-logo { font-size: 1rem; font-weight: 800; color: var(--white); display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+    .p-logo-mark { background: var(--orange); color: var(--white); font-size: .8rem; font-weight: 900; padding: .25rem .5rem; border-radius: 4px; letter-spacing: .04em; }
+    .p-nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .p-nav-links a { color: var(--muted); font-size: .875rem; font-weight: 600; text-decoration: none; transition: color .15s; }
+    .p-nav-links a:hover { color: var(--white); }
+    .p-nav-links a.active { color: var(--white); }
+    .p-nav-links .cta { background: var(--orange); color: var(--white) !important; padding: .4rem .9rem; border-radius: 5px; }
+    .p-nav-links .cta:hover { background: var(--orange2); }
+
+    .page-wrap { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    h1 { font-size: 2.2rem; font-weight: 900; color: var(--white); margin-bottom: .5rem; letter-spacing: -.02em; }
+    h1 span { color: var(--orange); }
+    .lead { color: var(--muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 2.5rem; max-width: 640px; }
+
+    .about-body { color: var(--muted); font-size: .95rem; line-height: 1.8; margin-bottom: 1rem; }
+    .about-body a { color: var(--orange); }
+    .about-body strong { color: var(--text); }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+    /* Service area map-style callout */
+    .area-card {
+      background: var(--dark); border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 8px; padding: 1.5rem 1.75rem; margin: 2rem 0;
+    }
+    .area-card h3 { color: var(--white); font-size: .9rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .9rem; }
+    .area-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .area-tag {
+      background: var(--mid); border: 1px solid var(--border);
+      color: var(--text); font-size: .82rem; padding: .3rem .75rem;
+      border-radius: 99px;
+    }
+    .area-note { color: var(--muted); font-size: .85rem; margin-top: .9rem; line-height: 1.6; }
+
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+    .value-card { background: var(--dark); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+    .value-card h3 { color: var(--white); font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
+    .value-card p { color: var(--muted); font-size: .85rem; line-height: 1.6; }
+    .value-label { display: inline-block; background: rgba(232,119,34,.12); color: var(--orange); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; padding: .2rem .55rem; border-radius: 4px; margin-bottom: .65rem; }
+
+    .contact-strip { background: var(--dark); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+    .contact-strip p { color: var(--muted); font-size: .9rem; }
+    .contact-strip strong { color: var(--white); }
+    .strip-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .strip-btn { display: inline-block; padding: .55rem 1.1rem; border-radius: 6px; font-size: .875rem; font-weight: 700; text-decoration: none; border: 1px solid; transition: all .15s; }
+    .strip-btn-primary { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .strip-btn-primary:hover { background: var(--orange2); border-color: var(--orange2); }
+    .strip-btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+    .strip-btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+    .p-footer { border-top: 1px solid var(--border); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+    .p-footer p { font-size: .8rem; color: var(--muted); }
+    .p-footer a { color: var(--muted); text-decoration: none; }
+    .p-footer a:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+  <header class="p-header">
+    <div class="p-nav">
+      <a href="index.html" class="p-logo">
+        <span class="p-logo-mark">ATT</span>
+        Azuchian's Triumph Trailers
+      </a>
+      <div class="p-nav-links">
+        <a href="index.html">Trailers</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html" class="cta">Contact Us</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrap">
+    <h1>A Dealership <span>Without the Yard</span></h1>
+    <p class="lead">Azuchian's Triumph Trailers is a licensed dealership serving Southwestern Ontario — we just don't carry the overhead of a physical lot. That means more competitive pricing passed on to you.</p>
+
+    <p class="about-body">We operate the same as any trailer dealership — standard pricing, proper documentation, and access to the full manufacturer lineup. The difference is we don't rent a yard in the service area. The manufacturer holds inventory, and we connect you directly to it. Some models are available immediately; others may have a short lead time depending on what's in stock.</p>
+
+    <p class="about-body">We serve the full region west of <strong>London and St. Thomas</strong> — from Sarnia down through Leamington and everything in between, right to the US border. If you're in Southwestern Ontario, we can get a trailer to you.</p>
+
+    <p class="about-body">Questions about availability, lead times, or a specific model? Call us at <a href="tel:5195504584">519-550-4584</a> and we'll give you a straight answer.</p>
+
+    <div class="area-card">
+      <h3>Service Area</h3>
+      <div class="area-tags">
+        <span class="area-tag">Sarnia</span>
+        <span class="area-tag">Leamington</span>
+        <span class="area-tag">Windsor</span>
+        <span class="area-tag">Chatham-Kent</span>
+        <span class="area-tag">Strathroy</span>
+        <span class="area-tag">St. Thomas</span>
+        <span class="area-tag">Tillsonburg</span>
+        <span class="area-tag">Point Edward</span>
+        <span class="area-tag">Petrolia</span>
+        <span class="area-tag">Forest</span>
+        <span class="area-tag">Wallaceburg</span>
+        <span class="area-tag">Essex County</span>
+        <span class="area-tag">Lambton County</span>
+        <span class="area-tag">Elgin County</span>
+      </div>
+      <p class="area-note">Serving all of Southwestern Ontario west of London and St. Thomas, including all communities up to the US border. Not sure if we cover your area? Just call.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <h2 style="color:var(--white);font-size:1.1rem;font-weight:800;margin-bottom:.25rem;">Why direct-to-customer?</h2>
+    <p style="color:var(--muted);font-size:.875rem;margin-bottom:0;">Buying from a manufacturer-direct dealer makes a difference.</p>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-label">Pricing</span>
+        <h3>Lower Overhead</h3>
+        <p>No yard to rent means lower operating costs — and more competitive pricing compared to a traditional lot dealer.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-label">Availability</span>
+        <h3>Stock + Lead Times</h3>
+        <p>Some models are available immediately from manufacturer inventory. Others may have a short lead time — we'll tell you upfront.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-label">Process</span>
+        <h3>Simple &amp; Straightforward</h3>
+        <p>Standard dealership process — proper documentation, clear pricing, no pressure. Pick your trailer and we handle the rest.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-label">Coverage</span>
+        <h3>All of SW Ontario</h3>
+        <p>We serve the full region from London and St. Thomas west to the US border, including Sarnia, Leamington, Windsor, and Chatham.</p>
+      </div>
+    </div>
+
+    <div class="contact-strip">
+      <p><strong>Ready to order?</strong><br>Browse the lineup or give us a call to discuss your needs.</p>
+      <div class="strip-btns">
+        <a href="index.html" class="strip-btn strip-btn-primary">View Trailers</a>
+        <a href="tel:5195504584" class="strip-btn strip-btn-secondary">519-550-4584</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="p-footer">
+    <p><a href="tel:5195504584">519-550-4584</a> &nbsp;·&nbsp; Direct from manufacturer &nbsp;·&nbsp; SW Ontario to the US border</p>
+    <p>Azuchian's Triumph Trailers &copy; 2026 &nbsp;·&nbsp; Prices + HST</p>
+  </footer>
+
+</body>
+</html>
