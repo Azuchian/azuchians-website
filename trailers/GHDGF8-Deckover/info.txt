@@ -2,5 +2,5 @@
 sku: GHDGF8
 category: deckover
 price: 38344.00
-thumb: 
+thumb: main
 specs: 
