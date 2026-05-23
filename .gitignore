@@ -1,0 +1,5 @@
+﻿build.ps1
+watch.ps1
+setup-watcher.ps1
+*.bat
+sites.json
