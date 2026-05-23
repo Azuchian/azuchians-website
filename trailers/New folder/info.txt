@@ -1,6 +1,0 @@
-﻿name: 
-sku: 
-category: 
-price: 
-thumb: 
-specs: 
