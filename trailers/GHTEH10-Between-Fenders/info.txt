@@ -1,7 +1,7 @@
 ﻿name: TA82x20'-7k Dual Cylinder Full Tilt
 sku: GHTEH10
 category: between-fenders
-price: 14333.00
+price: 14333
 thumb: main
 specs: 🆕New! 2026
 

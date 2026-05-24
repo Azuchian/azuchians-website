@@ -1,7 +1,7 @@
 ﻿name: TRIAG102x43'-12k Gooseneck Dovetail
 sku: GDTGN4
 category: deckover
-price: 58994.00
+price: 58994
 thumb: main
 specs: 🆕 2026 Triumph 
 
