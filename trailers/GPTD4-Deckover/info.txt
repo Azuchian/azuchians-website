@@ -1,4 +1,4 @@
-﻿name: TA 102x24' 10k Deckover Tilt
+﻿name:TA102x24' 10k Deckover Tilt
 sku: GPTD4
 category: deckover
 price: 20998
