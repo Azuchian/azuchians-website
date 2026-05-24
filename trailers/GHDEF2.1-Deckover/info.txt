@@ -2,5 +2,5 @@
 sku: GHDEF2.1
 category: deckover
 price: 30696
-thumb: 
+thumb: main
 specs: 
