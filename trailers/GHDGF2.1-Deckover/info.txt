@@ -1,4 +1,4 @@
-﻿name: TA102x25+5' 16k Gooseneck Deckover
+﻿name:TA102x25+5' 16k Gooseneck Deckover
 sku: GHDGF2.1
 category: deckover
 price: 33174
