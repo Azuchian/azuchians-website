@@ -2,5 +2,5 @@
 sku: GHDGF3.1
 category: deckover
 price: 
-thumb: 
+thumb: main
 specs: 
