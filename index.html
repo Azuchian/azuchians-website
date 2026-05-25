@@ -150,6 +150,7 @@
       <button class="fb-btn" data-cat="dump">Dump</button>
       <button class="fb-btn" data-cat="between-fenders">Between Fenders</button>
       <button class="fb-btn" data-cat="deckover">Deckover</button>
+      <button class="fb-btn" data-cat="enclosed">Enclosed</button>
     </div>
   </header>
 
@@ -164,10 +165,10 @@
     <p>Azuchian's Triumph Trailers &copy; 2026 &nbsp;·&nbsp; Prices + HST</p>
   </footer>
 
-  <script src="inventory.js?v=1779668428"></script>
+  <script src="inventory.js?v=1779731240"></script>
   <script>
     const CATEGORY_ICONS = {
-      'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️'
+      'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
     };
     let all = [], active = 'all';
 
@@ -187,7 +188,7 @@
           : `<div class="trailer-card-placeholder">${CATEGORY_ICONS[t.category]||'🚛'}</div>`;
         const catLabel = {
           'utility':'Utility','dump':'Dump',
-          'between-fenders':'Between Fenders','deckover':'Deckover'
+          'between-fenders':'Between Fenders','deckover':'Deckover','enclosed':'Enclosed'
         }[t.category] || t.category;
         return `<a class="trailer-card" href="trailer.html?sku=${encodeURIComponent(t.sku)}">
           ${imgHtml}
