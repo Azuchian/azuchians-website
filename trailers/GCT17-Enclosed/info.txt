@@ -1,6 +1,0 @@
-﻿name:
-sku: GCT17
-category: enclosed
-price: 0
-thumb:
-specs:
