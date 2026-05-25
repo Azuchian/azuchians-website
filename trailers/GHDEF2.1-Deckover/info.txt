@@ -1,6 +1,31 @@
-﻿name: 
+﻿name: TA102x25+5'-16k Equipment Hauler
 sku: GHDEF2.1
 category: deckover
 price: 30696
 thumb: main
-specs: 
+specs: 🚚New! 2026
+
+L GHDEF2 TA102x25+5'-16k Equipment Hauler Pintle Outfitted
+
+Features:
+Tandem 16k Axles
+Electric Brakes
+Galvanized Build
+Tandem 12k Hydraulic Jacks
+Hutch Suspension
+Undermount toolbox
+
+GVWR:35,200 lbs
+Load Rating:27,170 lbs
+
+🛠️ Warranty:
+1-Year Structural
+5-Year Axle
+Lifetime Lights
+
+Optional Addons:
+Side Winch Tracking with 5 Straps $943+HST
+Hydraulic Brakes Upgrade (16k) $3,250+HST
+Undermount Toolboxes $650+HST
+Spare Tire (16k axle) $416+HST
+10k-22k Lbs Winches ($1560-$3250+HST)
