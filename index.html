@@ -165,7 +165,7 @@
     <p>Azuchian's Triumph Trailers &copy; 2026 &nbsp;·&nbsp; Prices + HST</p>
   </footer>
 
-  <script src="inventory.js?v=1779739907"></script>
+  <script src="inventory.js?v=1780090261"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
@@ -210,6 +210,19 @@
       active = btn.dataset.cat;
       render();
     });
+
+    // ── TRACKING ──
+    try {
+      fetch('https://ljybisjhefbmjvyxjypz.supabase.co/rest/v1/rpc/track_view', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU'
+        },
+        body: JSON.stringify({ p_sku: '_home_', p_name: 'Home Page' })
+      }).catch(() => {});
+    } catch (e) {}
 
     if (typeof INVENTORY !== 'undefined') {
       all = INVENTORY; render();
