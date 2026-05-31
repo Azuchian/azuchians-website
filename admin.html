@@ -114,11 +114,12 @@
       <div class="dash-nav">
         <div class="dash-logo"><span>ATT</span> Azuchian's</div>
         <div class="dash-subtitle">Site Analytics</div>
-        <button class="dash-refresh" onclick="loadStats()">↻ Refresh</button>
+        <button class="dash-refresh" onclick="loadAll()">↻ Refresh</button>
       </div>
     </header>
     <div class="dash-body">
       <div id="dash-content"><div class="loading-msg">Loading stats…</div></div>
+      <div id="inv-content" style="margin-top:2rem"></div>
     </div>
   </div>
 
@@ -133,7 +134,7 @@
       if (document.getElementById('pw-input').value === ADMIN_PW) {
         document.getElementById('auth-screen').style.display = 'none';
         document.getElementById('dashboard').style.display  = 'block';
-        loadStats();
+        loadAll();
       } else {
         document.getElementById('auth-error').style.display = 'block';
         document.getElementById('pw-input').value = '';
@@ -142,6 +143,40 @@
     }
 
     let chartInstance = null;
+
+    function loadAll() { loadStats(); loadInventory(); }
+
+    // ── INVENTORY LIST ──
+    async function loadInventory() {
+      const box = document.getElementById('inv-content');
+      box.innerHTML = '<div class="table-card"><div class="table-card-title">Current Inventory</div><div class="loading-msg">Loading inventory…</div></div>';
+      try {
+        const res = await fetch('inventory.json?v=' + Date.now());
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const listed = data.filter(t => t.available !== false).length;
+        box.innerHTML = `
+          <div class="table-card">
+            <div class="table-card-title">Current Inventory — ${data.length} trailer${data.length !== 1 ? 's' : ''} (${listed} listed)</div>
+            <table>
+              <thead><tr><th>#</th><th>Name</th><th>SKU</th><th>Category</th><th>Price</th><th>Status</th></tr></thead>
+              <tbody>
+                ${data.map((t, i) => `
+                  <tr>
+                    <td style="color:var(--muted);font-size:.8rem">${i + 1}</td>
+                    <td>${t.name || ''}</td>
+                    <td class="td-sku">${t.sku || ''}</td>
+                    <td style="text-transform:capitalize;color:var(--muted)">${(t.category || '').replace('-', ' ')}</td>
+                    <td class="td-count">$${Number(t.price || 0).toLocaleString()}</td>
+                    <td style="color:${t.available === false ? '#fca5a5' : '#4ade80'};font-weight:700;font-size:.8rem">${t.available === false ? 'SOLD' : 'LISTED'}</td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>`;
+      } catch (err) {
+        box.innerHTML = `<div class="table-card"><div class="table-card-title">Current Inventory</div><div class="loading-msg">Could not load inventory.<br><small style="color:#6b7280">${err.message}</small></div></div>`;
+      }
+    }
 
     async function loadStats() {
       document.getElementById('dash-content').innerHTML = '<div class="loading-msg">Loading stats…</div>';
