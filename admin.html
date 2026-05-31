@@ -157,7 +157,48 @@
 
     // ── INVENTORY LIST ──
     let inventoryData = [];
-    let fbBaseDir = null; // remembered folder handle for the session
+    let fbBaseDir = null; // remembered folder handle
+
+    // Persist the chosen folder across sessions (IndexedDB stores the handle)
+    function idbSet(key, val) {
+      return new Promise((res, rej) => {
+        const o = indexedDB.open('att-admin', 1);
+        o.onupgradeneeded = () => o.result.createObjectStore('kv');
+        o.onsuccess = () => {
+          const tx = o.result.transaction('kv', 'readwrite');
+          tx.objectStore('kv').put(val, key);
+          tx.oncomplete = () => res();
+          tx.onerror = () => rej(tx.error);
+        };
+        o.onerror = () => rej(o.error);
+      });
+    }
+    function idbGet(key) {
+      return new Promise((res, rej) => {
+        const o = indexedDB.open('att-admin', 1);
+        o.onupgradeneeded = () => o.result.createObjectStore('kv');
+        o.onsuccess = () => {
+          const tx = o.result.transaction('kv', 'readonly');
+          const r = tx.objectStore('kv').get(key);
+          r.onsuccess = () => res(r.result);
+          r.onerror = () => rej(r.error);
+        };
+        o.onerror = () => rej(o.error);
+      });
+    }
+
+    // Get (or ask once for) the base folder, e.g. "Azuchians Facebook Ads" on the Desktop
+    async function ensureBaseDir() {
+      if (!fbBaseDir) { try { fbBaseDir = await idbGet('fbBaseDir'); } catch (e) {} }
+      if (fbBaseDir) {
+        let perm = await fbBaseDir.queryPermission({ mode: 'readwrite' });
+        if (perm !== 'granted') perm = await fbBaseDir.requestPermission({ mode: 'readwrite' });
+        if (perm === 'granted') return fbBaseDir;
+      }
+      fbBaseDir = await window.showDirectoryPicker({ mode: 'readwrite' });
+      try { await idbSet('fbBaseDir', fbBaseDir); } catch (e) {}
+      return fbBaseDir;
+    }
 
     async function loadInventory() {
       const box = document.getElementById('inv-content');
@@ -171,6 +212,7 @@
         box.innerHTML = `
           <div class="table-card">
             <div class="table-card-title">Current Inventory — ${data.length} trailer${data.length !== 1 ? 's' : ''} (${listed} listed)</div>
+            <div style="padding:.6rem 1.5rem;color:var(--muted);font-size:.78rem;border-bottom:1px solid var(--border)">First "Facebook Ad" click asks for a folder — pick your <strong style="color:var(--text)">Azuchians Facebook Ads</strong> folder on the Desktop. It's remembered after that, and each trailer saves into its own subfolder.</div>
             <table>
               <thead><tr><th>#</th><th>Name</th><th>SKU</th><th>Category</th><th>Price</th><th>Status</th><th>Facebook</th></tr></thead>
               <tbody>
@@ -234,18 +276,9 @@
       // Preferred path: write a real folder via the File System Access API (Chrome/Edge)
       if (window.showDirectoryPicker) {
         try {
+          const base = await ensureBaseDir();
           setBtn('Saving…', true);
-          if (!fbBaseDir) {
-            alert('Pick the folder where ad folders should be saved (e.g. your Desktop). This is asked once per session.');
-            fbBaseDir = await window.showDirectoryPicker({ mode: 'readwrite' });
-          } else {
-            const perm = await fbBaseDir.queryPermission({ mode: 'readwrite' });
-            if (perm !== 'granted') {
-              const req = await fbBaseDir.requestPermission({ mode: 'readwrite' });
-              if (req !== 'granted') { fbBaseDir = await window.showDirectoryPicker({ mode: 'readwrite' }); }
-            }
-          }
-          const dir = await fbBaseDir.getDirectoryHandle(folderName, { create: true });
+          const dir = await base.getDirectoryHandle(folderName, { create: true });
 
           // listing.txt
           const lf = await dir.getFileHandle('listing.txt', { create: true });
