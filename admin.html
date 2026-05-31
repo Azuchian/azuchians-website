@@ -236,7 +236,6 @@
 
     // Build the Marketplace listing text
     function buildListingText(t) {
-      const url = 'https://azuchianstriumphtrailers.ca/trailer.html?sku=' + encodeURIComponent(t.sku || '');
       const desc = Array.isArray(t.specs) ? t.specs.join('\n') : (t.specs || t.description || '');
       const keycaps = { '0':'0️⃣','1':'1️⃣','2':'2️⃣','3':'3️⃣','4':'4️⃣','5':'5️⃣','6':'6️⃣','7':'7️⃣','8':'8️⃣','9':'9️⃣' };
       const phone = '5195504584'.split('').map(d => keycaps[d]).join('');
@@ -249,8 +248,7 @@
         '------------------------------',
         "Azuchian's Triumph Trailers",
         phone,
-        'Serving Sarnia, Leamington & SW Ontario to the US border',
-        url
+        'Serving Sarnia, Leamington & SW Ontario to the US border'
       ].join('\n');
     }
 
