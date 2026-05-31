@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stats | Azuchian's</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <style>
     :root {
       --black:  #0a0a0a;
@@ -85,6 +86,14 @@
     .td-bar-bg { background: var(--border); border-radius: 99px; height: 6px; overflow: hidden; width: 120px; }
     .td-bar-fill { background: var(--orange); height: 100%; border-radius: 99px; }
     .td-count { font-weight: 700; color: var(--white); }
+    .fb-ad-btn {
+      background: #1877f2; color: #fff; border: none;
+      border-radius: 6px; padding: .4rem .7rem;
+      font-size: .78rem; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: opacity .15s;
+    }
+    .fb-ad-btn:hover { opacity: .88; }
+    .fb-ad-btn:disabled { opacity: .55; cursor: default; }
 
     .loading-msg { text-align: center; padding: 3rem; color: var(--muted); font-size: .9rem; }
 
@@ -147,6 +156,9 @@
     function loadAll() { loadStats(); loadInventory(); }
 
     // ── INVENTORY LIST ──
+    let inventoryData = [];
+    let fbBaseDir = null; // remembered folder handle for the session
+
     async function loadInventory() {
       const box = document.getElementById('inv-content');
       box.innerHTML = '<div class="table-card"><div class="table-card-title">Current Inventory</div><div class="loading-msg">Loading inventory…</div></div>';
@@ -154,12 +166,13 @@
         const res = await fetch('inventory.json?v=' + Date.now());
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
+        inventoryData = data;
         const listed = data.filter(t => t.available !== false).length;
         box.innerHTML = `
           <div class="table-card">
             <div class="table-card-title">Current Inventory — ${data.length} trailer${data.length !== 1 ? 's' : ''} (${listed} listed)</div>
             <table>
-              <thead><tr><th>#</th><th>Name</th><th>SKU</th><th>Category</th><th>Price</th><th>Status</th></tr></thead>
+              <thead><tr><th>#</th><th>Name</th><th>SKU</th><th>Category</th><th>Price</th><th>Status</th><th>Facebook</th></tr></thead>
               <tbody>
                 ${data.map((t, i) => `
                   <tr>
@@ -169,12 +182,123 @@
                     <td style="text-transform:capitalize;color:var(--muted)">${(t.category || '').replace('-', ' ')}</td>
                     <td class="td-count">$${Number(t.price || 0).toLocaleString()}</td>
                     <td style="color:${t.available === false ? '#fca5a5' : '#4ade80'};font-weight:700;font-size:.8rem">${t.available === false ? 'SOLD' : 'LISTED'}</td>
+                    <td><button class="fb-ad-btn" id="fb-btn-${i}" onclick="makeFbAd(${i})">Facebook Ad</button></td>
                   </tr>`).join('')}
               </tbody>
             </table>
           </div>`;
       } catch (err) {
         box.innerHTML = `<div class="table-card"><div class="table-card-title">Current Inventory</div><div class="loading-msg">Could not load inventory.<br><small style="color:#6b7280">${err.message}</small></div></div>`;
+      }
+    }
+
+    // Build the Marketplace listing text
+    function buildListingText(t) {
+      const url = 'https://azuchianstriumphtrailers.ca/trailer.html?sku=' + encodeURIComponent(t.sku || '');
+      const desc = Array.isArray(t.specs) ? t.specs.join('\n') : (t.specs || t.description || '');
+      return [
+        (t.name || 'Trailer'),
+        '',
+        'PRICE: $' + Number(t.price || 0).toLocaleString() + ' + HST',
+        'CONDITION: New',
+        'CATEGORY: ' + (t.category || '').replace('-', ' '),
+        'SKU: ' + (t.sku || ''),
+        '',
+        'DESCRIPTION:',
+        desc,
+        '',
+        '------------------------------',
+        "Azuchian's Triumph Trailers",
+        '519-550-4584',
+        'Serving Sarnia, Leamington & SW Ontario to the US border',
+        url
+      ].join('\n');
+    }
+
+    function safeFolderName(t) {
+      const raw = (t.sku || 'trailer') + ' - ' + (t.name || '');
+      return raw.replace(/[\\/:*?"<>|]+/g, '').replace(/\s+/g, ' ').trim().slice(0, 80);
+    }
+
+    async function makeFbAd(i) {
+      const t = inventoryData[i];
+      if (!t) return;
+      const btn = document.getElementById('fb-btn-' + i);
+      const orig = btn ? btn.textContent : '';
+      const setBtn = (txt, disabled) => { if (btn) { btn.textContent = txt; btn.disabled = !!disabled; } };
+
+      const images = Array.isArray(t.images) ? t.images.filter(Boolean) : [];
+      const listing = buildListingText(t);
+      const folderName = safeFolderName(t);
+
+      // Preferred path: write a real folder via the File System Access API (Chrome/Edge)
+      if (window.showDirectoryPicker) {
+        try {
+          setBtn('Saving…', true);
+          if (!fbBaseDir) {
+            alert('Pick the folder where ad folders should be saved (e.g. your Desktop). This is asked once per session.');
+            fbBaseDir = await window.showDirectoryPicker({ mode: 'readwrite' });
+          } else {
+            const perm = await fbBaseDir.queryPermission({ mode: 'readwrite' });
+            if (perm !== 'granted') {
+              const req = await fbBaseDir.requestPermission({ mode: 'readwrite' });
+              if (req !== 'granted') { fbBaseDir = await window.showDirectoryPicker({ mode: 'readwrite' }); }
+            }
+          }
+          const dir = await fbBaseDir.getDirectoryHandle(folderName, { create: true });
+
+          // listing.txt
+          const lf = await dir.getFileHandle('listing.txt', { create: true });
+          const lw = await lf.createWritable(); await lw.write(listing); await lw.close();
+
+          // images
+          let n = 1;
+          for (const src of images) {
+            try {
+              const resp = await fetch(src + '?v=' + Date.now());
+              const blob = await resp.blob();
+              const ext = (src.split('.').pop() || 'jpg').split('?')[0];
+              const fh = await dir.getFileHandle(String(n).padStart(2, '0') + '.' + ext, { create: true });
+              const fw = await fh.createWritable(); await fw.write(blob); await fw.close();
+              n++;
+            } catch (e) { /* skip a failed image */ }
+          }
+          setBtn('✓ Saved', false);
+          setTimeout(() => setBtn(orig, false), 2500);
+          return;
+        } catch (err) {
+          if (err && err.name === 'AbortError') { setBtn(orig, false); return; } // user cancelled
+          // otherwise fall through to ZIP
+        }
+      }
+
+      // Fallback: download a ZIP (any browser)
+      try {
+        setBtn('Zipping…', true);
+        const zip = new JSZip();
+        const folder = zip.folder(folderName);
+        folder.file('listing.txt', listing);
+        let n = 1;
+        for (const src of images) {
+          try {
+            const resp = await fetch(src + '?v=' + Date.now());
+            const blob = await resp.blob();
+            const ext = (src.split('.').pop() || 'jpg').split('?')[0];
+            folder.file(String(n).padStart(2, '0') + '.' + ext, blob);
+            n++;
+          } catch (e) {}
+        }
+        const out = await zip.generateAsync({ type: 'blob' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(out);
+        a.download = folderName + '.zip';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+        setBtn('✓ Downloaded', false);
+        setTimeout(() => setBtn(orig, false), 2500);
+      } catch (err) {
+        alert('Could not create the ad folder: ' + (err.message || err));
+        setBtn(orig, false);
       }
     }
 
