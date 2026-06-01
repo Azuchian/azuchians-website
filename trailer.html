@@ -274,7 +274,7 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="inventory.js?v=1780273608"></script>
+  <script src="inventory.js?v=1780274119"></script>
   <script>
     let images = [];
     let lbIndex = 0;
@@ -323,6 +323,16 @@
     // ── TRACKING ──
     function trackView(sku, name) {
       try {
+        // 1. Don't count the owner's own visits
+        if (localStorage.getItem('att_owner') === '1') return;
+        // 2. Count each trailer at most once per visitor per day
+        const today = new Date().toISOString().slice(0, 10);
+        let seen = {};
+        try { seen = JSON.parse(localStorage.getItem('att_viewed') || '{}'); } catch (e) {}
+        if (seen[sku] === today) return;
+        seen[sku] = today;
+        try { localStorage.setItem('att_viewed', JSON.stringify(seen)); } catch (e) {}
+
         fetch('https://ljybisjhefbmjvyxjypz.supabase.co/rest/v1/rpc/track_view', {
           method: 'POST',
           headers: {

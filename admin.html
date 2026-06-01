@@ -123,7 +123,10 @@
       <div class="dash-nav">
         <div class="dash-logo"><span>ATT</span> Azuchian's</div>
         <div class="dash-subtitle">Site Analytics</div>
-        <button class="dash-refresh" onclick="loadAll()">↻ Refresh</button>
+        <div style="display:flex;gap:.5rem">
+          <button class="dash-refresh" id="owner-toggle" onclick="toggleOwner()">…</button>
+          <button class="dash-refresh" onclick="loadAll()">↻ Refresh</button>
+        </div>
       </div>
     </header>
     <div class="dash-body">
@@ -143,6 +146,9 @@
       if (document.getElementById('pw-input').value === ADMIN_PW) {
         document.getElementById('auth-screen').style.display = 'none';
         document.getElementById('dashboard').style.display  = 'block';
+        // Logging in = this is the owner's browser, so stop counting its visits
+        try { localStorage.setItem('att_owner', '1'); } catch (e) {}
+        updateOwnerBtn();
         loadAll();
       } else {
         document.getElementById('auth-error').style.display = 'block';
@@ -154,6 +160,22 @@
     let chartInstance = null;
 
     function loadAll() { loadStats(); loadInventory(); }
+
+    // ── OWNER FLAG (don't count my own visits) ──
+    function updateOwnerBtn() {
+      const on = localStorage.getItem('att_owner') === '1';
+      const btn = document.getElementById('owner-toggle');
+      if (btn) {
+        btn.textContent = on ? '🚫 My visits: ignored' : '👁 My visits: counted';
+        btn.style.borderColor = on ? '#4ade80' : '#6b7280';
+        btn.style.color = on ? '#4ade80' : '#6b7280';
+      }
+    }
+    function toggleOwner() {
+      const on = localStorage.getItem('att_owner') === '1';
+      try { localStorage.setItem('att_owner', on ? '0' : '1'); } catch (e) {}
+      updateOwnerBtn();
+    }
 
     // ── INVENTORY LIST ──
     let inventoryData = [];

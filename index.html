@@ -232,7 +232,7 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="inventory.js?v=1780273608"></script>
+  <script src="inventory.js?v=1780274119"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
@@ -280,15 +280,25 @@
 
     // ── TRACKING ──
     try {
-      fetch('https://ljybisjhefbmjvyxjypz.supabase.co/rest/v1/rpc/track_view', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU'
-        },
-        body: JSON.stringify({ p_sku: '_home_', p_name: 'Home Page' })
-      }).catch(() => {});
+      // skip owner visits + count home at most once per visitor per day
+      if (localStorage.getItem('att_owner') !== '1') {
+        const today = new Date().toISOString().slice(0, 10);
+        let seen = {};
+        try { seen = JSON.parse(localStorage.getItem('att_viewed') || '{}'); } catch (e) {}
+        if (seen['_home_'] !== today) {
+          seen['_home_'] = today;
+          try { localStorage.setItem('att_viewed', JSON.stringify(seen)); } catch (e) {}
+          fetch('https://ljybisjhefbmjvyxjypz.supabase.co/rest/v1/rpc/track_view', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU',
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU'
+            },
+            body: JSON.stringify({ p_sku: '_home_', p_name: 'Home Page' })
+          }).catch(() => {});
+        }
+      }
     } catch (e) {}
 
     if (typeof INVENTORY !== 'undefined') {
