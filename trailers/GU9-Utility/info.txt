@@ -2,5 +2,5 @@
 sku: GU9
 category: utility
 price: 5774
-thumb: 
+thumb: main
 specs: 
