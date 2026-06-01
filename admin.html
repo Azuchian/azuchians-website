@@ -161,6 +161,28 @@
 
     function loadAll() { loadStats(); loadInventory(); }
 
+    // ── RESET ALL STATS (sets every counter back to 0) ──
+    async function resetStats() {
+      if (!confirm('Reset ALL view counts back to zero? This cannot be undone.')) return;
+      try {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/trailer_stats?views=gte.0', {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ views: 0 })
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        alert('All stats reset to zero.');
+        loadStats();
+      } catch (err) {
+        alert('Could not reset stats: ' + (err.message || err));
+      }
+    }
+
     // ── OWNER FLAG (don't count my own visits) ──
     function updateOwnerBtn() {
       const on = localStorage.getItem('att_owner') === '1';
