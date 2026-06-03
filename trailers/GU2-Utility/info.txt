@@ -2,5 +2,5 @@
 sku: GU2
 category: utility
 price: 3191
-thumb: 
+thumb: main
 specs: 
