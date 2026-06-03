@@ -390,8 +390,12 @@
     }
 
     function renderDash(data) {
+      const SPECIAL = ['_home_', '_call_', '_text_', '_share_'];
       const home     = data.find(r => r.sku === '_home_');
-      const trailers = data.filter(r => r.sku !== '_home_').sort((a, b) => b.views - a.views);
+      const calls    = data.find(r => r.sku === '_call_');
+      const texts    = data.find(r => r.sku === '_text_');
+      const shares   = data.find(r => r.sku === '_share_');
+      const trailers = data.filter(r => !SPECIAL.includes(r.sku)).sort((a, b) => b.views - a.views);
       const total    = trailers.reduce((s, r) => s + r.views, 0);
       const maxViews = trailers.length ? trailers[0].views : 1;
       const lastRow  = [...data].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))[0];
@@ -418,6 +422,24 @@
             <div class="stat-label">Last Activity</div>
             <div class="stat-value" style="font-size:.9rem;padding-top:.4rem">${lastDate}</div>
             <div class="stat-sub">Most recent view</div>
+          </div>
+        </div>
+
+        <div class="stat-cards">
+          <div class="stat-card" style="border-color:rgba(232,119,34,.4)">
+            <div class="stat-label">📞 Call Clicks</div>
+            <div class="stat-value">${calls ? calls.views.toLocaleString() : '0'}</div>
+            <div class="stat-sub">Tapped "Call to Inquire"</div>
+          </div>
+          <div class="stat-card" style="border-color:rgba(232,119,34,.4)">
+            <div class="stat-label">💬 Text Leads</div>
+            <div class="stat-value">${texts ? texts.views.toLocaleString() : '0'}</div>
+            <div class="stat-sub">Submitted the text form</div>
+          </div>
+          <div class="stat-card" style="border-color:rgba(232,119,34,.4)">
+            <div class="stat-label">🔗 Shares</div>
+            <div class="stat-value">${shares ? shares.views.toLocaleString() : '0'}</div>
+            <div class="stat-sub">Shared a trailer</div>
           </div>
         </div>
 
