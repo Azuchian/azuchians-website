@@ -2,5 +2,5 @@
 sku: GDTGN4
 category: deckover
 price: 58994
-thumb: 
+thumb: main
 specs: 
