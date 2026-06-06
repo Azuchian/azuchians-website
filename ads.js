@@ -20,9 +20,9 @@
    Until you fill these in, nothing loads and nothing breaks.
    ============================================================ */
 
-var GADS_ID   = 'AW-XXXXXXXXXX';   // <-- your Google Ads account ID (starts with AW-)
-var CONV_CALL = 'XXXXXXXXXXX';     // <-- the label after the "/" for the Phone Call conversion
-var CONV_TEXT = 'XXXXXXXXXXX';     // <-- the label after the "/" for the Text Lead conversion
+var GADS_ID   = 'AW-18170397231';        // Google Ads account ID
+var CONV_CALL = '4O8yCNXNmbocEK-EqdhD';  // "Trailer – Phone Call" conversion label
+var CONV_TEXT = 'M2QiCNjNmbocEK-EqdhD';  // "Trailer – Text Lead" conversion label
 
 (function () {
   // Don't load Google's tag until a real ID is entered (avoids errors before launch)
