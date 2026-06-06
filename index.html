@@ -232,8 +232,8 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="ads.js?v=1780773069"></script>
-  <script src="inventory.js?v=1780773069"></script>
+  <script src="ads.js?v=1780775960"></script>
+  <script src="inventory.js?v=1780775960"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
@@ -279,6 +279,19 @@
       render();
     });
 
+    // Pre-select a category from the URL, e.g. index.html?cat=dump
+    // (used by Google Ads sitelinks so each link lands on the right trailers)
+    function applyInitialFilter() {
+      const cat = new URLSearchParams(window.location.search).get('cat');
+      if (!cat) return;
+      const btn = document.querySelector('.fb-btn[data-cat="' + cat + '"]');
+      if (btn) {
+        document.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        active = cat;
+      }
+    }
+
     // ── TRACKING ──
     try {
       // skip owner visits + count home at most once per visitor per day
@@ -301,6 +314,8 @@
         }
       }
     } catch (e) {}
+
+    applyInitialFilter();
 
     if (typeof INVENTORY !== 'undefined') {
       all = INVENTORY; render();
