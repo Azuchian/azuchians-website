@@ -1,0 +1,6 @@
+﻿name: 
+sku: GGFT2
+category: deckover
+price: 33034
+thumb: 
+specs: 
