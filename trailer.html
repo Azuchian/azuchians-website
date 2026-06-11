@@ -47,6 +47,10 @@
       font-size: 1.6rem; line-height: 1; cursor: pointer;
     }
     .sms-err { color: #fca5a5; font-size: .8rem; margin: -.5rem 0 .8rem; display: none; }
+    .sms-reply-note {
+      text-align: center; color: var(--muted); font-size: .78rem;
+      margin: .8rem 0 0 !important;
+    }
 
     .t-header {
       background: var(--dark); border-bottom: 1px solid var(--border);
@@ -173,6 +177,10 @@
     }
 
     .t-actions { display: flex; flex-direction: column; gap: .75rem; }
+    .desktop-text-note {
+      text-align: center; color: var(--muted); font-size: .8rem;
+      margin: -.25rem 0 0;
+    }
     .t-cta {
       display: flex; align-items: center; justify-content: center; gap: .5rem;
       padding: .9rem 1.5rem; border-radius: 8px;
@@ -206,6 +214,9 @@
       .back-btn, .t-contact-btn { font-size: .8rem; }
       .t-contact-btn { padding: .35rem .7rem; }
 
+      /* mobile already has the Ask bar — hide the desktop text hint */
+      .desktop-text-note { display: none; }
+
       /* show the sticky action bar and leave room for it */
       body { padding-bottom: 70px; }
       .mobile-bar {
@@ -213,13 +224,15 @@
         box-shadow: 0 -4px 16px rgba(0,0,0,.45);
       }
       .mobile-bar a, .mobile-bar button {
-        flex: 1; display: flex; align-items: center; justify-content: center; gap: .35rem;
-        padding: 1rem .4rem; font-size: .95rem; font-weight: 800;
+        display: flex; align-items: center; justify-content: center; gap: .35rem;
+        padding: 1rem .4rem; font-size: .9rem; font-weight: 800;
         text-decoration: none; border: none; cursor: pointer; font-family: inherit;
+        white-space: nowrap;
       }
-      .mobile-bar .mb-call  { background: var(--orange); color: var(--white); }
-      .mobile-bar .mb-text  { background: var(--white); color: var(--black); }
-      .mobile-bar .mb-share { background: var(--dark); color: var(--white); border-top: 1px solid var(--border); }
+      /* Ask (text) is the star; Call secondary; Share icon-only */
+      .mobile-bar .mb-call  { flex: 0 0 auto; padding: 1rem .9rem; background: var(--white); color: var(--black); }
+      .mobile-bar .mb-text  { flex: 1; background: var(--orange); color: var(--white); }
+      .mobile-bar .mb-share { flex: 0 0 52px; background: var(--dark); color: var(--white); border-top: 1px solid var(--border); font-size: 1.1rem; }
     }
     @media (max-width: 480px) {
       .trailer-page { padding: 1.5rem 1rem 3rem; }
@@ -249,22 +262,21 @@
   <!-- sticky action bar (mobile only) -->
   <div class="mobile-bar">
     <a href="tel:5195504584" class="mb-call" onclick="trackEvent('_call_','Call Button');adsConversion('call')">📞 Call</a>
-    <button type="button" class="mb-text" onclick="openSms()">💬 Text</button>
-    <button type="button" class="mb-share" onclick="shareTrailer()">🔗 Share</button>
+    <button type="button" class="mb-text" onclick="openSms()">💬 Ask About This Trailer</button>
+    <button type="button" class="mb-share" onclick="shareTrailer()">🔗</button>
   </div>
 
   <!-- SMS lead-capture modal -->
   <div class="sms-modal" id="sms-modal" onclick="if(event.target===this)closeSms()">
     <div class="sms-box">
       <button class="sms-close" onclick="closeSms()">✕</button>
-      <h3>Text us about this trailer</h3>
-      <p>Add your name and city so we can get right back to you. We'll open your texting app with the message ready to send.</p>
+      <h3>Ask about this trailer</h3>
+      <p>Add your name and we'll open your texting app with the message ready to send.</p>
       <label for="sms-name">Your name</label>
       <input id="sms-name" type="text" autocomplete="name" placeholder="First & last name" />
-      <label for="sms-address">Your city / address</label>
-      <input id="sms-address" type="text" autocomplete="address-level2" placeholder="e.g. Sarnia, ON" />
       <div class="sms-err" id="sms-err">Please enter your name.</div>
       <button class="sms-send" onclick="sendSms()">Open Texts →</button>
+      <p class="sms-reply-note">We usually reply within the hour.</p>
     </div>
   </div>
 
@@ -276,8 +288,8 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="ads.js?v=1781197881"></script>
-  <script src="inventory.js?v=1781197881"></script>
+  <script src="ads.js?v=1781199454"></script>
+  <script src="inventory.js?v=1781199454"></script>
   <script>
     let images = [];
     let lbIndex = 0;
@@ -375,7 +387,6 @@
     }
     function sendSms() {
       const name = document.getElementById('sms-name').value.trim();
-      const addr = document.getElementById('sms-address').value.trim();
       if (!name) {
         document.getElementById('sms-err').style.display = 'block';
         document.getElementById('sms-name').focus();
@@ -383,8 +394,7 @@
       }
       const t = currentTrailer || {};
       const body =
-        `Hi, I'm ${name}` + (addr ? ` from ${addr}` : '') +
-        `. I'm interested in this trailer: ${t.name || 'a trailer'} (${t.sku || ''})\n${location.href}`;
+        `Hi, I'm ${name}. I'm interested in this trailer: ${t.name || 'a trailer'} (${t.sku || ''})\n${location.href}`;
       trackEvent('_text_', 'Text Button');
       adsConversion('text');
       window.location.href = `sms:+15195504584?&body=${encodeURIComponent(body)}`;
@@ -480,7 +490,8 @@
       const ctaHtml = `
         <a href="tel:5195504584" class="t-cta t-cta-primary" onclick="trackEvent('_call_','Call Button');adsConversion('call')">
           Call to Inquire — 519-550-4584
-        </a>`;
+        </a>
+        <p class="desktop-text-note">Or text us at 519-550-4584 — we usually reply within the hour.</p>`;
 
       document.getElementById('page-content').innerHTML = `
         <div class="trailer-page">
