@@ -26,15 +26,16 @@
       border-radius: 14px; padding: 1.5rem 1.4rem 1.6rem;
       width: 100%; max-width: 380px; position: relative;
     }
-    .sms-box h3 { color: var(--white); font-size: 1.15rem; font-weight: 800; margin-bottom: .35rem; }
+    .sms-box h3 { color: var(--white); font-size: 1.15rem; font-weight: 800; margin-bottom: 1.1rem; }
     .sms-box p { color: var(--muted); font-size: .85rem; margin-bottom: 1.1rem; line-height: 1.5; }
     .sms-box label { display: block; color: var(--muted); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .35rem; }
-    .sms-box input {
+    .sms-box input, .sms-box textarea {
       width: 100%; background: var(--black); border: 1px solid var(--border);
       border-radius: 7px; color: var(--white); padding: .7rem .9rem;
       font-size: 1rem; font-family: inherit; outline: none; margin-bottom: 1rem;
+      resize: none;
     }
-    .sms-box input:focus { border-color: var(--orange); }
+    .sms-box input:focus, .sms-box textarea:focus { border-color: var(--orange); }
     .sms-send {
       width: 100%; background: var(--orange); color: var(--white); border: none;
       border-radius: 8px; padding: .85rem; font-size: 1rem; font-weight: 800;
@@ -270,12 +271,13 @@
   <div class="sms-modal" id="sms-modal" onclick="if(event.target===this)closeSms()">
     <div class="sms-box">
       <button class="sms-close" onclick="closeSms()">✕</button>
-      <h3>Ask about this trailer</h3>
-      <p>Add your name and we'll open your texting app with the message ready to send.</p>
+      <h3>Message Us</h3>
       <label for="sms-name">Your name</label>
       <input id="sms-name" type="text" autocomplete="name" placeholder="First & last name" />
+      <label for="sms-message">Your message</label>
+      <textarea id="sms-message" rows="3" placeholder="Your message to us here"></textarea>
       <div class="sms-err" id="sms-err">Please enter your name.</div>
-      <button class="sms-send" onclick="sendSms()">Open Texts →</button>
+      <button class="sms-send" onclick="sendSms()">Send Text</button>
       <p class="sms-reply-note">We usually reply within the hour.</p>
     </div>
   </div>
@@ -288,8 +290,8 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="ads.js?v=1781199454"></script>
-  <script src="inventory.js?v=1781199454"></script>
+  <script src="ads.js?v=1781201134"></script>
+  <script src="inventory.js?v=1781201134"></script>
   <script>
     let images = [];
     let lbIndex = 0;
@@ -387,6 +389,7 @@
     }
     function sendSms() {
       const name = document.getElementById('sms-name').value.trim();
+      const msg  = document.getElementById('sms-message').value.trim();
       if (!name) {
         document.getElementById('sms-err').style.display = 'block';
         document.getElementById('sms-name').focus();
@@ -394,7 +397,9 @@
       }
       const t = currentTrailer || {};
       const body =
-        `Hi, I'm ${name}. I'm interested in this trailer: ${t.name || 'a trailer'} (${t.sku || ''})\n${location.href}`;
+        `Hi, I'm ${name}. ` +
+        (msg ? msg : `I'm interested in this trailer.`) +
+        `\nRe: ${t.name || 'a trailer'} (${t.sku || ''})\n${location.href}`;
       trackEvent('_text_', 'Text Button');
       adsConversion('text');
       window.location.href = `sms:+15195504584?&body=${encodeURIComponent(body)}`;
