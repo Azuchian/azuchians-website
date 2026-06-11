@@ -40,6 +40,16 @@
     }
     .home-nav-links .cta:hover { background: var(--orange2); }
 
+    /* trust strip — one thin reassurance line for ad visitors */
+    .trust-strip {
+      display: flex; justify-content: center; gap: 2rem;
+      padding: .45rem 1.5rem;
+      background: rgba(232,119,34,.06);
+      border-bottom: 1px solid var(--border);
+      font-size: .75rem; color: var(--muted); white-space: nowrap;
+    }
+    .trust-strip span { flex-shrink: 0; }
+
     /* filter bar */
     .filter-bar {
       border-bottom: 1px solid var(--border);
@@ -175,6 +185,16 @@
       .home-nav-links a { font-size: .8rem; }
       .home-nav-links .cta { padding: .35rem .7rem; white-space: nowrap; }
 
+      /* trust strip scrolls sideways on phones instead of overflowing */
+      .trust-strip {
+        justify-content: flex-start; gap: 1.25rem;
+        padding: .45rem 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .trust-strip::-webkit-scrollbar { display: none; }
+
       /* filter row becomes one clean swipeable strip instead of wrapping */
       .filter-bar {
         flex-wrap: nowrap;
@@ -207,6 +227,12 @@
         <a href="contact.html" class="cta">Contact&nbsp;Us</a>
       </div>
     </div>
+    <div class="trust-strip">
+      <span>🆕 New 2026 Triumph Trailers</span>
+      <span>💰 Financing Available</span>
+      <span>🚚 Delivery to the US Border</span>
+      <span>🛡️ 1-Year Structural Warranty</span>
+    </div>
     <div class="filter-bar" id="filter-bar">
       <span class="fb-label">Filter:</span>
       <button class="fb-btn active" data-cat="all">All</button>
@@ -232,8 +258,8 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="ads.js?v=1781126696"></script>
-  <script src="inventory.js?v=1781126696"></script>
+  <script src="ads.js?v=1781197640"></script>
+  <script src="inventory.js?v=1781197640"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
