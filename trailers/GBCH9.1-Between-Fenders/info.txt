@@ -2,7 +2,7 @@
 sku: GBCH9.1
 category: between-fenders
 price: 12621
-thumb: 
+thumb: main
 specs: 🆕2026
 
 L GBCH9.1 TA82x18+2'-8k Galvanized Equipment Hauler Trailer
