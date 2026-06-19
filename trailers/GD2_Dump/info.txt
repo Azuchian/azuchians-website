@@ -1,6 +1,6 @@
 ﻿name: 
-sku: New folder
-category: deckover
+sku: GD2_Dump
+category: dump
 price: 0
 thumb: 
 specs: 
