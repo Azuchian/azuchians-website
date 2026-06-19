@@ -1,5 +1,5 @@
 ﻿name: 
-sku: GD
+sku: New folder (99)
 category: deckover
 price: 0
 thumb: 
