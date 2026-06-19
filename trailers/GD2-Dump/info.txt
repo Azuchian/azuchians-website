@@ -1,6 +1,6 @@
 ﻿name: 
 sku: GD2
-category: deckover
+category: dump
 price: 10193
 thumb: 
 specs: 
