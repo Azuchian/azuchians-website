@@ -1,6 +1,0 @@
-﻿name: 
-sku: ZQ3
-category: dump
-price: 0
-thumb: 
-specs: 
