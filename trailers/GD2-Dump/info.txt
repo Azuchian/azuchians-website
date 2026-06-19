@@ -1,6 +1,0 @@
-﻿name:
-sku: GD2
-category: dump
-price: 10193
-thumb:
-specs:

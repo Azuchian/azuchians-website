@@ -1,0 +1,6 @@
+﻿name: 
+sku: GD2
+category: deckover
+price: 10193
+thumb: 
+specs: 
