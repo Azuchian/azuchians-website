@@ -1,6 +1,6 @@
 ﻿name: 
-sku: GD2
-category: dump
-price: 10193
+sku: 
+category: 
+price: 0
 thumb: 
 specs: 
