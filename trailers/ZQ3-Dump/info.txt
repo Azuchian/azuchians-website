@@ -1,5 +1,5 @@
 ﻿name: 
-sku: ZQ2
+sku: ZQ3
 category: dump
 price: 0
 thumb: 
