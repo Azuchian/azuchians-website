@@ -1,6 +1,0 @@
-﻿name: 
-sku: GD2-
-category: deckover
-price: 0
-thumb: 
-specs: 
