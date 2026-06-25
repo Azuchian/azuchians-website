@@ -66,6 +66,21 @@
     .fb-btn:hover { border-color: var(--orange); color: var(--white); }
     .fb-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
 
+    /* sort bar — only shown on a category view */
+    .sort-bar {
+      display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+      padding: .6rem 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .sort-label { font-size: .75rem; color: var(--muted); font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em; margin-right: .25rem; }
+    .sort-btn {
+      background: none; border: 1px solid var(--border); border-radius: 99px;
+      color: var(--muted); font-size: .8rem; padding: .3rem .85rem;
+      cursor: pointer; transition: all .15s; font-family: inherit; white-space: nowrap;
+    }
+    .sort-btn:hover { border-color: var(--orange); color: var(--white); }
+    .sort-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
     /* grid */
     .trailer-grid {
       display: grid;
@@ -271,6 +286,12 @@
   </header>
 
   <main>
+    <div class="sort-bar" id="sort-bar" style="display:none">
+      <span class="sort-label">Sort:</span>
+      <button class="sort-btn active" data-sort="default">Featured</button>
+      <button class="sort-btn" data-sort="price-asc">Price: Low to High</button>
+      <button class="sort-btn" data-sort="price-desc">Price: High to Low</button>
+    </div>
     <div class="trailer-grid" id="trailer-grid">
       <div class="grid-message">Loading inventory…</div>
     </div>
@@ -290,17 +311,28 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="ads.js?v=1782345190"></script>
-  <script src="inventory.js?v=1782345190"></script>
+  <script src="ads.js?v=1782349513"></script>
+  <script src="inventory.js?v=1782349513"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
     };
-    let all = [], active = 'all';
+    let all = [], active = 'all', sortMode = 'default';
 
     function render() {
       const grid = document.getElementById('trailer-grid');
-      const items = active === 'all' ? all : all.filter(t => t.category === active);
+      let items = active === 'all' ? all : all.filter(t => t.category === active);
+
+      // Sort control only appears on a category view, not on "All"
+      const sortBar = document.getElementById('sort-bar');
+      if (active !== 'all') {
+        sortBar.style.display = 'flex';
+        if (sortMode === 'price-asc')  items = items.slice().sort((a, b) => Number(a.price) - Number(b.price));
+        if (sortMode === 'price-desc') items = items.slice().sort((a, b) => Number(b.price) - Number(a.price));
+      } else {
+        sortBar.style.display = 'none';
+      }
+
       if (!items.length) {
         grid.innerHTML = '<div class="grid-message">No trailers in this category.</div>';
         return;
@@ -334,6 +366,15 @@
       document.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       active = btn.dataset.cat;
+      render();
+    });
+
+    document.getElementById('sort-bar').addEventListener('click', e => {
+      const btn = e.target.closest('.sort-btn');
+      if (!btn) return;
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      sortMode = btn.dataset.sort;
       render();
     });
 
