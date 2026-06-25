@@ -390,11 +390,12 @@
     }
 
     function renderDash(data) {
-      const SPECIAL = ['_home_', '_call_', '_text_', '_share_'];
+      const SPECIAL = ['_home_', '_call_', '_text_', '_share_', '_finance_'];
       const home     = data.find(r => r.sku === '_home_');
       const calls    = data.find(r => r.sku === '_call_');
       const texts    = data.find(r => r.sku === '_text_');
       const shares   = data.find(r => r.sku === '_share_');
+      const finance  = data.find(r => r.sku === '_finance_');
       const trailers = data.filter(r => !SPECIAL.includes(r.sku)).sort((a, b) => b.views - a.views);
       const total    = trailers.reduce((s, r) => s + r.views, 0);
       const maxViews = trailers.length ? trailers[0].views : 1;
@@ -440,6 +441,11 @@
             <div class="stat-label">🔗 Shares</div>
             <div class="stat-value">${shares ? shares.views.toLocaleString() : '0'}</div>
             <div class="stat-sub">Shared a trailer</div>
+          </div>
+          <div class="stat-card" style="border-color:rgba(74,222,128,.5)">
+            <div class="stat-label">💳 Financing Applications</div>
+            <div class="stat-value">${finance ? finance.views.toLocaleString() : '0'}</div>
+            <div class="stat-sub">Submitted the financing form</div>
           </div>
         </div>
 
