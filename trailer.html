@@ -325,8 +325,8 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="ads.js?v=1782851550"></script>
-  <script src="inventory.js?v=1782851550"></script>
+  <script src="ads.js?v=1782851863"></script>
+  <script src="inventory.js?v=1782851863"></script>
   <script>
     let images = [];          // image srcs only (used by the lightbox)
     let media = [];           // ordered gallery items: { type:'video'|'image', src }
@@ -339,7 +339,7 @@
       if (!wrap || !media[idx]) return;
       const m = media[idx];
       if (m.type === 'video') {
-        wrap.innerHTML = `<video id="main-vid" src="${m.src}" autoplay loop muted playsinline controls></video>`;
+        wrap.innerHTML = `<video id="main-vid" src="${m.src}" autoplay loop muted playsinline disablePictureInPicture disableRemotePlayback oncontextmenu="return false"></video>`;
       } else {
         const imgIdx = images.indexOf(m.src);
         wrap.innerHTML = `<img id="main-img" src="${m.src}" alt="" onclick="openLightbox(${imgIdx})" />`;
@@ -553,7 +553,7 @@
       if (!media.length) {
         mainImgHtml = `<div class="gallery-placeholder">🚛</div>`;
       } else if (media[0].type === 'video') {
-        mainImgHtml = `<video id="main-vid" src="${media[0].src}" autoplay loop muted playsinline controls></video>`;
+        mainImgHtml = `<video id="main-vid" src="${media[0].src}" autoplay loop muted playsinline disablePictureInPicture disableRemotePlayback oncontextmenu="return false"></video>`;
       } else {
         mainImgHtml = `<img id="main-img" src="${media[0].src}" alt="${t.name}" onclick="openLightbox(${images.indexOf(media[0].src)})" />`;
       }
