@@ -103,6 +103,18 @@
       display: block; cursor: zoom-in;
       transition: opacity .2s;
     }
+    .gallery-main video {
+      width: 100%; height: 100%; object-fit: contain;
+      display: block; background: #000;
+    }
+    /* video thumbnail with a play badge */
+    .gallery-thumb.thumb-video { position: relative; }
+    .gallery-thumb .thumb-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: .7rem; font-weight: 800; letter-spacing: .02em;
+      background: rgba(0,0,0,.4); text-shadow: 0 1px 3px rgba(0,0,0,.7);
+    }
     .gallery-placeholder {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
@@ -313,22 +325,26 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="ads.js?v=1782396758"></script>
-  <script src="inventory.js?v=1782396758"></script>
+  <script src="ads.js?v=1782783933"></script>
+  <script src="inventory.js?v=1782783933"></script>
   <script>
-    let images = [];
+    let images = [];          // image srcs only (used by the lightbox)
+    let media = [];           // ordered gallery items: { type:'video'|'image', src }
     let lbIndex = 0;
     let currentTrailer = null;
 
-    function setMainImage(src, idx) {
-      const main = document.getElementById('main-img');
-      if (!main) return;
-      main.style.opacity = '.5';
-      setTimeout(() => { main.src = src; main.style.opacity = '1'; }, 150);
-      document.querySelectorAll('.gallery-thumb').forEach((t, i) => {
-        t.classList.toggle('active', i === idx);
-      });
-      lbIndex = idx;
+    // Switch the main gallery slot to a media item (video plays inline; images open the lightbox)
+    function setMain(idx) {
+      const wrap = document.getElementById('gallery-main');
+      if (!wrap || !media[idx]) return;
+      const m = media[idx];
+      if (m.type === 'video') {
+        wrap.innerHTML = `<video id="main-vid" src="${m.src}" autoplay loop muted playsinline controls></video>`;
+      } else {
+        const imgIdx = images.indexOf(m.src);
+        wrap.innerHTML = `<img id="main-img" src="${m.src}" alt="" onclick="openLightbox(${imgIdx})" />`;
+      }
+      document.querySelectorAll('.gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === idx));
     }
 
     function openLightbox(idx) {
@@ -348,9 +364,9 @@
     }
 
     function lightboxNav(dir) {
+      if (!images.length) return;
       lbIndex = (lbIndex + dir + images.length) % images.length;
       document.getElementById('lightbox-img').src = images[lbIndex];
-      setMainImage(images[lbIndex], lbIndex);
     }
 
     document.addEventListener('keydown', e => {
@@ -527,15 +543,33 @@
         images = [t.thumb, ...images.filter(s => s !== t.thumb)];
       }
 
-      const mainImgHtml = images.length
-        ? `<img id="main-img" src="${images[0]}" alt="${t.name}" onclick="openLightbox(0)" />`
-        : `<div class="gallery-placeholder">🚛</div>`;
+      // Build the ordered media list. A 3D orbit video (if present) goes first,
+      // which pushes the main image to second.
+      media = [];
+      if (t.video) media.push({ type: 'video', src: t.video });
+      images.forEach(src => media.push({ type: 'image', src }));
 
-      const thumbsHtml = images.length > 1
-        ? `<div class="gallery-thumbs">${images.map((src, i) =>
-            `<div class="gallery-thumb ${i===0?'active':''}" onclick="setMainImage('${src}',${i})">
-               <img src="${src}" alt="Photo ${i+1}" loading="lazy" />
-             </div>`).join('')}</div>`
+      let mainImgHtml;
+      if (!media.length) {
+        mainImgHtml = `<div class="gallery-placeholder">🚛</div>`;
+      } else if (media[0].type === 'video') {
+        mainImgHtml = `<video id="main-vid" src="${media[0].src}" autoplay loop muted playsinline controls></video>`;
+      } else {
+        mainImgHtml = `<img id="main-img" src="${media[0].src}" alt="${t.name}" onclick="openLightbox(${images.indexOf(media[0].src)})" />`;
+      }
+
+      const posterImg = images[0] || '';
+      const thumbsHtml = media.length > 1
+        ? `<div class="gallery-thumbs">${media.map((m, i) => {
+            if (m.type === 'video') {
+              const poster = posterImg ? `<img src="${posterImg}" alt="3D view" loading="lazy" />` : '';
+              return `<div class="gallery-thumb thumb-video ${i===0?'active':''}" onclick="setMain(${i})">${poster}<span class="thumb-play">▶ 3D</span></div>`;
+            }
+            const n = images.indexOf(m.src) + 1;
+            return `<div class="gallery-thumb ${i===0?'active':''}" onclick="setMain(${i})">
+               <img src="${m.src}" alt="Photo ${n}" loading="lazy" />
+             </div>`;
+          }).join('')}</div>`
         : '';
 
       const specsText = Array.isArray(t.specs) ? t.specs.join('\n') : (t.specs || '');
@@ -557,7 +591,7 @@
       document.getElementById('page-content').innerHTML = `
         <div class="trailer-page">
           <div class="gallery">
-            <div class="gallery-main">${mainImgHtml}</div>
+            <div class="gallery-main" id="gallery-main">${mainImgHtml}</div>
             ${thumbsHtml}
           </div>
           <div class="trailer-info">
