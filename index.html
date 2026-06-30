@@ -312,26 +312,34 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="ads.js?v=1782829892"></script>
-  <script src="inventory.js?v=1782829892"></script>
+  <script src="ads.js?v=1782833357"></script>
+  <script src="inventory.js?v=1782833357"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
     };
     let all = [], active = 'all', sortMode = 'default';
 
+    // Default ordering: trailers with a 3D video come first (preserving order otherwise).
+    // This is silent — there's no visible "sort by 3D" option.
+    function videoFirst(arr) {
+      return arr.filter(t => t.video).concat(arr.filter(t => !t.video));
+    }
+
     function render() {
       const grid = document.getElementById('trailer-grid');
-      let items = active === 'all' ? all : all.filter(t => t.category === active);
+      let items = active === 'all' ? all.slice() : all.filter(t => t.category === active);
 
       // Sort control only appears on a category view, not on "All"
       const sortBar = document.getElementById('sort-bar');
       if (active !== 'all') {
         sortBar.style.display = 'flex';
-        if (sortMode === 'price-asc')  items = items.slice().sort((a, b) => Number(a.price) - Number(b.price));
-        if (sortMode === 'price-desc') items = items.slice().sort((a, b) => Number(b.price) - Number(a.price));
+        if (sortMode === 'price-asc')       items = items.slice().sort((a, b) => Number(a.price) - Number(b.price));
+        else if (sortMode === 'price-desc') items = items.slice().sort((a, b) => Number(b.price) - Number(a.price));
+        else                                items = videoFirst(items);   // default: 3D-video trailers first
       } else {
         sortBar.style.display = 'none';
+        items = videoFirst(items);   // "All" view: 3D-video trailers first
       }
 
       if (!items.length) {
