@@ -1,7 +1,7 @@
 ﻿name: TA102x20+4'-7k Equipment Hauler
-sku: GBCO1
+sku: GBC01
 category: deckover
-price: 0
+price: 13193
 thumb: main
 specs: 🆕2026
 
