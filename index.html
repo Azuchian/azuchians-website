@@ -107,6 +107,13 @@
       font-size: 3.5rem; color: var(--border);
     }
     .trailer-card:hover img { transform: scale(1.04); }
+    .tc-video-badge {
+      position: absolute; top: .6rem; right: .6rem; z-index: 2;
+      background: var(--orange); color: var(--white);
+      font-size: .68rem; font-weight: 800; letter-spacing: .02em;
+      padding: .3rem .55rem; border-radius: 99px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    }
     .trailer-card-info {
       position: absolute; bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(0,0,0,.60) 50%);
@@ -312,8 +319,8 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="ads.js?v=1782915923"></script>
-  <script src="inventory.js?v=1782915923"></script>
+  <script src="ads.js?v=1782965359"></script>
+  <script src="inventory.js?v=1782965359"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
@@ -353,12 +360,14 @@
           ? `<img src="${thumbSrc}" alt="${t.name}" loading="lazy"
                   onerror="this.outerHTML='<div class=trailer-card-placeholder>${CATEGORY_ICONS[t.category]||'🚛'}</div>'">`
           : `<div class="trailer-card-placeholder">${CATEGORY_ICONS[t.category]||'🚛'}</div>`;
+        const videoBadge = t.video ? `<span class="tc-video-badge">▶ 3D View</span>` : '';
         const catLabel = {
           'utility':'Utility','dump':'Dump',
           'between-fenders':'Between Fenders','deckover':'Deckover','enclosed':'Enclosed'
         }[t.category] || t.category;
         return `<a class="trailer-card" href="trailer.html?sku=${encodeURIComponent(t.sku)}">
           ${imgHtml}
+          ${videoBadge}
           <div class="trailer-card-info">
             <div class="tc-cat">${catLabel}</div>
             <div class="tc-name">${t.name}</div>
