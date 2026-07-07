@@ -1,7 +1,7 @@
 ﻿name: SA5x10'-35 Utility
 sku: GU2
 category: utility
-price: 3191
+price: 3415
 thumb: main
 specs: 🆕2026
 

@@ -1,7 +1,7 @@
 ﻿name: TA6x12-52 Dump Trailer
 sku: GD5
 category: dump
-price: 13793
+price: 14759
 thumb: main
 specs: 🆕2026
 

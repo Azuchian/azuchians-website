@@ -1,7 +1,7 @@
 ﻿name: TA5x10'-35 Dump Trailer
 sku: GD2
 category: dump
-price: 10193
+price: 10907
 thumb: main
 specs: 🆕2026
 

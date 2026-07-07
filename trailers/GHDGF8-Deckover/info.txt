@@ -1,7 +1,7 @@
 ﻿name: TA102x35+5'-16k Gooseneck Deckover
 sku: GHDGF8
 category: deckover
-price: 38344
+price: 41028
 thumb: main
 specs: 🚛New 2026
 

@@ -1,7 +1,7 @@
 ﻿name: TA80x16'-35 Utility
 sku: GU9
 category: utility
-price: 5774
+price: 6179
 thumb: main
 specs: 🆕2026
 

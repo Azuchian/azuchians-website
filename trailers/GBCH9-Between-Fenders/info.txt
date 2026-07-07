@@ -1,7 +1,7 @@
 ﻿name: TA82x18+2'-7k Equipment Hauler
 sku: GBCH9
 category: between-fenders
-price: 10253
+price: 10971
 thumb: main
 specs: 🚚New! 2026 Triumph
 

@@ -1,7 +1,7 @@
 ﻿name: TA82x20'-7k Full Tilt
 sku: GHTEH9
 category: between-fenders
-price: 13193
+price: 14117
 thumb: main
 specs: 🆕New! 2026
 

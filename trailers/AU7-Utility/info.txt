@@ -1,7 +1,7 @@
 ﻿name: TA80x14'-35 Utility
 sku: AU7
 category: utility
-price: 6242
+price: 6679
 thumb: main
 specs: 🆕2026
 

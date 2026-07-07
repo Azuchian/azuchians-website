@@ -1,7 +1,7 @@
 ﻿name: TAG102x30+5'-16k Gooseneck Deckover
 sku: GHDGF3.1
 category: deckover
-price: 36124
+price: 38469
 thumb: main
 specs: 🚚New! 2026
 

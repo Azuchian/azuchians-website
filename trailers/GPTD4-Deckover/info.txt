@@ -1,7 +1,7 @@
 ﻿name:TA102x24' 10k Deckover Tilt
 sku: GPTD4
 category: deckover
-price: 20998
+price: 22467
 thumb: main
 specs: 🚚New! 2026 Triumph
 

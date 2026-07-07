@@ -1,7 +1,7 @@
 ﻿name: TA80x14'-35 Utility
 sku: GU8
 category: utility
-price: 5565
+price: 5955
 thumb: main
 specs: 🆕2026
 

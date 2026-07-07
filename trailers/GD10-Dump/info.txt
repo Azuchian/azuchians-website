@@ -1,7 +1,7 @@
 ﻿name: TA82x16'-10k Dump Trailer
 sku: GD10
 category: dump
-price: 24593
+price: 26315
 thumb: main
 specs: 🆕2026
 

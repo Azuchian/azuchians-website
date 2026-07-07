@@ -1,7 +1,7 @@
 ﻿name: TA102x24'-12k Gooseneck Deckover
 sku: GGFT2
 category: deckover
-price: 33034
+price: 35346
 thumb: main
 specs: 🆕2026
 

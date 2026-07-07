@@ -1,7 +1,7 @@
 ﻿name: TRI102x43'-12k Gooseneck Dovetail
 sku: GDTGN4
 category: deckover
-price: 58994
+price: 63123
 thumb: main
 specs: 🆕2026
 

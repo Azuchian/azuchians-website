@@ -1,7 +1,7 @@
 ﻿name: TA102x20+5'-12k Gooseneck Deckover
 sku: GHDGF1
 category: deckover
-price: 28314
+price: 30296
 thumb: main
 specs: 🚚New! 2026
 
