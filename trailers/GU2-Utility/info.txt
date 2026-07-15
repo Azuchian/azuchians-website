@@ -3,7 +3,7 @@ sku: GU2
 category: utility
 price: 3415
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GU2 SA5x10'-35 Galvanized Utility Trailer
 

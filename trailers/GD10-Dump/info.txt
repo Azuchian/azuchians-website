@@ -3,7 +3,7 @@ sku: GD10
 category: dump
 price: 26752
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GD10 TA82x16'-10k Galvanized Gooseneck Dump Trailer
 

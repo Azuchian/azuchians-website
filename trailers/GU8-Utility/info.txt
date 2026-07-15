@@ -3,7 +3,7 @@ sku: GU8
 category: utility
 price: 5955
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GU8 TA80x14'-35 Galvanized Utility Trailer
 

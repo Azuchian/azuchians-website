@@ -3,7 +3,7 @@ sku: AU7
 category: utility
 price: 6679
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L AU7 TA80x14'-35 Aluminum Utility Trailer
 

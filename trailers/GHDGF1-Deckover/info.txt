@@ -3,7 +3,7 @@ sku: GHDGF1
 category: deckover
 price: 30296
 thumb: main
-specs: 🚚New! 2026
+specs: 🚚New! 2027
 
 L GHDGF1 TAG102x20+5'-12k Galvanized Gooseneck Trailer
 

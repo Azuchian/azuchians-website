@@ -3,7 +3,7 @@ sku: GBC01
 category: deckover
 price: 14117
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GBCO1 TA102x20+4'-7k Galvanized Equipment Hauler Crossover Trailer
 

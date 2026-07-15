@@ -3,7 +3,7 @@ sku: GD5
 category: dump
 price: 15196
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GD5 TA6x12-52 Galvanized Dump Trailer
 

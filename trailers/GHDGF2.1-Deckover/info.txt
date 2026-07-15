@@ -3,7 +3,7 @@ sku: GHDGF2.1
 category: deckover
 price: 35313
 thumb: main
-specs: 🚚New! 2026
+specs: 🚚New! 2027
 
 L GHDGF2 TA102x25+5' 16k Gooseneck Trailer
 

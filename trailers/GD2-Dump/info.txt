@@ -3,7 +3,7 @@ sku: GD2
 category: dump
 price: 11344
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GD2 TA5x10'-3500 Galvanized Dump Trailer
 

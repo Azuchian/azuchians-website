@@ -3,7 +3,7 @@ sku: GHDEF2.1
 category: deckover
 price: 32661
 thumb: main
-specs: 🚚New! 2026
+specs: 🚚New! 2027
 
 L GHDEF2 TA102x25+5'-16k Equipment Hauler Pintle Outfitted
 

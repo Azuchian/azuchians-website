@@ -3,7 +3,7 @@ sku: GBCH9
 category: between-fenders
 price: 10971
 thumb: main
-specs: 🚚New! 2026 Triumph
+specs: 🚚New! 2027 Triumph
 
 L GBCH9 TA82x18+2'-7k Galvanized Equipment Hauler
 

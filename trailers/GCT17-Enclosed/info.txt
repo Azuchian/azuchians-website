@@ -3,7 +3,7 @@ sku: GCT17
 category: enclosed
 price: 22491
 thumb: main
-specs: 🚚New! 2026 Triumph
+specs: 🚚New! 2027 Triumph
 
 L GCT17 TA8.5x24'-52 Galvanized Enclosed
 

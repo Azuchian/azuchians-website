@@ -3,7 +3,7 @@ sku: GGFT2
 category: deckover
 price: 35346
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GGFT2 TA102x24'-12k Galvanized Deckover Tilt Trailer
 

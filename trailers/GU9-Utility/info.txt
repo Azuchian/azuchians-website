@@ -3,7 +3,7 @@ sku: GU9
 category: utility
 price: 6179
 thumb: main
-specs: 🆕2026
+specs: 🆕2027
 
 L GU9 TA80x16'-35 Galvanized Utility Trailer
 

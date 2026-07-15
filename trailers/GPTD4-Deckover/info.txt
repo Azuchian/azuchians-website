@@ -3,7 +3,7 @@ sku: GPTD4
 category: deckover
 price: 22467
 thumb: main
-specs: 🚚New! 2026 Triumph
+specs: 🚚New! 2027 Triumph
 
 L GPTD4 TA102x24'-10k Deckover Hydraulic Tilt
 
