@@ -25,8 +25,10 @@ var CONV_CALL = '4O8yCNXNmbocEK-EqdhD';  // "Trailer – Phone Call" conversion 
 var CONV_TEXT = 'M2QiCNjNmbocEK-EqdhD';  // "Trailer – Text Lead" conversion label
 
 (function () {
-  // Don't load Google's tag until a real ID is entered (avoids errors before launch)
-  if (!GADS_ID || GADS_ID.indexOf('AW-') !== 0 || GADS_ID.indexOf('X') !== -1) return;
+  // Don't load Google's tag until a real ID is entered (avoids errors before launch).
+  // Placeholder = a run of X's (e.g. AW-XXXXXXXXXX); a real ID/label may contain a
+  // single stray "X", so only treat 3+ in a row as "not filled in yet".
+  if (!GADS_ID || GADS_ID.indexOf('AW-') !== 0 || /XXX/.test(GADS_ID)) return;
   var s = document.createElement('script');
   s.async = true;
   s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GADS_ID;
@@ -43,7 +45,7 @@ function adsConversion(type) {
   try {
     if (typeof gtag !== 'function') return;
     var label = (type === 'call') ? CONV_CALL : (type === 'text') ? CONV_TEXT : '';
-    if (!label || label.indexOf('X') !== -1) return;
+    if (!label || /XXX/.test(label)) return;   // only bail on an unfilled placeholder, not a real label that happens to contain "X"
     gtag('event', 'conversion', { send_to: GADS_ID + '/' + label });
   } catch (e) {}
 }
