@@ -300,9 +300,231 @@
       <button class="sort-btn" data-sort="price-asc">Price: Low to High</button>
       <button class="sort-btn" data-sort="price-desc">Price: High to Low</button>
     </div>
-    <div class="trailer-grid" id="trailer-grid">
-      <div class="grid-message">Loading inventory…</div>
-    </div>
+    <!-- The build writes the real trailer cards between these markers so the inventory
+         is present in the HTML itself (for Google and for no-JS visitors). The script
+         below re-renders the same content once it loads, then handles filter/sort. -->
+    <div class="trailer-grid" id="trailer-grid"><!--GRID_START-->
+        <a class="trailer-card" href="trailer.html?sku=GBC01" data-price="14117" data-video="1" data-cat="deckover">
+          <img src="trailers/GBC01-Deckover/main.jpg" alt="2027 Triumph TA102x20+4'-7k Equipment Hauler for sale" loading="lazy">
+          <span class="tc-video-badge">&#9654; 3D View</span>
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x20+4'-7k Equipment Hauler</div>
+            <div class="tc-sku">GBC01</div>
+            <div class="tc-price">$14,117 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GBCH9.1" data-price="13339" data-video="1" data-cat="between-fenders">
+          <img src="trailers/GBCH9.1-Between-Fenders/main.jpg" alt="2027 Triumph TA82x18+2'-8k Equipment Hauler for sale" loading="lazy">
+          <span class="tc-video-badge">&#9654; 3D View</span>
+          <div class="trailer-card-info">
+            <div class="tc-cat">Between Fenders</div>
+            <div class="tc-name">TA82x18+2'-8k Equipment Hauler</div>
+            <div class="tc-sku">GBCH9.1</div>
+            <div class="tc-price">$13,339 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GD2" data-price="11344" data-video="1" data-cat="dump">
+          <img src="trailers/GD2-Dump/main.jpg" alt="2027 Triumph TA5x10'-35 Dump Trailer for sale" loading="lazy">
+          <span class="tc-video-badge">&#9654; 3D View</span>
+          <div class="trailer-card-info">
+            <div class="tc-cat">Dump</div>
+            <div class="tc-name">TA5x10'-35 Dump Trailer</div>
+            <div class="tc-sku">GD2</div>
+            <div class="tc-price">$11,344 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF2" data-price="32695" data-video="1" data-cat="deckover">
+          <img src="trailers/GHDGF2-Deckover/main.jpg" alt="2027 Triumph TA102x25+5'-12k Gooseneck Deckover for sale" loading="lazy">
+          <span class="tc-video-badge">&#9654; 3D View</span>
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x25+5'-12k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF2</div>
+            <div class="tc-price">$32,695 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHTEH10" data-price="15337" data-video="1" data-cat="between-fenders">
+          <img src="trailers/GHTEH10-Between-Fenders/main.jpg" alt="2027 Triumph TA82x20'-7k Dual Cylinder Full Tilt for sale" loading="lazy">
+          <span class="tc-video-badge">&#9654; 3D View</span>
+          <div class="trailer-card-info">
+            <div class="tc-cat">Between Fenders</div>
+            <div class="tc-name">TA82x20'-7k Dual Cylinder Full Tilt</div>
+            <div class="tc-sku">GHTEH10</div>
+            <div class="tc-price">$15,337 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=AU7" data-price="6679" data-video="0" data-cat="utility">
+          <img src="trailers/AU7-Utility/main.jpg" alt="2027 Triumph TA80x14'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">TA80x14'-35 Utility</div>
+            <div class="tc-sku">AU7</div>
+            <div class="tc-price">$6,679 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GBCH9" data-price="10971" data-video="0" data-cat="between-fenders">
+          <img src="trailers/GBCH9-Between-Fenders/main.jpg" alt="2027 Triumph TA82x18+2'-7k Equipment Hauler for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Between Fenders</div>
+            <div class="tc-name">TA82x18+2'-7k Equipment Hauler</div>
+            <div class="tc-sku">GBCH9</div>
+            <div class="tc-price">$10,971 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GCT17" data-price="22491" data-video="0" data-cat="enclosed">
+          <img src="trailers/GCT17-Enclosed/main.jpeg" alt="2027 Triumph TA8.5x24'-52 Enclosed for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Enclosed</div>
+            <div class="tc-name">TA8.5x24'-52 Enclosed</div>
+            <div class="tc-sku">GCT17</div>
+            <div class="tc-price">$22,491 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GD10" data-price="26752" data-video="0" data-cat="dump">
+          <img src="trailers/GD10-Dump/main.jpg" alt="2027 Triumph TA82x16'-10k Dump Trailer for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Dump</div>
+            <div class="tc-name">TA82x16'-10k Dump Trailer</div>
+            <div class="tc-sku">GD10</div>
+            <div class="tc-price">$26,752 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GD5" data-price="15196" data-video="0" data-cat="dump">
+          <img src="trailers/GD5-Dump/main.jpg" alt="2027 Triumph TA6x12-52 Dump Trailer for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Dump</div>
+            <div class="tc-name">TA6x12-52 Dump Trailer</div>
+            <div class="tc-sku">GD5</div>
+            <div class="tc-price">$15,196 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GDTGN4" data-price="63123" data-video="0" data-cat="deckover">
+          <img src="trailers/GDTGN4-Deckover/main.jpg" alt="2027 Triumph TRI102x43'-12k Gooseneck Dovetail for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TRI102x43'-12k Gooseneck Dovetail</div>
+            <div class="tc-sku">GDTGN4</div>
+            <div class="tc-price">$63,123 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GGFT2" data-price="35346" data-video="0" data-cat="deckover">
+          <img src="trailers/GGFT2-Deckover/main.jpg" alt="2027 Triumph TA102x24'-12k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x24'-12k Gooseneck Deckover</div>
+            <div class="tc-sku">GGFT2</div>
+            <div class="tc-price">$35,346 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDEF2.1" data-price="32661" data-video="0" data-cat="deckover">
+          <img src="trailers/GHDEF2.1-Deckover/main.jpg" alt="2027 Triumph TA102x25+5'-16k Equipment Hauler for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x25+5'-16k Equipment Hauler</div>
+            <div class="tc-sku">GHDEF2.1</div>
+            <div class="tc-price">$32,661 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF1" data-price="30296" data-video="0" data-cat="deckover">
+          <img src="trailers/GHDGF1-Deckover/main.jpg" alt="2027 Triumph TA102x20+5'-12k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x20+5'-12k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF1</div>
+            <div class="tc-price">$30,296 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF2.1" data-price="35313" data-video="0" data-cat="deckover">
+          <img src="trailers/GHDGF2.1-Deckover/main.jpg" alt="2027 Triumph TA102x25+5' 16k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x25+5' 16k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF2.1</div>
+            <div class="tc-price">$35,313 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF3.1" data-price="38469" data-video="0" data-cat="deckover">
+          <img src="trailers/GHDGF3.1-Deckover/main.jpeg" alt="2027 Triumph TAG102x30+5'-16k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TAG102x30+5'-16k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF3.1</div>
+            <div class="tc-price">$38,469 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF8" data-price="41028" data-video="0" data-cat="deckover">
+          <img src="trailers/GHDGF8-Deckover/main.jpg" alt="2027 Triumph TA102x35+5'-16k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x35+5'-16k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF8</div>
+            <div class="tc-price">$41,028 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GPTD3" data-price="18301" data-video="0" data-cat="deckover">
+          <img src="trailers/GPTD3-Deckover/main.jpg" alt="2027 Triumph TA102x24'-7k Deckover Tilt for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x24'-7k Deckover Tilt</div>
+            <div class="tc-sku">GPTD3</div>
+            <div class="tc-price">$18,301 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GPTD4" data-price="22467" data-video="0" data-cat="deckover">
+          <img src="trailers/GPTD4-Deckover/main.jpg" alt="2027 Triumph TA102x24' 10k Deckover Tilt for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x24' 10k Deckover Tilt</div>
+            <div class="tc-sku">GPTD4</div>
+            <div class="tc-price">$22,467 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GU2" data-price="3415" data-video="0" data-cat="utility">
+          <img src="trailers/GU2-Utility/main.jpg" alt="2027 Triumph SA5x10'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">SA5x10'-35 Utility</div>
+            <div class="tc-sku">GU2</div>
+            <div class="tc-price">$3,415 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GU8" data-price="5955" data-video="0" data-cat="utility">
+          <img src="trailers/GU8-Utility/main.jpg" alt="2027 Triumph TA80x14'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">TA80x14'-35 Utility</div>
+            <div class="tc-sku">GU8</div>
+            <div class="tc-price">$5,955 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GU9" data-price="6179" data-video="0" data-cat="utility">
+          <img src="trailers/GU9-Utility/main.jpg" alt="2027 Triumph TA80x16'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">TA80x16'-35 Utility</div>
+            <div class="tc-sku">GU9</div>
+            <div class="tc-price">$6,179 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+      <!--GRID_END--></div>
 
     <div class="more-models">
       <h3>This isn't everything we sell</h3>
@@ -319,8 +541,8 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="ads.js?v=1784656795"></script>
-  <script src="inventory.js?v=1784656795"></script>
+  <script src="ads.js?v=1784656923"></script>
+  <script src="inventory.js?v=1784656923"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
