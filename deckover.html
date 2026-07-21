@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deckover Trailers for Sale | Sarnia &amp; SW Ontario | Azuchian's Triumph Trailers</title>
+  <meta name="description" content="New 2027 Triumph deckover trailers for sale in Sarnia and Leamington, Ontario. Full-width deck over the wheels for oversized loads. Financing and delivery available. Call 519-550-4584." />
+  <link rel="canonical" href="https://azuchianstriumphtrailers.ca/deckover.html" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+
+    /* ── HOME GRID ── */
+    html, body { overflow-x: hidden; max-width: 100%; }
+    .mobile-call-bar { display: none; }
+    .home-header {
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .home-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; padding: 0 1.5rem;
+    }
+    .home-logo {
+      font-size: 1rem; font-weight: 800; color: var(--white);
+      display: flex; align-items: center; gap: .6rem; text-decoration: none;
+    }
+    .home-logo-mark {
+      background: var(--orange); color: var(--white);
+      font-size: .8rem; font-weight: 900; padding: .25rem .5rem;
+      border-radius: 4px; letter-spacing: .04em;
+    }
+    .home-nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .home-nav-links a {
+      color: var(--muted); font-size: .875rem; font-weight: 600;
+      text-decoration: none; transition: color .15s;
+    }
+    .home-nav-links a:hover { color: var(--white); }
+    .home-nav-links .cta {
+      background: var(--orange); color: var(--white) !important;
+      padding: .4rem .9rem; border-radius: 5px;
+    }
+    .home-nav-links .cta:hover { background: var(--orange2); }
+
+    /* trust strip — one thin reassurance line for ad visitors */
+    .trust-strip {
+      display: flex; justify-content: center; gap: 2rem;
+      padding: .45rem 1.5rem;
+      background: rgba(232,119,34,.06);
+      border-bottom: 1px solid var(--border);
+      font-size: .75rem; color: var(--muted); white-space: nowrap;
+    }
+    .trust-strip span { flex-shrink: 0; }
+
+    /* filter bar */
+    .filter-bar {
+      border-bottom: 1px solid var(--border);
+      padding: .6rem 1.5rem;
+      display: flex; gap: .5rem; flex-wrap: wrap; align-items: center;
+    }
+    .fb-label { font-size: .75rem; color: var(--muted); font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em; margin-right: .25rem; }
+    .fb-btn {
+      background: none; border: 1px solid var(--border); border-radius: 99px;
+      color: var(--muted); font-size: .8rem; padding: .3rem .85rem;
+      cursor: pointer; transition: all .15s; font-family: inherit;
+    }
+    .fb-btn:hover { border-color: var(--orange); color: var(--white); }
+    .fb-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    /* sort bar — only shown on a category view */
+    .sort-bar {
+      display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+      padding: .6rem 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .sort-label { font-size: .75rem; color: var(--muted); font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em; margin-right: .25rem; }
+    .sort-btn {
+      background: none; border: 1px solid var(--border); border-radius: 99px;
+      color: var(--muted); font-size: .8rem; padding: .3rem .85rem;
+      cursor: pointer; transition: all .15s; font-family: inherit; white-space: nowrap;
+    }
+    .sort-btn:hover { border-color: var(--orange); color: var(--white); }
+    .sort-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    /* grid */
+    .trailer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+    }
+    .trailer-card {
+      background: var(--black);
+      display: block; text-decoration: none;
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .trailer-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .4s ease;
+      display: block;
+    }
+    .trailer-card-placeholder {
+      width: 100%; height: 100%;
+      background: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; color: var(--border);
+    }
+    .trailer-card:hover img { transform: scale(1.04); }
+    .tc-video-badge {
+      position: absolute; top: .6rem; right: .6rem; z-index: 2;
+      background: var(--orange); color: var(--white);
+      font-size: .68rem; font-weight: 800; letter-spacing: .02em;
+      padding: .3rem .55rem; border-radius: 99px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    }
+    .trailer-card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.60) 50%);
+      padding: 2rem 1rem .9rem;
+      transform: translateY(4px);
+      transition: transform .25s;
+    }
+    .trailer-card:hover .trailer-card-info { transform: translateY(0); }
+    .tc-cat {
+      font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em;
+      color: var(--orange); margin-bottom: .2rem;
+    }
+    .tc-name {
+      font-size: .9rem; font-weight: 700; color: var(--white);
+      line-height: 1.3; margin-bottom: .3rem;
+    }
+    .tc-sku {
+      font-size: .72rem; color: rgba(255,255,255,.4); margin-bottom: .3rem;
+    }
+    .tc-price {
+      font-size: 1.1rem; font-weight: 900; color: var(--orange);
+    }
+    .tc-price-note { font-size: .75rem; color: rgba(255,255,255,.45); font-weight: 400; }
+
+    /* empty / loading */
+    .grid-message {
+      grid-column: 1/-1; padding: 5rem 2rem;
+      text-align: center; color: var(--muted); font-size: .95rem;
+    }
+
+    /* "more models available" call-to-action below the grid */
+    .more-models {
+      text-align: center;
+      max-width: 640px; margin: 2.5rem auto 1rem;
+      padding: 1.75rem 1.5rem;
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--dark);
+    }
+    .more-models h3 {
+      color: var(--white); font-size: 1.15rem; font-weight: 800;
+      margin-bottom: .6rem; letter-spacing: -.01em;
+    }
+    .more-models p { color: var(--muted); font-size: .92rem; line-height: 1.6; margin-bottom: 1.25rem; }
+    .more-models p strong { color: var(--orange); }
+    .mm-btn {
+      display: inline-block; background: var(--orange); color: var(--white);
+      font-size: .95rem; font-weight: 700; padding: .7rem 1.6rem;
+      border-radius: 8px; text-decoration: none; transition: background .15s;
+    }
+    .mm-btn:hover { background: var(--orange2); color: var(--white); }
+    @media (max-width: 600px) {
+      .more-models { margin: 1.5rem 1rem; padding: 1.5rem 1.25rem; }
+      .more-models h3 { font-size: 1.05rem; }
+    }
+
+    .home-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .75rem;
+    }
+    .home-footer p { font-size: .8rem; color: var(--muted); }
+    .home-footer a { color: var(--muted); text-decoration: none; }
+    .home-footer a:hover { color: var(--orange); }
+
+    @media (max-width: 600px) {
+      /* trailers become full-width showcase cards: image on top, details below */
+      .trailer-grid {
+        grid-template-columns: 1fr;
+        gap: .85rem;
+        background: transparent;
+        padding: .85rem;
+      }
+      .trailer-card {
+        aspect-ratio: auto;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--dark);
+        box-shadow: 0 2px 10px rgba(0,0,0,.35);
+      }
+      .trailer-card:hover img { transform: none; }
+      .trailer-card img,
+      .trailer-card-placeholder {
+        position: static;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      .trailer-card-info {
+        position: static;
+        background: none;
+        transform: none;
+        padding: .85rem 1rem 1rem;
+      }
+      .tc-cat { font-size: .66rem; margin-bottom: .25rem; }
+      .tc-name { font-size: 1.02rem; color: var(--white); margin-bottom: .15rem; line-height: 1.3; }
+      .tc-sku { color: var(--muted); margin-bottom: .45rem; }
+      .tc-price { font-size: 1.3rem; }
+
+      /* sticky tap-to-call bar */
+      body { padding-bottom: 66px; }
+      .mobile-call-bar {
+        display: flex; align-items: center; justify-content: center; gap: .5rem;
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 400;
+        background: var(--orange); color: var(--white);
+        padding: 1rem; font-size: 1.05rem; font-weight: 800;
+        text-decoration: none; box-shadow: 0 -4px 16px rgba(0,0,0,.45);
+      }
+
+      /* tighten the header so it never overflows the screen */
+      .home-nav { padding: 0 1rem; height: 56px; }
+      .home-logo { font-size: .82rem; gap: .4rem; line-height: 1.15; }
+      .home-logo-mark { font-size: .68rem; padding: .2rem .4rem; }
+      .home-nav-links { gap: .75rem; }
+      .home-nav-links a { font-size: .8rem; }
+      .home-nav-links .cta { padding: .35rem .7rem; white-space: nowrap; }
+
+      /* trust strip scrolls sideways on phones instead of overflowing */
+      .trust-strip {
+        justify-content: flex-start; gap: 1.25rem;
+        padding: .45rem 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .trust-strip::-webkit-scrollbar { display: none; }
+
+      /* filter row becomes one clean swipeable strip instead of wrapping */
+      .filter-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .filter-bar::-webkit-scrollbar { display: none; }
+      .fb-label, .fb-btn { flex-shrink: 0; white-space: nowrap; }
+
+      /* footer stacks and centers */
+      .home-footer { flex-direction: column; text-align: center; gap: .5rem; }
+      .home-footer p { font-size: .75rem; }
+    }
+    @media (max-width: 480px) {
+      .home-nav-links .nav-about { display: none; }
+    }
+  
+    /* category page intro */
+    .cat-intro { padding: 1.75rem 1.5rem 1.25rem; max-width: 900px; }
+    .cat-intro h1 {
+      color: var(--white); font-size: 1.5rem; font-weight: 800;
+      letter-spacing: -.02em; margin-bottom: .3rem; line-height: 1.25;
+    }
+    .cat-count {
+      font-size: .78rem; font-weight: 700; color: var(--orange);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .8rem;
+    }
+    .cat-intro p { color: var(--muted); font-size: .93rem; line-height: 1.65; }
+    /* the filter buttons are real links on these pages */
+    a.fb-btn { text-decoration: none; display: inline-block; line-height: 1.4; }
+    @media (max-width: 600px) {
+      .cat-intro { padding: 1.25rem 1rem 1rem; }
+      .cat-intro h1 { font-size: 1.25rem; }
+      .cat-intro p { font-size: .89rem; }
+    }
+  </style>
+</head>
+<body style="background:var(--black)">
+  <!--BANNER_START--><!--BANNER_END-->
+
+  <header class="home-header">
+    <div class="home-nav">
+      <a href="index.html" class="home-logo">
+        <span class="home-logo-mark">ATT</span>
+        Azuchian's Triumph Trailers
+      </a>
+      <div class="home-nav-links">
+        <a href="financing.html" class="nav-about">Financing</a>
+        <a href="about.html" class="nav-about">About</a>
+        <a href="contact.html" class="cta">Contact&nbsp;Us</a>
+      </div>
+    </div>
+    <div class="trust-strip">
+      <span>&#127381; New 2027 Triumph Trailers</span>
+      <span>&#128176; Financing Available</span>
+      <span>&#128666; Delivery</span>
+      <span>&#128737;&#65039; 1-Year Structural Warranty</span>
+    </div>
+    <div class="filter-bar">
+      <span class="fb-label">Filter:</span>
+      <a class="fb-btn" href="index.html">All</a>
+      <a class="fb-btn" href="dump.html">Dump</a>
+      <a class="fb-btn" href="utility.html">Utility</a>
+      <a class="fb-btn" href="enclosed.html">Enclosed</a>
+      <a class="fb-btn active" href="deckover.html">Deckover</a>
+      <a class="fb-btn" href="between-fenders.html">Between Fenders</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="cat-intro">
+      <h1>Deckover Trailers for Sale in Southwestern Ontario</h1>
+      <div class="cat-count">11 models in stock now</div>
+      <p>A deckover trailer puts the deck above the tires instead of between them, giving you the full trailer width with no fender to work around. That makes them the right choice for wide equipment, bins, pallets, hay and machinery that simply won't fit between fenders. Our 2027 Triumph deckovers are built with heavy frames, flip-over or slide-in ramps and gooseneck or bumper-pull hitching depending on the model. New units with a one-year structural warranty, financing available, delivery across southwestern Ontario.</p>
+    </section>
+
+    <div class="sort-bar" id="sort-bar">
+      <span class="sort-label">Sort:</span>
+      <button class="sort-btn active" data-sort="default">Featured</button>
+      <button class="sort-btn" data-sort="price-asc">Price: Low to High</button>
+      <button class="sort-btn" data-sort="price-desc">Price: High to Low</button>
+    </div>
+
+    <div class="trailer-grid" id="trailer-grid">
+        <a class="trailer-card" href="trailer.html?sku=GBC01" data-price="14117" data-video="1">
+          <img src="trailers/GBC01-Deckover/main.jpg" alt="2027 Triumph TA102x20+4'-7k Equipment Hauler for sale" loading="lazy">
+          <span class="tc-video-badge">&#9654; 3D View</span>
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x20+4'-7k Equipment Hauler</div>
+            <div class="tc-sku">GBC01</div>
+            <div class="tc-price">$14,117 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF2" data-price="32695" data-video="1">
+          <img src="trailers/GHDGF2-Deckover/main.jpg" alt="2027 Triumph TA102x25+5'-12k Gooseneck Deckover for sale" loading="lazy">
+          <span class="tc-video-badge">&#9654; 3D View</span>
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x25+5'-12k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF2</div>
+            <div class="tc-price">$32,695 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GDTGN4" data-price="63123" data-video="0">
+          <img src="trailers/GDTGN4-Deckover/main.jpg" alt="2027 Triumph TRI102x43'-12k Gooseneck Dovetail for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TRI102x43'-12k Gooseneck Dovetail</div>
+            <div class="tc-sku">GDTGN4</div>
+            <div class="tc-price">$63,123 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GGFT2" data-price="35346" data-video="0">
+          <img src="trailers/GGFT2-Deckover/main.jpg" alt="2027 Triumph TA102x24'-12k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x24'-12k Gooseneck Deckover</div>
+            <div class="tc-sku">GGFT2</div>
+            <div class="tc-price">$35,346 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDEF2.1" data-price="32661" data-video="0">
+          <img src="trailers/GHDEF2.1-Deckover/main.jpg" alt="2027 Triumph TA102x25+5'-16k Equipment Hauler for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x25+5'-16k Equipment Hauler</div>
+            <div class="tc-sku">GHDEF2.1</div>
+            <div class="tc-price">$32,661 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF1" data-price="30296" data-video="0">
+          <img src="trailers/GHDGF1-Deckover/main.jpg" alt="2027 Triumph TA102x20+5'-12k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x20+5'-12k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF1</div>
+            <div class="tc-price">$30,296 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF2.1" data-price="35313" data-video="0">
+          <img src="trailers/GHDGF2.1-Deckover/main.jpg" alt="2027 Triumph TA102x25+5' 16k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x25+5' 16k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF2.1</div>
+            <div class="tc-price">$35,313 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF3.1" data-price="38469" data-video="0">
+          <img src="trailers/GHDGF3.1-Deckover/main.jpeg" alt="2027 Triumph TAG102x30+5'-16k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TAG102x30+5'-16k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF3.1</div>
+            <div class="tc-price">$38,469 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GHDGF8" data-price="41028" data-video="0">
+          <img src="trailers/GHDGF8-Deckover/main.jpg" alt="2027 Triumph TA102x35+5'-16k Gooseneck Deckover for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x35+5'-16k Gooseneck Deckover</div>
+            <div class="tc-sku">GHDGF8</div>
+            <div class="tc-price">$41,028 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GPTD3" data-price="18301" data-video="0">
+          <img src="trailers/GPTD3-Deckover/main.jpg" alt="2027 Triumph TA102x24'-7k Deckover Tilt for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x24'-7k Deckover Tilt</div>
+            <div class="tc-sku">GPTD3</div>
+            <div class="tc-price">$18,301 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GPTD4" data-price="22467" data-video="0">
+          <img src="trailers/GPTD4-Deckover/main.jpg" alt="2027 Triumph TA102x24' 10k Deckover Tilt for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Deckover</div>
+            <div class="tc-name">TA102x24' 10k Deckover Tilt</div>
+            <div class="tc-sku">GPTD4</div>
+            <div class="tc-price">$22,467 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+    </div>
+
+    <div class="more-models">
+      <h3>Don't see the size you need?</h3>
+      <p>We have <strong>30+ trailer models</strong> available to order beyond what's shown here. Tell us what you're hauling and we'll match you to the right trailer.</p>
+      <a href="tel:5195504584" class="mm-btn" onclick="adsConversion &amp;&amp; adsConversion('call')">&#128222; Call 519-550-4584</a>
+    </div>
+  </main>
+
+  <footer class="home-footer">
+    <p><a href="tel:5195504584">519-550-4584</a> &nbsp;&middot;&nbsp; No yard, lower overhead &nbsp;&middot;&nbsp; Serving Sarnia, Leamington &amp; SW Ontario to the US border &nbsp;&middot;&nbsp; <a href="financing.html">Financing</a> &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+    <p>Azuchian's Triumph Trailers &copy; 2026 &nbsp;&middot;&nbsp; Prices + HST</p>
+  </footer>
+
+  <a href="tel:5195504584" class="mobile-call-bar">&#128222; Call 519-550-4584</a>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Deckover Trailers for Sale in Southwestern Ontario","numberOfItems":11,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"2027 Triumph TA102x20+4'-7k Equipment Hauler","sku":"GBC01","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"14117","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"2027 Triumph TA102x25+5'-12k Gooseneck Deckover","sku":"GHDGF2","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"32695","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"2027 Triumph TRI102x43'-12k Gooseneck Dovetail","sku":"GDTGN4","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"63123","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"2027 Triumph TA102x24'-12k Gooseneck Deckover","sku":"GGFT2","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"35346","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"2027 Triumph TA102x25+5'-16k Equipment Hauler","sku":"GHDEF2.1","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"32661","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"2027 Triumph TA102x20+5'-12k Gooseneck Deckover","sku":"GHDGF1","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"30296","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"2027 Triumph TA102x25+5' 16k Gooseneck Deckover","sku":"GHDGF2.1","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"35313","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"2027 Triumph TAG102x30+5'-16k Gooseneck Deckover","sku":"GHDGF3.1","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"38469","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"2027 Triumph TA102x35+5'-16k Gooseneck Deckover","sku":"GHDGF8","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"41028","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"2027 Triumph TA102x24'-7k Deckover Tilt","sku":"GPTD3","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"18301","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"2027 Triumph TA102x24' 10k Deckover Tilt","sku":"GPTD4","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"22467","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}}]}</script>
+  <script src="ads.js?v=1784656795"></script>
+  <script>
+    // Sorting only reorders cards that are already in the HTML, so the content
+    // is fully present for crawlers and for anyone with JavaScript disabled.
+    (function () {
+      var bar = document.getElementById('sort-bar');
+      var grid = document.getElementById('trailer-grid');
+      if (!bar || !grid) return;
+      var original = Array.prototype.slice.call(grid.querySelectorAll('.trailer-card'));
+      bar.addEventListener('click', function (e) {
+        var btn = e.target.closest('.sort-btn');
+        if (!btn) return;
+        var btns = bar.querySelectorAll('.sort-btn');
+        for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+        btn.classList.add('active');
+        var mode = btn.dataset.sort;
+        var cards = original.slice();
+        if (mode === 'price-asc')       cards.sort(function (a, b) { return a.dataset.price - b.dataset.price; });
+        else if (mode === 'price-desc') cards.sort(function (a, b) { return b.dataset.price - a.dataset.price; });
+        for (var j = 0; j < cards.length; j++) grid.appendChild(cards[j]);
+      });
+    })();
+  </script>
+</body>
+</html>

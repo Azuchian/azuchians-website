@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Azuchian's Triumph Trailers | Sarnia, ON</title>
-  <meta name="description" content="Quality trailers for sale in Sarnia, Ontario. Gooseneck, deckover, tilt, and utility trailers. Call 519-550-4584." />
+  <title>Utility Trailers for Sale | Sarnia &amp; SW Ontario | Azuchian's Triumph Trailers</title>
+  <meta name="description" content="New 2027 Triumph utility trailers for sale in Sarnia and Leamington, Ontario. Single and tandem axle, ramp gate included. Financing and delivery available. Call 519-550-4584." />
+  <link rel="canonical" href="https://azuchianstriumphtrailers.ca/utility.html" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
+
     /* ── HOME GRID ── */
     html, body { overflow-x: hidden; max-width: 100%; }
     .mobile-call-bar { display: none; }
@@ -259,6 +261,25 @@
     @media (max-width: 480px) {
       .home-nav-links .nav-about { display: none; }
     }
+  
+    /* category page intro */
+    .cat-intro { padding: 1.75rem 1.5rem 1.25rem; max-width: 900px; }
+    .cat-intro h1 {
+      color: var(--white); font-size: 1.5rem; font-weight: 800;
+      letter-spacing: -.02em; margin-bottom: .3rem; line-height: 1.25;
+    }
+    .cat-count {
+      font-size: .78rem; font-weight: 700; color: var(--orange);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .8rem;
+    }
+    .cat-intro p { color: var(--muted); font-size: .93rem; line-height: 1.65; }
+    /* the filter buttons are real links on these pages */
+    a.fb-btn { text-decoration: none; display: inline-block; line-height: 1.4; }
+    @media (max-width: 600px) {
+      .cat-intro { padding: 1.25rem 1rem 1rem; }
+      .cat-intro h1 { font-size: 1.25rem; }
+      .cat-intro p { font-size: .89rem; }
+    }
   </style>
 </head>
 <body style="background:var(--black)">
@@ -277,174 +298,116 @@
       </div>
     </div>
     <div class="trust-strip">
-      <span>🆕 New 2027 Triumph Trailers</span>
-      <span>💰 Financing Available</span>
-      <span>🚚 Delivery</span>
-      <span>🛡️ 1-Year Structural Warranty</span>
+      <span>&#127381; New 2027 Triumph Trailers</span>
+      <span>&#128176; Financing Available</span>
+      <span>&#128666; Delivery</span>
+      <span>&#128737;&#65039; 1-Year Structural Warranty</span>
     </div>
-    <div class="filter-bar" id="filter-bar">
+    <div class="filter-bar">
       <span class="fb-label">Filter:</span>
-      <button class="fb-btn active" data-cat="all">All</button>
-      <button class="fb-btn" data-cat="utility">Utility</button>
-      <button class="fb-btn" data-cat="dump">Dump</button>
-      <button class="fb-btn" data-cat="between-fenders">Between Fenders</button>
-      <button class="fb-btn" data-cat="deckover">Deckover</button>
-      <button class="fb-btn" data-cat="enclosed">Enclosed</button>
+      <a class="fb-btn" href="index.html">All</a>
+      <a class="fb-btn" href="dump.html">Dump</a>
+      <a class="fb-btn active" href="utility.html">Utility</a>
+      <a class="fb-btn" href="enclosed.html">Enclosed</a>
+      <a class="fb-btn" href="deckover.html">Deckover</a>
+      <a class="fb-btn" href="between-fenders.html">Between Fenders</a>
     </div>
   </header>
 
   <main>
-    <div class="sort-bar" id="sort-bar" style="display:none">
+    <section class="cat-intro">
+      <h1>Utility Trailers for Sale in Southwestern Ontario</h1>
+      <div class="cat-count">4 models in stock now</div>
+      <p>Our 2027 Triumph utility trailers are the everyday workhorses &mdash; open deck, mesh or solid sides, and a ramp gate for loading mowers, ATVs, furniture and yard waste. Available in single-axle models for light hauling and tandem-axle models when you need the capacity and the highway stability. Every trailer is new, carries a one-year structural warranty, and is priced plus HST with nothing hidden. Financing is available and we deliver across southwestern Ontario.</p>
+    </section>
+
+    <div class="sort-bar" id="sort-bar">
       <span class="sort-label">Sort:</span>
       <button class="sort-btn active" data-sort="default">Featured</button>
       <button class="sort-btn" data-sort="price-asc">Price: Low to High</button>
       <button class="sort-btn" data-sort="price-desc">Price: High to Low</button>
     </div>
+
     <div class="trailer-grid" id="trailer-grid">
-      <div class="grid-message">Loading inventory…</div>
+        <a class="trailer-card" href="trailer.html?sku=AU7" data-price="6679" data-video="0">
+          <img src="trailers/AU7-Utility/main.jpg" alt="2027 Triumph TA80x14'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">TA80x14'-35 Utility</div>
+            <div class="tc-sku">AU7</div>
+            <div class="tc-price">$6,679 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GU2" data-price="3415" data-video="0">
+          <img src="trailers/GU2-Utility/main.jpg" alt="2027 Triumph SA5x10'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">SA5x10'-35 Utility</div>
+            <div class="tc-sku">GU2</div>
+            <div class="tc-price">$3,415 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GU8" data-price="5955" data-video="0">
+          <img src="trailers/GU8-Utility/main.jpg" alt="2027 Triumph TA80x14'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">TA80x14'-35 Utility</div>
+            <div class="tc-sku">GU8</div>
+            <div class="tc-price">$5,955 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
+        <a class="trailer-card" href="trailer.html?sku=GU9" data-price="6179" data-video="0">
+          <img src="trailers/GU9-Utility/main.jpg" alt="2027 Triumph TA80x16'-35 Utility for sale" loading="lazy">
+          
+          <div class="trailer-card-info">
+            <div class="tc-cat">Utility</div>
+            <div class="tc-name">TA80x16'-35 Utility</div>
+            <div class="tc-sku">GU9</div>
+            <div class="tc-price">$6,179 <span class="tc-price-note">+HST</span></div>
+          </div>
+        </a>
     </div>
 
     <div class="more-models">
-      <h3>This isn't everything we sell</h3>
-      <p>We have <strong>30+ trailer models</strong> to choose from — more than shown here, more models will be shown soon. Don't see exactly what you need? Reach out and we'll find the right trailer for you.</p>
-      <a href="tel:5195504584" class="mm-btn" onclick="adsConversion && adsConversion('call')">📞 Call 519-550-4584</a>
+      <h3>Don't see the size you need?</h3>
+      <p>We have <strong>30+ trailer models</strong> available to order beyond what's shown here. Tell us what you're hauling and we'll match you to the right trailer.</p>
+      <a href="tel:5195504584" class="mm-btn" onclick="adsConversion &amp;&amp; adsConversion('call')">&#128222; Call 519-550-4584</a>
     </div>
   </main>
 
   <footer class="home-footer">
-    <p><a href="tel:5195504584">519-550-4584</a> &nbsp;·&nbsp; No yard, lower overhead &nbsp;·&nbsp; Serving Sarnia, Leamington &amp; SW Ontario to the US border &nbsp;·&nbsp; <a href="financing.html">Financing</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
-    <p>Azuchian's Triumph Trailers &copy; 2026 &nbsp;·&nbsp; Prices + HST</p>
+    <p><a href="tel:5195504584">519-550-4584</a> &nbsp;&middot;&nbsp; No yard, lower overhead &nbsp;&middot;&nbsp; Serving Sarnia, Leamington &amp; SW Ontario to the US border &nbsp;&middot;&nbsp; <a href="financing.html">Financing</a> &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+    <p>Azuchian's Triumph Trailers &copy; 2026 &nbsp;&middot;&nbsp; Prices + HST</p>
   </footer>
 
-  <!-- sticky tap-to-call (mobile only) -->
-  <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
+  <a href="tel:5195504584" class="mobile-call-bar">&#128222; Call 519-550-4584</a>
 
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Utility Trailers for Sale in Southwestern Ontario","numberOfItems":4,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"2027 Triumph TA80x14'-35 Utility","sku":"AU7","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"6679","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"2027 Triumph SA5x10'-35 Utility","sku":"GU2","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"3415","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"2027 Triumph TA80x14'-35 Utility","sku":"GU8","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"5955","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"2027 Triumph TA80x16'-35 Utility","sku":"GU9","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"6179","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}}]}</script>
   <script src="ads.js?v=1784656795"></script>
-  <script src="inventory.js?v=1784656795"></script>
   <script>
-    const CATEGORY_ICONS = {
-      'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
-    };
-    let all = [], active = 'all', sortMode = 'default';
-
-    // Default ordering: trailers with a 3D video come first (preserving order otherwise).
-    // This is silent — there's no visible "sort by 3D" option.
-    function videoFirst(arr) {
-      return arr.filter(t => t.video).concat(arr.filter(t => !t.video));
-    }
-
-    function render() {
-      const grid = document.getElementById('trailer-grid');
-      let items = active === 'all' ? all.slice() : all.filter(t => t.category === active);
-
-      // Sort control only appears on a category view, not on "All"
-      const sortBar = document.getElementById('sort-bar');
-      if (active !== 'all') {
-        sortBar.style.display = 'flex';
-        if (sortMode === 'price-asc')       items = items.slice().sort((a, b) => Number(a.price) - Number(b.price));
-        else if (sortMode === 'price-desc') items = items.slice().sort((a, b) => Number(b.price) - Number(a.price));
-        else                                items = videoFirst(items);   // default: 3D-video trailers first
-      } else {
-        sortBar.style.display = 'none';
-        items = videoFirst(items);   // "All" view: 3D-video trailers first
-      }
-
-      if (!items.length) {
-        grid.innerHTML = '<div class="grid-message">No trailers in this category.</div>';
-        return;
-      }
-      grid.innerHTML = items.map(t => {
-        const imgs = Array.isArray(t.images) ? t.images.filter(Boolean) : [];
-        const thumbSrc = t.thumb || (imgs.length ? imgs[0] : '');
-        const imgHtml = thumbSrc
-          ? `<img src="${thumbSrc}" alt="${t.name}" loading="lazy"
-                  onerror="this.outerHTML='<div class=trailer-card-placeholder>${CATEGORY_ICONS[t.category]||'🚛'}</div>'">`
-          : `<div class="trailer-card-placeholder">${CATEGORY_ICONS[t.category]||'🚛'}</div>`;
-        const videoBadge = t.video ? `<span class="tc-video-badge">▶ 3D View</span>` : '';
-        const catLabel = {
-          'utility':'Utility','dump':'Dump',
-          'between-fenders':'Between Fenders','deckover':'Deckover','enclosed':'Enclosed'
-        }[t.category] || t.category;
-        return `<a class="trailer-card" href="trailer.html?sku=${encodeURIComponent(t.sku)}">
-          ${imgHtml}
-          ${videoBadge}
-          <div class="trailer-card-info">
-            <div class="tc-cat">${catLabel}</div>
-            <div class="tc-name">${t.name}</div>
-            <div class="tc-sku">${t.sku}</div>
-            <div class="tc-price">$${Number(t.price).toLocaleString()} <span class="tc-price-note">+HST</span></div>
-          </div>
-        </a>`;
-      }).join('');
-    }
-
-    document.getElementById('filter-bar').addEventListener('click', e => {
-      const btn = e.target.closest('.fb-btn');
-      if (!btn) return;
-      document.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      active = btn.dataset.cat;
-      render();
-    });
-
-    document.getElementById('sort-bar').addEventListener('click', e => {
-      const btn = e.target.closest('.sort-btn');
-      if (!btn) return;
-      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      sortMode = btn.dataset.sort;
-      render();
-    });
-
-    // Pre-select a category from the URL, e.g. index.html?cat=dump
-    // (used by Google Ads sitelinks so each link lands on the right trailers)
-    function applyInitialFilter() {
-      const cat = new URLSearchParams(window.location.search).get('cat');
-      if (!cat) return;
-      const btn = document.querySelector('.fb-btn[data-cat="' + cat + '"]');
-      if (btn) {
-        document.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
+    // Sorting only reorders cards that are already in the HTML, so the content
+    // is fully present for crawlers and for anyone with JavaScript disabled.
+    (function () {
+      var bar = document.getElementById('sort-bar');
+      var grid = document.getElementById('trailer-grid');
+      if (!bar || !grid) return;
+      var original = Array.prototype.slice.call(grid.querySelectorAll('.trailer-card'));
+      bar.addEventListener('click', function (e) {
+        var btn = e.target.closest('.sort-btn');
+        if (!btn) return;
+        var btns = bar.querySelectorAll('.sort-btn');
+        for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
         btn.classList.add('active');
-        active = cat;
-      }
-    }
-
-    // ── TRACKING ──
-    try {
-      // skip owner visits + count home at most once per visitor per day
-      if (localStorage.getItem('att_owner') !== '1') {
-        const today = new Date().toISOString().slice(0, 10);
-        let seen = {};
-        try { seen = JSON.parse(localStorage.getItem('att_viewed') || '{}'); } catch (e) {}
-        if (seen['_home_'] !== today) {
-          seen['_home_'] = today;
-          try { localStorage.setItem('att_viewed', JSON.stringify(seen)); } catch (e) {}
-          fetch('https://ljybisjhefbmjvyxjypz.supabase.co/rest/v1/rpc/track_view', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU',
-              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqeWJpc2poZWZibWp2eXhqeXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODI1NzQsImV4cCI6MjA5NTY1ODU3NH0.dUS4VTPVBp0hULzEiWIppfJSvF0ezXgsYCAkqfjwCqU'
-            },
-            body: JSON.stringify({ p_sku: '_home_', p_name: 'Home Page' })
-          }).catch(() => {});
-        }
-      }
-    } catch (e) {}
-
-    applyInitialFilter();
-
-    if (typeof INVENTORY !== 'undefined') {
-      all = INVENTORY; render();
-    } else {
-      fetch('inventory.json')
-        .then(r => r.json())
-        .then(data => { all = data; render(); })
-        .catch(() => {
-          document.getElementById('trailer-grid').innerHTML =
-            '<div class="grid-message">Could not load inventory.</div>';
-        });
-    }
+        var mode = btn.dataset.sort;
+        var cards = original.slice();
+        if (mode === 'price-asc')       cards.sort(function (a, b) { return a.dataset.price - b.dataset.price; });
+        else if (mode === 'price-desc') cards.sort(function (a, b) { return b.dataset.price - a.dataset.price; });
+        for (var j = 0; j < cards.length; j++) grid.appendChild(cards[j]);
+      });
+    })();
   </script>
 </body>
 </html>
