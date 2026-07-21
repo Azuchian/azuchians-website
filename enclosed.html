@@ -68,6 +68,14 @@
     .fb-btn:hover { border-color: var(--orange); color: var(--white); }
     .fb-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
     a.fb-btn { text-decoration: none; display: inline-block; line-height: 1.4; }
+    /* The page's H1 is present for search engines and screen readers but not shown.
+       Uses the clip technique, NOT display:none - display:none is skipped by screen
+       readers and discounted by search engines, which would defeat the purpose. */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
 
     /* sort bar — only shown on a category view */
     .sort-bar {
@@ -345,7 +353,7 @@
   <a href="tel:5195504584" class="mobile-call-bar">&#128222; Call 519-550-4584</a>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Enclosed Cargo Trailers for Sale in Southwestern Ontario","numberOfItems":1,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"2027 Triumph TA8.5x24'-52 Enclosed","sku":"GCT17","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"22491","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}}]}</script>
-  <script src="ads.js?v=1784666876"></script>
+  <script src="ads.js?v=1784667124"></script>
   <script>
     // Sorting only reorders cards that are already in the HTML, so the content
     // is fully present for crawlers and for anyone with JavaScript disabled.
