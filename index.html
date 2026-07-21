@@ -65,6 +65,7 @@
     }
     .fb-btn:hover { border-color: var(--orange); color: var(--white); }
     .fb-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+    a.fb-btn { text-decoration: none; display: inline-block; line-height: 1.4; }
 
     /* sort bar — only shown on a category view */
     .sort-bar {
@@ -284,12 +285,15 @@
     </div>
     <div class="filter-bar" id="filter-bar">
       <span class="fb-label">Filter:</span>
-      <button class="fb-btn active" data-cat="all">All</button>
-      <button class="fb-btn" data-cat="utility">Utility</button>
-      <button class="fb-btn" data-cat="dump">Dump</button>
-      <button class="fb-btn" data-cat="between-fenders">Between Fenders</button>
-      <button class="fb-btn" data-cat="deckover">Deckover</button>
-      <button class="fb-btn" data-cat="enclosed">Enclosed</button>
+      <!-- Real links, not JS filters: each category has its own page now, so these
+           navigate there. That's what visitors expect, and it lets Google follow
+           them from the home page instead of the pages sitting unlinked. -->
+      <a class="fb-btn active" href="index.html">All</a>
+      <a class="fb-btn" href="utility.html">Utility</a>
+      <a class="fb-btn" href="dump.html">Dump</a>
+      <a class="fb-btn" href="between-fenders.html">Between Fenders</a>
+      <a class="fb-btn" href="deckover.html">Deckover</a>
+      <a class="fb-btn" href="enclosed.html">Enclosed</a>
     </div>
   </header>
 
@@ -541,8 +545,8 @@
   <!-- sticky tap-to-call (mobile only) -->
   <a href="tel:5195504584" class="mobile-call-bar">📞 Call 519-550-4584</a>
 
-  <script src="ads.js?v=1784660300"></script>
-  <script src="inventory.js?v=1784660300"></script>
+  <script src="ads.js?v=1784665543"></script>
+  <script src="inventory.js?v=1784665543"></script>
   <script>
     const CATEGORY_ICONS = {
       'utility':'🔧','dump':'🚛','between-fenders':'🚜','deckover':'🏗️','enclosed':'🏠'
@@ -600,14 +604,8 @@
       }).join('');
     }
 
-    document.getElementById('filter-bar').addEventListener('click', e => {
-      const btn = e.target.closest('.fb-btn');
-      if (!btn) return;
-      document.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      active = btn.dataset.cat;
-      render();
-    });
+    // No filter click handler here any more — the category buttons are real links
+    // to their own pages, so the browser handles it.
 
     document.getElementById('sort-bar').addEventListener('click', e => {
       const btn = e.target.closest('.sort-btn');
@@ -618,16 +616,14 @@
       render();
     });
 
-    // Pre-select a category from the URL, e.g. index.html?cat=dump
-    // (used by Google Ads sitelinks so each link lands on the right trailers)
+    // Older ad links and bookmarks used index.html?cat=dump. Each of those categories
+    // has a real page now, so send that traffic there rather than filtering in place.
+    // replace() keeps it out of the back-button history.
     function applyInitialFilter() {
       const cat = new URLSearchParams(window.location.search).get('cat');
-      if (!cat) return;
-      const btn = document.querySelector('.fb-btn[data-cat="' + cat + '"]');
-      if (btn) {
-        document.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        active = cat;
+      const pages = ['utility', 'dump', 'between-fenders', 'deckover', 'enclosed'];
+      if (cat && pages.indexOf(cat) !== -1) {
+        window.location.replace(cat + '.html');
       }
     }
 
