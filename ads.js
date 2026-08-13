@@ -38,12 +38,27 @@ var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 (function () {
   try {
     if (sessionStorage.getItem('att_src')) return;
-    var q = new URLSearchParams(location.search);
+    var q   = new URLSearchParams(location.search);
+    // Check BOTH this page's URL and the referrer — a Google ad click can carry its
+    // markers (gclid / gbraid / wbraid / gad_source / gad_campaignid) on either one,
+    // e.g. when the visitor lands on the homepage then opens a trailer in a new tab.
+    var hay = (location.search + ' ' + document.referrer).toLowerCase();
+    var ref = document.referrer.toLowerCase();
     var src;
-    if (q.get('gclid'))           src = 'Google Ad';                 // a paid ad click carries a gclid
-    else if (q.get('utm_source')) src = 'utm: ' + q.get('utm_source');
-    else if (document.referrer)   src = document.referrer;           // e.g. google.com (organic), facebook.com
-    else                          src = 'Direct / typed in';
+    if (/(?:^|[?&])(?:gclid|gbraid|wbraid)=/.test(hay) ||
+        hay.indexOf('gad_source') !== -1 || hay.indexOf('gad_campaignid') !== -1) {
+      src = 'Google Ad';                          // paid ad click
+    } else if (q.get('utm_source')) {
+      src = 'utm: ' + q.get('utm_source');
+    } else if (ref.indexOf('google.') !== -1) {
+      src = 'Google (organic)';                   // free Google search result
+    } else if (ref.indexOf('facebook.') !== -1 || ref.indexOf('l.facebook') !== -1 || ref.indexOf('fb.') !== -1) {
+      src = 'Facebook';
+    } else if (document.referrer) {
+      src = document.referrer;                    // some other referring site
+    } else {
+      src = 'Direct / typed in';
+    }
     sessionStorage.setItem('att_src', src);
   } catch (e) {}
 })();
