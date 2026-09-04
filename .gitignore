@@ -6,3 +6,9 @@ sites.json
 .watch_activity
 .build_cooldown
 admin.html
+
+# Trailers dragged into "Delete Trailer" are removed from the site.
+# Local only - these must never be published.
+/Delete Trailer/
+/.deploy_state
+/\!!*
