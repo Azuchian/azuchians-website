@@ -1,5 +1,0 @@
-﻿price: 0
-name: Restore Test
-sku: ZZTEST3
-category: utility
-
