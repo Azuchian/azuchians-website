@@ -12,3 +12,11 @@ admin.html
 /Delete Trailer/
 /.deploy_state
 /\!!*
+
+# Local build state, never part of the website. The .ok markers record which photos
+# STEP 1 has already compressed; the .attnew/.attold files are the scratch copies
+# STEP 1 swaps a re-encoded photo through. All 245 markers used to be committed and
+# served live at trailers/<folder>/.compressed_<photo>.ok - they were never content.
+.compressed_*.ok
+*.attnew
+*.attold
