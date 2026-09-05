@@ -6,7 +6,7 @@
   <title>Equipment Trailers &amp; Between-Fenders | Sarnia &amp; SW Ontario | Azuchian's Triumph Trailers</title>
   <meta name="description" content="New 2027 Triumph between-fenders equipment trailers for sale in Sarnia and Leamington, Ontario. Low deck height for easy loading. Financing and delivery available. Call 519-550-4584." />
   <link rel="canonical" href="https://azuchianstriumphtrailers.ca/between-fenders.html" />
-  <link rel="stylesheet" href="css/style.css?v=2847366458" />
+  <link rel="stylesheet" href="css/style.css?v=2306238440" />
   <style>
 
     /* ── HOME GRID ── */
@@ -65,6 +65,8 @@
       color: var(--muted); font-size: .8rem; padding: .3rem .85rem;
       cursor: pointer; transition: all .15s; font-family: inherit;
     }
+    /* trust strip + filter bar sit here, directly under the sticky header */
+    .home-subbar { background: var(--dark); }
     .fb-btn:hover { border-color: var(--orange); color: var(--white); }
     .fb-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
     a.fb-btn { text-decoration: none; display: inline-block; line-height: 1.4; }
@@ -263,25 +265,43 @@
       .home-nav-links a { font-size: .8rem; }
       .home-nav-links .cta { padding: .35rem .7rem; white-space: nowrap; }
 
-      /* trust strip scrolls sideways on phones instead of overflowing */
-      .trust-strip {
-        justify-content: flex-start; gap: 1.25rem;
-        padding: .45rem 1rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+      /* Financing and About are no longer hidden on phones, so they need real
+         tap targets - they rendered 20.5px tall, well under the 44px floor. */
+      .home-nav-links > a:not(.cta):not(.hdr-call) {
+        display: inline-flex; align-items: center;
+        min-height: 44px; padding: 0 .25rem;
       }
-      .trust-strip::-webkit-scrollbar { display: none; }
 
-      /* filter row becomes one clean swipeable strip instead of wrapping */
-      .filter-bar {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+      /* Trust strip and filter bar WRAP on phones instead of scrolling sideways.
+         They used to be overflow-x:auto with the scrollbar hidden, which scrolls
+         correctly but is indistinguishable from clipped content: at 375px, 213px
+         of the trust strip and 226px of the filter bar sat past the right edge
+         with no affordance at all. The filter bar is real navigation - Deckover
+         and Enclosed were entirely offscreen, and on a category page so was the
+         ACTIVE chip, so a visitor could not see which category they were in.
+         Wrapping is only affordable because .trust-strip and .filter-bar now sit
+         OUTSIDE the sticky <header>, in .home-subbar. Keep them there. */
+      .trust-strip {
+        flex-wrap: wrap; justify-content: center; text-align: center;
+        gap: .2rem .9rem; padding: .45rem 1rem; line-height: 1.35;
       }
-      .filter-bar::-webkit-scrollbar { display: none; }
-      .fb-label, .fb-btn { flex-shrink: 0; white-space: nowrap; }
+      .trust-strip span { flex-shrink: 1; }
+
+      .filter-bar {
+        flex-wrap: wrap; align-items: center;
+        gap: .45rem; padding: .55rem 1rem .7rem;
+      }
+      .fb-label { flex-shrink: 0; white-space: nowrap; }
+      .fb-btn, a.fb-btn {
+        display: inline-flex; align-items: center; min-height: 44px;
+        padding: .3rem .8rem; line-height: 1.2; white-space: nowrap;
+      }
+
+      /* the sort bar renders only on the five category pages; same 44px floor */
+      .sort-bar { align-items: center; gap: .45rem; padding: .55rem 1rem .7rem; }
+      .sort-btn {
+        display: inline-flex; align-items: center; min-height: 44px; line-height: 1.2;
+      }
 
       /* footer stacks and centers */
       .home-footer { flex-direction: column; text-align: center; gap: .5rem; }
@@ -316,6 +336,9 @@
         <a href="tel:5195504584" class="hdr-call" onclick="typeof adsConversion === 'function' &amp;&amp; adsConversion('call')"><span class="hdr-call-icon">&#128222;</span><span class="hdr-call-num">519-550-4584</span></a>
       </div>
     </div>
+  </header>
+
+  <div class="home-subbar">
     <div class="trust-strip">
       <span>&#127381; New 2027 Triumph Trailers</span>
       <span>&#128176; Financing Available</span>
@@ -331,7 +354,7 @@
       <a class="fb-btn" href="deckover.html">Deckover</a>
       <a class="fb-btn" href="enclosed.html">Enclosed</a>
     </div>
-  </header>
+  </div>
 
   <main>
     <h1 class="sr-only">Between-Fenders Equipment Trailers for Sale in Southwestern Ontario</h1>
@@ -411,7 +434,7 @@
   <a href="tel:5195504584" class="mobile-call-bar" onclick="typeof adsConversion === 'function' &amp;&amp; adsConversion('call')">&#128222; Call 519-550-4584</a>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Between-Fenders Equipment Trailers for Sale in Southwestern Ontario","numberOfItems":5,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"2027 Triumph TA82x18+2'-8k Equipment Hauler","sku":"GBCH9.1","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"13339","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"2027 Triumph TRIA82x24+2'-7k Equipment Hauler","sku":"GBEH10","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"16043","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"2027 Triumph TA82x6+16'-8k Gravity Tilt Equipment Hauler","sku":"GGTCH6.1","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"15971","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"2027 Triumph TA82x20'-7k Dual Cylinder Full Tilt","sku":"GHTEH10","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"15337","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"2027 Triumph TA82x18+2'-7k Equipment Hauler","sku":"GBCH9","brand":{"@type":"Brand","name":"Triumph"},"offers":{"@type":"Offer","price":"10971","priceCurrency":"CAD","availability":"https://schema.org/InStock","seller":{"@type":"AutoDealer","name":"Azuchian's Triumph Trailers","telephone":"+1-519-550-4584","areaServed":"Southwestern Ontario"}}}}]}</script>
-  <script src="ads.js?v=2847366458"></script>
+  <script src="ads.js?v=2306238440"></script>
   <script>
     // Sorting only reorders cards that are already in the HTML, so the content
     // is fully present for crawlers and for anyone with JavaScript disabled.

@@ -608,15 +608,4 @@ select option { background: var(--mid); }
   .phone-block  { padding: 1.75rem 1.25rem; }
 }
 
-/* The trust strip and the filter bar already scroll horizontally on phones
-   (overflow-x:auto), but scrollbar-width:none hides any hint of it, so they
-   simply look cut off - the Deckover and Enclosed category links appear to be
-   missing when they are one swipe away. A fade on the trailing edge is the
-   affordance that was absent. */
-@media (max-width: 600px) {
-  .trust-strip,
-  .filter-bar {
-    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent 100%);
-            mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent 100%);
-  }
-}
+
