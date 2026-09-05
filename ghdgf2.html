@@ -669,6 +669,11 @@
       if (t.video) media.push({ type: 'video', src: t.video });
       images.forEach(src => media.push({ type: 'image', src }));
 
+      // Declared before mainImgHtml because the <video> below uses it as its
+      // poster. Declaring it after would be a temporal-dead-zone ReferenceError
+      // on exactly the 13 trailers that have a 3D video.
+      const posterImg = images[0] || '';
+
       let mainImgHtml;
       if (!media.length) {
         mainImgHtml = `<div class="gallery-placeholder">🚛</div>`;
@@ -681,7 +686,6 @@
         mainImgHtml = `<img id="main-img" src="${media[0].src}" alt="${t.name}" onclick="openLightbox(${images.indexOf(media[0].src)})" />`;
       }
 
-      const posterImg = images[0] || '';
       const thumbsHtml = media.length > 1
         ? `<div class="gallery-thumbs">${media.map((m, i) => {
             if (m.type === 'video') {
