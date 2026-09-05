@@ -60,7 +60,9 @@
     }
     .sms-box input:focus, .sms-box textarea:focus { border-color: var(--orange); }
     .sms-send {
-      width: 100%; background: var(--orange); color: var(--white); border: none;
+      /* #0d0d0d on #e87722 is 6.57:1 and passes WCAG AA. White is 2.961:1 and
+         fails: this label is 16px/800, well under the 18.66px large-text cutoff. */
+      width: 100%; background: var(--orange); color: var(--black); border: none;
       border-radius: 8px; padding: .85rem; font-size: 1rem; font-weight: 800;
       cursor: pointer; transition: opacity .15s;
     }
@@ -97,12 +99,16 @@
     }
     .t-nav-logo span { background: var(--orange); color: var(--white); font-size: .75rem; font-weight: 900; padding: .2rem .45rem; border-radius: 4px; }
     .t-contact-btn {
-      background: var(--orange); color: var(--white);
+      /* Label on orange is #0d0d0d: 6.57:1 vs --orange, 8.74:1 vs --orange2 on
+         hover. White was 2.961:1 at rest and got WORSE on hover (2.223:1),
+         because --orange2 is lighter. Matches .hdr-call:hover, which already
+         ships black-on-orange in this same header. */
+      background: var(--orange); color: var(--black);
       padding: .4rem .9rem; border-radius: 5px;
       font-size: .875rem; font-weight: 600; text-decoration: none;
       transition: background .15s;
     }
-    .t-contact-btn:hover { background: var(--orange2); color: var(--white); }
+    .t-contact-btn:hover { background: var(--orange2); color: var(--black); }
 
     /* ── LAYOUT ── */
     .trailer-page {
@@ -223,12 +229,13 @@
       font-size: 1rem; font-weight: 700; text-decoration: none;
       cursor: pointer; border: 2px solid; transition: all .2s;
     }
-    .t-cta-primary { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    /* 16px/700 label on orange: #0d0d0d is 6.57:1 (AA), white was 2.961:1 (fail). */
+    .t-cta-primary { background: var(--orange); color: var(--black); border-color: var(--orange); }
     .t-cta-primary:hover { background: transparent; color: var(--orange); }
     .t-cta-secondary { background: transparent; color: var(--text); border-color: var(--border); font-family: inherit; }
     .t-cta-secondary:hover { border-color: var(--orange); color: var(--orange); }
     .t-cta-finance { background: transparent; color: var(--orange); border-color: var(--orange); font-family: inherit; }
-    .t-cta-finance:hover { background: var(--orange); color: var(--white); }
+    .t-cta-finance:hover { background: var(--orange); color: var(--black); }   /* 6.57:1, was 2.961:1 */
 
     .sold-ribbon {
       background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3);
@@ -267,9 +274,16 @@
         text-decoration: none; border: none; cursor: pointer; font-family: inherit;
         white-space: nowrap;
       }
-      /* Ask (text) is the star; Call secondary; Share icon-only */
-      .mobile-bar .mb-call  { flex: 0 0 auto; padding: 1rem .9rem; background: var(--white); color: var(--black); }
-      .mobile-bar .mb-text  { flex: 1; background: var(--orange); color: var(--white); }
+      /* Call is the star. Measured: 287 trailer detail views, 4 of 4 recorded
+         contacts came from Call (one tap, zero fields), 0 from Message Us.
+         Call takes flex:1 and the orange fill; Text shrinks to its own width and
+         INHERITS the bar's `padding: 1rem .4rem` - do NOT transplant the old
+         `.9rem` padding onto .mb-text, that makes Text wider than Call at 320px
+         and misses the whole point of the swap.
+         Label colour on orange is #0d0d0d = 6.57:1 (WCAG AA); white was 2.961:1
+         and failed at 14.4px/800. .mb-text is #0d0d0d on white = 19.44:1. */
+      .mobile-bar .mb-call  { flex: 1; background: var(--orange); color: var(--black); }
+      .mobile-bar .mb-text  { flex: 0 0 auto; background: var(--white); color: var(--black); }
       .mobile-bar .mb-share { flex: 0 0 52px; background: var(--dark); color: var(--white); border-top: 1px solid var(--border); font-size: 1.1rem; }
     }
     @media (max-width: 480px) {
@@ -339,7 +353,7 @@
   <!-- sticky action bar (mobile only) -->
   <div class="mobile-bar">
     <a href="tel:5195504584" class="mb-call" onclick="trackEvent('_call_','Call Button');typeof adsConversion === 'function' && adsConversion('call')">📞 Call</a>
-    <button type="button" class="mb-text" onclick="openSms()">💬 Message Us</button>
+    <button type="button" class="mb-text" onclick="openSms()">&#128172; Text</button>
     <button type="button" class="mb-share" onclick="shareTrailer()">🔗</button>
   </div>
 
@@ -347,13 +361,17 @@
   <div class="sms-modal" id="sms-modal" onclick="if(event.target===this)closeSms()">
     <div class="sms-box">
       <button class="sms-close" onclick="closeSms()">✕</button>
-      <h3>Message Us</h3>
-      <label for="sms-name">Your name</label>
-      <input id="sms-name" type="text" autocomplete="name" placeholder="First & last name" />
-      <label for="sms-message">Your message</label>
-      <textarea id="sms-message" rows="3" placeholder="Your message to us here"></textarea>
-      <div class="sms-err" id="sms-err">Please enter your name.</div>
-      <button class="sms-send" onclick="sendSms()">Send Text</button>
+      <!-- Desktop-only fallback. On a phone the Text button NEVER opens this: it
+           goes straight to a prefilled draft. This panel exists only so a device
+           with no sms: handler gets the number instead of a silent dead tap.
+           The .mobile-bar is visible up to 820px, so a narrow desktop window
+           really can reach it. -->
+      <h3>Text or call us</h3>
+      <p>This device can&#39;t open a text message. Text or call
+         <strong style="color:var(--white)">519-550-4584</strong> and mention this trailer.</p>
+      <a class="sms-send" href="tel:5195504584"
+         style="display:block;text-align:center;text-decoration:none"
+         onclick="typeof trackEvent === 'function' &amp;&amp; trackEvent('_call_','Call Button'); typeof adsConversion === 'function' &amp;&amp; adsConversion('call')">Call 519-550-4584</a>
       <p class="sms-reply-note">We usually reply within the hour.</p>
     </div>
   </div>
@@ -497,31 +515,72 @@
       } catch (e) {}
     }
 
+    // ---- TEXT US ----
+    // One tap hands the visitor a fully composed draft in their own messaging app.
+    // No name gate, no form: over 287 trailer detail views, Call (one tap, zero
+    // fields) produced 4 of 4 recorded contacts and the two-field text modal
+    // produced 0. Every step between intent and action has lost 100% of users on
+    // this site, so there are no steps.
+    const SMS_NUMBER = '+15195504584';   // E.164, leading '+' required by RFC 5724 2.2.
+
+    // The outbound text. Must read naturally when the visitor types nothing at all,
+    // and must still tell the owner which trailer and which page it came from.
+    // ASCII ONLY on purpose: one non-GSM-7 character (em dash, curly quote, accent)
+    // flips the whole message to UCS-2 and cuts the segment from 160 chars to 70.
+    function smsBody() {
+      const t = currentTrailer || {};
+      const label = (t.name || 'a trailer') + (t.sku ? ' (' + t.sku + ')' : '');
+      return "Hi, I'm interested in this trailer. Is it still available?"
+           + '\nRe: ' + label + '\n' + location.href;
+    }
+
+    // "?&" IS DELIBERATE. Do NOT "clean it up" to a single "?".
+    // RFC 5724 introduces the body field with "?". iOS has never documented body at
+    // all (Apple's SMS Links reference says the URL must not include message text)
+    // and in practice wants "&". "?&" gives the query one empty leading field, which
+    // both parsers tolerate, so one URI prefills on iOS and Android alike.
+    // AMP still ships the identical rewrite in amp-social-share/0.1:
+    //     this.href_ = this.href_.replace('?', '?&');
+    //     // This code path seems to be stable for both iOS and Android.
+    function smsHref() {
+      return 'sms:' + SMS_NUMBER + '?&body=' + encodeURIComponent(smsBody());
+    }
+
+    // There is no feature test for "does this device have a messaging app", and a
+    // failed sms: navigation is SILENT - no error, no event, nothing happens. A
+    // coarse primary pointer is the closest honest proxy. This matters because
+    // .mobile-bar is visible up to 820px, so a narrow desktop window reaches the
+    // Text button; desktop gets the number instead of a dead tap.
+    function canText() {
+      try { return window.matchMedia('(pointer: coarse)').matches; }
+      catch (e) { return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || ''); }
+    }
+
     function openSms() {
-      document.getElementById('sms-modal').classList.add('open');
-      setTimeout(() => document.getElementById('sms-name').focus(), 50);
-    }
-    function closeSms() {
-      document.getElementById('sms-modal').classList.remove('open');
-      document.getElementById('sms-err').style.display = 'none';
-    }
-    function sendSms() {
-      const name = document.getElementById('sms-name').value.trim();
-      const msg  = document.getElementById('sms-message').value.trim();
-      if (!name) {
-        document.getElementById('sms-err').style.display = 'block';
-        document.getElementById('sms-name').focus();
+      // Fires on EVERY tap, before any branch. This is the denominator. _texttap_ = 0
+      // after 60 days means nobody taps the button, full stop - there is no longer a
+      // form in between for the drop-off to hide in. (_texttap_ MUST also be listed
+      // in admin.html's SPECIAL array or its row is counted as a trailer.)
+      trackEvent('_texttap_', 'Text Tap');
+
+      if (!canText()) {
+        document.getElementById('sms-modal').classList.add('open');
+        document.body.style.overflow = 'hidden';   // matches openLightbox()
         return;
       }
-      const t = currentTrailer || {};
-      const body =
-        `Hi, I'm ${name}. ` +
-        (msg ? msg : `I'm interested in this trailer.`) +
-        `\nRe: ${t.name || 'a trailer'} (${t.sku || ''})\n${location.href}`;
+
+      // _text_ keeps its old meaning - "a prefilled draft reached the phone" - so the
+      // existing series stays comparable and the Ads conversion mapping is unchanged.
       trackEvent('_text_', 'Text Button');
       typeof adsConversion === 'function' && adsConversion('text');
-      window.location.href = `sms:+15195504584?&body=${encodeURIComponent(body)}`;
-      closeSms();
+      window.location.href = smsHref();
+    }
+
+    function closeSms() {
+      document.getElementById('sms-modal').classList.remove('open');
+      document.body.style.overflow = '';   // #sms-modal's backdrop onclick routes here
+                                           // too, so this one line covers the close
+                                           // button AND the outside-click path.
     }
 
     // ── FINANCING APPLICATION ──
@@ -709,7 +768,7 @@
         <p class="desktop-text-note">Or text us at 519-550-4584 — we usually reply within the hour.</p>`;
 
       // Pre-rendered: images[] and media[] above are fully populated, so setMain(),
-      // openLightbox(), lightboxNav(), shareTrailer() and sendSms() all work against
+      // openLightbox(), lightboxNav(), shareTrailer() and smsHref() all work against
       // the markup already sitting in the file. The server writes the SAME indices
       // the template below would have produced, so setMain(3) hits the same photo.
       if (prerendered) {
