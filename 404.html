@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Azuchian's Triumph Trailers</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="description" content="That page has moved. Browse new Triumph trailers for sale in Sarnia, Ontario, or call 519-550-4584." />
+  <!-- No rel=canonical here on purpose: this one file is served for EVERY unmatched
+       path, so a canonical would try to consolidate thousands of dead URLs onto one
+       real page. A 404 status plus noindex,follow is the correct signal. -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    html,body{overflow-x:hidden;max-width:100%}
+    body{background:var(--black);color:var(--white);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+    .nf{max-width:680px;margin:0 auto;padding:3.5rem 1.5rem 4rem;text-align:center}
+    .nf-mark{background:var(--orange);color:#fff;font-size:.8rem;font-weight:900;padding:.25rem .5rem;border-radius:4px;letter-spacing:.04em}
+    .nf h1{font-size:1.6rem;font-weight:800;margin:1.75rem 0 .6rem}
+    .nf p{color:var(--muted);line-height:1.6;margin:0 0 1.5rem}
+    .nf-call{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;font-weight:800;font-size:1.05rem;padding:.85rem 1.6rem;border-radius:7px;margin-bottom:.5rem}
+    .nf-note{font-size:.8rem;color:var(--muted);margin-bottom:2.25rem}
+    .nf-links{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-bottom:2rem}
+    .nf-links a{border:1px solid var(--border);border-radius:6px;padding:.5rem .95rem;color:var(--white);text-decoration:none;font-size:.875rem;font-weight:600}
+    .nf-links a:hover{border-color:var(--orange);color:var(--orange)}
+    .nf-going{font-size:.85rem;color:var(--muted);min-height:1.4em}
+    .nf-going a{color:var(--orange)}
+  </style>
+</head>
+<body>
+  <div class="nf">
+    <a href="/" style="text-decoration:none"><span class="nf-mark">ATT</span></a>
+    <h1>That page has moved</h1>
+    <p>We rebuilt the site, so some older links no longer work. Everything we have in stock is still here &mdash; and if you know the trailer you want, just call.</p>
+    <a class="nf-call" href="tel:5195504584">&#128222; Call 519-550-4584</a>
+    <p class="nf-note">Or text the same number &mdash; we usually reply within the hour.</p>
+    <div class="nf-links">
+      <a href="/">All Trailers</a>
+      <a href="/utility.html">Utility</a>
+      <a href="/dump.html">Dump</a>
+      <a href="/between-fenders.html">Between Fenders</a>
+      <a href="/deckover.html">Deckover</a>
+      <a href="/enclosed.html">Enclosed</a>
+      <a href="/financing.html">Financing</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <p class="nf-going" id="nf-going"></p>
+  </div>
+  <script src="/inventory.js"></script>
+  <script>
+  (function () {
+    // Only the hard-coded shapes below redirect. Everything else stays here, where the
+    // visitor at least gets the phone number - blanket-redirecting unknown paths to the
+    // home page would just turn this into a soft-404 generator.
+    var path = decodeURIComponent(location.pathname).toLowerCase().replace(/\/+$/, '');
+    var going = document.getElementById('nf-going');
+    var STATIC = {
+      '/about-us': '/about.html', '/about': '/about.html',
+      '/shop': '/', '/store': '/', '/products': '/', '/inventory': '/',
+      '/contact-us': '/contact.html', '/contact': '/contact.html',
+      '/financing-1': '/financing.html', '/privacy-policy': '/privacy.html'
+    };
+    function go(url, label) {
+      going.innerHTML = 'Taking you to <a href="' + url + '">' + label + '</a>&hellip;';
+      // 900 ms so the visitor can see where they are going; replace() keeps the dead
+      // URL out of history so Back does not bounce them into a loop.
+      setTimeout(function () { location.replace(url); }, 900);
+    }
+    if (STATIC[path]) { go(STATIC[path], STATIC[path]); return; }
+    var m = path.match(/^\/product-page\/(.+)$/);
+    if (m && typeof INVENTORY !== 'undefined') {
+      var token = m[1].replace(/[^a-z0-9]/g, '');
+      var best = null, bestD = 99;
+      for (var i = 0; i < INVENTORY.length; i++) {
+        var s = String(INVENTORY[i].sku).toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (s === token) { best = INVENTORY[i]; bestD = 0; break; }
+        // The known dead Wix URL is /product-page/gmdgf2 and the real sku is GHDGF2 -
+        // one letter out. Capped at distance 1 so this can never send someone to the
+        // wrong $40,000 trailer.
+        var d = lev(s, token);
+        if (d < bestD) { bestD = d; best = INVENTORY[i]; }
+      }
+      if (best && bestD <= 1) {
+        go(best.slug ? '/' + best.slug + '.html' : '/trailer.html?sku=' + encodeURIComponent(best.sku), best.name);
+        return;
+      }
+    }
+    going.innerHTML = 'Looking for a specific trailer? <a href="/">Browse the full inventory</a> or call 519-550-4584.';
+    function lev(a, b) {
+      if (Math.abs(a.length - b.length) > 1) return 99;
+      var prev = [], cur = [], i, j;
+      for (j = 0; j <= b.length; j++) prev[j] = j;
+      for (i = 1; i <= a.length; i++) {
+        cur[0] = i;
+        for (j = 1; j <= b.length; j++) {
+          cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1));
+        }
+        prev = cur.slice();
+      }
+      return prev[b.length];
+    }
+  })();
+  </script>
+</body>
+</html>
