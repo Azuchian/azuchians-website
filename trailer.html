@@ -9,7 +9,7 @@
   <link rel="canonical" id="t-canon" href="https://azuchianstriumphtrailers.ca/" />
   <script type="application/ld+json" id="ld-json"></script>
   <!--THEAD_END-->
-  <link rel="stylesheet" href="css/style.css?v=2306238440" />
+  <link rel="stylesheet" href="css/style.css?v=2621476803" />
   <style>
     html, body { overflow-x: hidden; max-width: 100%; }
     body { background: var(--black); }
@@ -349,8 +349,8 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="ads.js?v=2306238440"></script>
-  <script src="inventory.js?v=2306238440"></script>
+  <script src="ads.js?v=2621476803"></script>
+  <script src="inventory.js?v=2621476803"></script>
   <script>
     let images = [];          // image srcs only (used by the lightbox)
     let media = [];           // ordered gallery items: { type:'video'|'image', src }
@@ -668,6 +668,10 @@
       // poster. Declaring it after would be a temporal-dead-zone ReferenceError
       // on exactly the 13 trailers that have a 3D video.
       const posterImg = images[0] || '';
+      // 240px copies of every photo, keyed by the photo's own path so this still
+      // works after the images array is reordered above. Empty on a stale cached
+      // inventory.js, in which case the strip falls back to the full-size photo.
+      const sm = t.imagesSm || {};
 
       let mainImgHtml;
       if (!media.length) {
@@ -684,12 +688,12 @@
       const thumbsHtml = media.length > 1
         ? `<div class="gallery-thumbs">${media.map((m, i) => {
             if (m.type === 'video') {
-              const poster = posterImg ? `<img src="${posterImg}" alt="3D view" loading="lazy" />` : '';
+              const poster = posterImg ? `<img src="${sm[posterImg] || posterImg}" alt="3D view" loading="lazy" />` : '';
               return `<div class="gallery-thumb thumb-video ${i===0?'active':''}" onclick="setMain(${i})">${poster}<span class="thumb-play">▶ 3D</span></div>`;
             }
             const n = images.indexOf(m.src) + 1;
             return `<div class="gallery-thumb ${i===0?'active':''}" onclick="setMain(${i})">
-               <img src="${m.src}" alt="Photo ${n}" loading="lazy" />
+               <img src="${sm[m.src] || m.src}" alt="Photo ${n}" loading="lazy" />
              </div>`;
           }).join('')}</div>`
         : '';
