@@ -577,13 +577,25 @@ select option { background: var(--mid); }
      the wordmark inside wrapped to three lines and rendered 77px tall, so the
      logo physically overflowed its own header, and every one of these pages
      scrolled 66-95px wider than the viewport with the overflow hidden. */
-  .p-nav {
+  /* These selectors are deliberately two levels deep. Each of the four static
+     pages carries its own inline <style> with ".p-nav { height: 60px }", and an
+     inline block loads AFTER css/style.css - so a single-class rule here loses
+     the tie and the nav stays locked at 60px while its contents need 94px,
+     clipping the first row of links to top:-17px.
+     Layout on a phone becomes two rows: badge + call button, then the links. */
+  .p-header .p-nav {
     height: auto; min-height: 56px;
-    padding: .5rem 1rem; gap: .5rem;
+    flex-wrap: wrap; align-items: center;
+    padding: .5rem 1rem; gap: .4rem .5rem;
   }
-  .p-nav-links { gap: .8rem; flex-wrap: wrap; justify-content: flex-end; }
-  .p-nav-links a { font-size: .78rem; }
-  .p-logo { font-size: .9rem; gap: .4rem; }
+  .p-header .p-logo { flex: 0 0 auto; font-size: .9rem; gap: .4rem; }
+  .p-header .hdr-call { margin-left: auto; }
+  .p-header .p-nav-links {
+    flex: 1 0 100%;
+    flex-wrap: nowrap; justify-content: center;
+    gap: 1rem; padding-top: .1rem;
+  }
+  .p-header .p-nav-links a { font-size: .78rem; white-space: nowrap; }
 }
 
 /* The contact page exists to produce phone calls, and at 375px its number was
