@@ -324,7 +324,7 @@
             
             <div class="t-actions">
               
-        <a href="tel:5195504584" class="t-cta t-cta-primary" onclick="trackEvent('_call_','Call Button');adsConversion('call')">
+        <a href="tel:5195504584" class="t-cta t-cta-primary" onclick="trackEvent('_call_','Call Button');typeof adsConversion === 'function' && adsConversion('call')">
           Call to Inquire &mdash; 519-550-4584
         </a>
         <p class="desktop-text-note">Or text us at 519-550-4584 &mdash; we usually reply within the hour.</p>
@@ -342,7 +342,7 @@
 
   <!-- sticky action bar (mobile only) -->
   <div class="mobile-bar">
-    <a href="tel:5195504584" class="mb-call" onclick="trackEvent('_call_','Call Button');adsConversion('call')">📞 Call</a>
+    <a href="tel:5195504584" class="mb-call" onclick="trackEvent('_call_','Call Button');typeof adsConversion === 'function' && adsConversion('call')">📞 Call</a>
     <button type="button" class="mb-text" onclick="openSms()">💬 Message Us</button>
     <button type="button" class="mb-share" onclick="shareTrailer()">🔗</button>
   </div>
@@ -523,7 +523,7 @@
         (msg ? msg : `I'm interested in this trailer.`) +
         `\nRe: ${t.name || 'a trailer'} (${t.sku || ''})\n${location.href}`;
       trackEvent('_text_', 'Text Button');
-      adsConversion('text');
+      typeof adsConversion === 'function' && adsConversion('text');
       window.location.href = `sms:+15195504584?&body=${encodeURIComponent(body)}`;
       closeSms();
     }
@@ -556,7 +556,7 @@
         `Trailer: ${t.name || 'a trailer'} (${t.sku || ''})\n` +
         `${location.href}`;
       trackEvent('_finance_', 'Financing Apply');
-      adsConversion('text');
+      typeof adsConversion === 'function' && adsConversion('text');
       window.location.href = `sms:+15195504584?&body=${encodeURIComponent(body)}`;
       closeFin();
     }
@@ -707,7 +707,7 @@
         : '';
 
       const ctaHtml = `
-        <a href="tel:5195504584" class="t-cta t-cta-primary" onclick="trackEvent('_call_','Call Button');adsConversion('call')">
+        <a href="tel:5195504584" class="t-cta t-cta-primary" onclick="trackEvent('_call_','Call Button');typeof adsConversion === 'function' && adsConversion('call')">
           Call to Inquire — 519-550-4584
         </a>
         <p class="desktop-text-note">Or text us at 519-550-4584 — we usually reply within the hour.</p>`;
