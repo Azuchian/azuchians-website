@@ -193,7 +193,15 @@
     .trailer-info { }
     .t-sku { font-size: .75rem; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .4rem; }
     .t-name { font-size: 1.6rem; font-weight: 900; color: var(--white); line-height: 1.2; margin-bottom: 1rem; letter-spacing: -.02em; }
-    .t-price-row { display: flex; align-items: baseline; gap: .5rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .t-price-row { display: flex; align-items: baseline; gap: .5rem; margin-bottom: 1rem; }
+    /* Delivery cost and deposit: the two questions that decide the sale for
+       anyone outside Sarnia, and the site answered neither. Stated here rather
+       than buried on About, because this is the page a buyer is on when they
+       are deciding whether to phone. */
+    .t-terms { font-size: .85rem; color: var(--text); line-height: 1.65; margin-bottom: 1.5rem;
+               padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .t-terms strong { color: var(--white); }
+    .t-terms-i { opacity: .9; margin-right: .15rem; }
     .t-price { font-size: 2.2rem; font-weight: 900; color: var(--orange); }
     .t-price-note { font-size: .9rem; color: var(--muted); }
 
@@ -343,6 +351,7 @@
               <span class="t-price">$3,415</span>
               <span class="t-price-note">+ HST</span>
             </div>
+            <div class="t-terms"><div><span class="t-terms-i">&#128666;</span> Delivery <strong>free within 100&nbsp;km</strong> of Sarnia, then $2/km</div><div><span class="t-terms-i">&#128179;</span> <strong>$1,000 deposit</strong> by e-transfer, balance on delivery</div></div>
             
             <p class="t-description">🆕2027</p><p class="t-description">L GU2 SA5x10'-35 Galvanized Utility Trailer</p><p class="t-description">🌟 Features:<br>One 3,500 Lbs. axle<br>GVWR:3,000 lbs.<br>Load Rating: 2,015 lbs.<br>Ramp Gate<br>2 D-Rings</p><p class="t-description">🛡️ Warranty:<br>Structural: 1 Year<br>Axles: 5 Years<br>Lights: Lifetime</p><p class="t-description">Optional Addons:<br>Spare Tire $187+HST</p>
             
@@ -807,6 +816,7 @@
               <span class="t-price">$${Number(t.price).toLocaleString()}</span>
               <span class="t-price-note">+ HST</span>
             </div>
+            <div class="t-terms"><div><span class="t-terms-i">&#128666;</span> Delivery <strong>free within 100&nbsp;km</strong> of Sarnia, then $2/km</div><div><span class="t-terms-i">&#128179;</span> <strong>$1,000 deposit</strong> by e-transfer, balance on delivery</div></div>
             ${availHtml}
             ${descHtml}
             ${specsHtml}
