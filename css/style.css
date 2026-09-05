@@ -518,3 +518,93 @@ select option { background: var(--mid); }
   .hero-stats { gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER CALL BUTTON + MOBILE REPAIRS
+   ---------------------------------------------------------------------------
+   Until now no page on this site showed a phone number in its header at any
+   width. On a 1366px desktop the first visible number sat 2,373px down a
+   2,858px home page - past all 30 trailer cards - and the sticky call bars
+   were display:none above 600px (home) / 820px (trailer). Every recorded call
+   came from a phone; none from desktop.
+
+   This file is loaded by every page - the home page, trailer.html and its 30
+   generated per-trailer pages, the five generated category pages and the four
+   static pages - so putting the shared rules here reaches all of them at once.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* The header call button. One treatment, used by all three header layouts
+   (.home-nav-links, .t-nav, .p-nav-links). min-height 44px is the minimum
+   comfortable tap target. Hover inverts to BLACK on orange, not white:
+   #ffffff on #e87722 computes to 2.96:1 and fails WCAG AA, #0d0d0d passes. */
+.hdr-call {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .5rem .85rem; min-height: 44px; box-sizing: border-box;
+  border: 1px solid var(--orange); border-radius: 6px;
+  color: var(--orange); background: transparent;
+  font-size: .875rem; font-weight: 800; letter-spacing: -.01em;
+  text-decoration: none; white-space: nowrap; line-height: 1;
+  transition: background .15s, color .15s;
+}
+.hdr-call:hover,
+.hdr-call:focus-visible { background: var(--orange); color: #0d0d0d; }
+.hdr-call .hdr-call-icon { font-size: .95em; line-height: 1; }
+
+/* The trailer detail header is a three-column bar (back link / logo / contact).
+   The call button goes beside Contact Us and must not squeeze the back link. */
+.t-nav .hdr-call { margin-left: auto; }
+
+@media (max-width: 600px) {
+  /* Making room. At 375px the home header has to hold the badge, the wordmark,
+     Financing, About, Contact Us AND now a phone number. Two things give way:
+     the wordmark drops to just the ATT badge, and "Contact Us" goes - the phone
+     number is a better version of the same thing, so this is a swap, not a loss.
+     Financing and About STAY: they were hidden on phones until now, which is
+     why financing had 1 click in 260 trailer views. */
+  .home-logo .logo-text,
+  .p-logo .logo-text,
+  .t-nav-logo .logo-text { display: none; }
+
+  .home-nav-links .cta { display: none; }
+
+  .hdr-call { padding: .45rem .6rem; font-size: .8rem; gap: .3rem; }
+
+  .home-nav-links { gap: .6rem; }
+  .home-nav-links a { font-size: .78rem; }
+
+  /* ── The four static pages (about / contact / financing / privacy) ──
+     These carried ZERO media queries. .p-nav was locked to height:60px while
+     the wordmark inside wrapped to three lines and rendered 77px tall, so the
+     logo physically overflowed its own header, and every one of these pages
+     scrolled 66-95px wider than the viewport with the overflow hidden. */
+  .p-nav {
+    height: auto; min-height: 56px;
+    padding: .5rem 1rem; gap: .5rem;
+  }
+  .p-nav-links { gap: .8rem; flex-wrap: wrap; justify-content: flex-end; }
+  .p-nav-links a { font-size: .78rem; }
+  .p-logo { font-size: .9rem; gap: .4rem; }
+}
+
+/* The contact page exists to produce phone calls, and at 375px its number was
+   splitting across two lines mid-digits - "519-550-" / "4584". nowrap plus a
+   viewport-scaled size means it can never break again at any width. */
+.phone-number { white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .phone-number { font-size: clamp(1.5rem, 8.5vw, 2.4rem); }
+  .phone-block  { padding: 1.75rem 1.25rem; }
+}
+
+/* The trust strip and the filter bar already scroll horizontally on phones
+   (overflow-x:auto), but scrollbar-width:none hides any hint of it, so they
+   simply look cut off - the Deckover and Enclosed category links appear to be
+   missing when they are one swipe away. A fade on the trailing edge is the
+   affordance that was absent. */
+@media (max-width: 600px) {
+  .trust-strip,
+  .filter-bar {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent 100%);
+            mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent 100%);
+  }
+}
