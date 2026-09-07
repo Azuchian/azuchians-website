@@ -12,7 +12,7 @@ Features:
 Electric Brakes
 Spring Assisted Ramps
 GVWR: 38,400 lbs
-Load Rating:27,820 lbs
+Load Rating: 27,820 lbs
 
 🛡️ Warranty:
 Structural: 1 Year

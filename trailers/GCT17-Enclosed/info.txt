@@ -1,4 +1,4 @@
-﻿name:TA8.5x24'-52 Enclosed
+﻿name: TA8.5x24'-52 Galvanized Enclosed
 sku: GCT17
 category: enclosed
 price: 22491
@@ -13,7 +13,7 @@ Back Ramp Door
 Tandem 5,200 lb Axles
 Electric Brakes
 GVWR: 9,900 lbs
-Load Rating:4,015 lbs
+Load Rating: 4,015 lbs
 
 🛡️ Warranty:
 Structural: 1 Year

@@ -11,7 +11,7 @@ Features:
 Tandem 16,000 lb Axles
 Electric Brakes
 GVWR: 38,400 lbs
-Load Rating:29,200 lbs
+Load Rating: 29,200 lbs
 
 🛡️ Warranty:
 Structural: 1 Year
