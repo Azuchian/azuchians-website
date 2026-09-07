@@ -1,7 +1,7 @@
 ﻿name: TA6x12-52 Dump Trailer
 sku: GD5
 category: dump
-price: 12650
+price: 15196
 thumb: main
 specs: 🆕 New 2027 Triumph
 

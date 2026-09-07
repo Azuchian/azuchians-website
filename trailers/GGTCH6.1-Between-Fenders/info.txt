@@ -1,7 +1,7 @@
 ﻿name: TA82x6+16'-8k Gravity Tilt Equipment Hauler
 sku: GGTCH6.1
 category: between-fenders
-price: 13232
+price: 15971
 thumb: main
 specs: 🆕 New 2027 Triumph
 

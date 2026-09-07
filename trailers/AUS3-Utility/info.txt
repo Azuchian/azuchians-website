@@ -1,7 +1,7 @@
 ﻿name: TA80x16'-35 Aluminum Side Load Utility
 sku: AUS3
 category: utility
-price: 6361
+price: 7824
 thumb: main
 specs: 🆕 New 2027 Triumph
 

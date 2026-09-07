@@ -1,7 +1,7 @@
 ﻿name: SA6x12'-35 Aluminum Utility
 sku: AU4
 category: utility
-price: 3932
+price: 4836
 thumb: main
 specs: 🆕 New 2027 Triumph
 

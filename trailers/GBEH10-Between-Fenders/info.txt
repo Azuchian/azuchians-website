@@ -1,7 +1,7 @@
 ﻿name: TRIA82x24+2'-7k Equipment Hauler
 sku: GBEH10
 category: between-fenders
-price: 13370
+price: 16043
 thumb: main
 specs: 🆕 New 2027 Triumph
 

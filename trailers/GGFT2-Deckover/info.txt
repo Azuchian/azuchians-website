@@ -1,7 +1,7 @@
 ﻿name: TA102x24'-12k Gooseneck Deckover
 sku: GGFT2
 category: deckover
-price: 29955
+price: 35346
 thumb: main
 specs: 🆕 New 2027 Triumph
 

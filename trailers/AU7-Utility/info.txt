@@ -1,7 +1,7 @@
 ﻿name: TA80x14'-35 Aluminum Utility
 sku: AU7
 category: utility
-price: 5430
+price: 6679
 thumb: main
 specs: 🆕 New 2027 Triumph
 

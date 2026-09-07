@@ -1,7 +1,7 @@
 ﻿name: SA5x10'-35 Galvanized Utility
 sku: GU2
 category: utility
-price: 2777
+price: 3415
 thumb: main
 specs: 🆕 New 2027 Triumph
 

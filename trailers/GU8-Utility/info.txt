@@ -1,7 +1,7 @@
 ﻿name: TA80x14'-35 Galvanized Utility
 sku: GU8
 category: utility
-price: 4842
+price: 5955
 thumb: main
 specs: 🆕 New 2027 Triumph
 

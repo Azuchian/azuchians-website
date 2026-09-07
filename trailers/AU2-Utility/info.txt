@@ -1,7 +1,7 @@
 ﻿name: SA5x10'-35 Aluminum Utility
 sku: AU2
 category: utility
-price: 3397
+price: 4178
 thumb: main
 specs: 🆕 New 2027 Triumph
 
