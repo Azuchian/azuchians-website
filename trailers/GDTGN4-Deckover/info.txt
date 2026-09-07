@@ -1,15 +1,15 @@
 ﻿name: TRI102x43'-12k Gooseneck Dovetail
 sku: GDTGN4
 category: deckover
-price: 63123
+price: 53495
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L GDTGN4 TRI102x43'-12k Galvanized Deckover Dovetail Trailer
+GDTGN4 TRI102x43'-12k Galvanized Deckover Dovetail Trailer
 
 🌟 Features:
 Three 12,000 Lbs. axles
-GVWR:40,000 lbs.
+GVWR: 40,000 lbs.
 Load Rating: 26,985 lbs.
 12' Dovetail ramp
 

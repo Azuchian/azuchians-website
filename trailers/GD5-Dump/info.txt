@@ -1,15 +1,15 @@
 ﻿name: TA6x12-52 Dump Trailer
 sku: GD5
 category: dump
-price: 15196
+price: 12650
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L GD5 TA6x12-52 Galvanized Dump Trailer
+GD5 TA6x12-52 Galvanized Dump Trailer
 
 🌟 Features:
 Two 5,200 Lbs. axles
-GVWR:9,900 lbs.
+GVWR: 9,900 lbs.
 Load Rating: 6,700 lbs.
 Electric Brakes
 Ramps

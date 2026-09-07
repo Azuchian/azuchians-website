@@ -1,15 +1,15 @@
 ﻿name: TA82x18+2'-8k Equipment Hauler
 sku: GBCH9.1
 category: between-fenders
-price: 13339
+price: 11038
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L GBCH9.1 TA82x18+2'-8k Galvanized Equipment Hauler Trailer
+GBCH9.1 TA82x18+2'-8k Galvanized Equipment Hauler Trailer
 
 🌟 Features:
 Two 8,000 Lbs. axles
-GVWR:16,000 lbs.
+GVWR: 16,000 lbs.
 Load Rating: 12,245 lbs.
 
 🛡️ Warranty:

@@ -1,15 +1,15 @@
-﻿name: TA80x16'-35 Side Load Utility
+﻿name: TA80x16'-35 Aluminum Side Load Utility
 sku: AUS3
 category: utility
-price: 7824
+price: 6361
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L AUS3 TA80x16'-35 Aluminum Side Load Utility Trailer
+AUS3 TA80x16'-35 Aluminum Side Load Utility Trailer
 
 🌟 Features:
 Two 3,500 Lbs. axles
-GVWR:7,000 lbs.
+GVWR: 7,000 lbs.
 Load Rating: 4,800 lbs.
 Electric Brakes
 Ramp Gate

@@ -1,15 +1,15 @@
 ﻿name: TA102x24'-12k Gooseneck Deckover
 sku: GGFT2
 category: deckover
-price: 35346
+price: 29955
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L GGFT2 TA102x24'-12k Galvanized Deckover Tilt Trailer
+GGFT2 TA102x24'-12k Galvanized Deckover Tilt Trailer
 
 🌟 Features:
 Two 12,000 Lbs. axles
-GVWR:26,400 lbs.
+GVWR: 26,400 lbs.
 Load Rating: 21,340 lbs.
 
 🛡️ Warranty:

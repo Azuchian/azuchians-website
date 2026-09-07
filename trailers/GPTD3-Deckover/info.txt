@@ -1,28 +1,29 @@
 ﻿name:TA102x24'-7k Deckover Tilt
 sku: GPTD3
 category: deckover
-price: 18301
+price: 15510
 thumb: main
-specs: 🚚New! 2027 Triumph
+specs: 🆕 New 2027 Triumph
 
-L GPTD3 TA102x24'-7k Deckover Hydraulic Tilt
+GPTD3 TA102x24'-7k Deckover Hydraulic Tilt
 
 Features:
 Tandem 7,000 lb Axles
 Electric Brakes
-GVWR:14,000 lbs
+GVWR: 14,000 lbs
 Load Rating:9,520 lbs
 
-🛠️ Warranty:
-1-Year Structural
-5-Year Axle
-Lifetime Lights
+🛡️ Warranty:
+Structural: 1 Year
+Axles: 5 Years
+Lights: Lifetime
 
+Optional Addons:
 Side winch tracking with straps $1,000+HST
 Spare Tire $260+HST
 Pintle Ring $104+HST
 Hydraulic Jack $1,034+HST
 Undermount Toolbox $650+HST
 14 Ply Tires Upgrade $97.50/Tire
-8k Axles $2,464+HST
+8k Axles $2,368+HST
 Wireless Remote $325+HST

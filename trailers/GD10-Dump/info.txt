@@ -1,15 +1,15 @@
 ﻿name: TA82x16'-10k Dump Trailer
 sku: GD10
 category: dump
-price: 26752
+price: 22280
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L GD10 TA82x16'-10k Galvanized Gooseneck Dump Trailer
+GD10 TA82x16'-10k Galvanized Gooseneck Dump Trailer
 
 🌟 Features:
 Two 10,000 Lbs. axles
-GVWR:24,000 lbs.
+GVWR: 24,000 lbs.
 Load Rating: 17,730 lbs.
 Ramps
 Tarp

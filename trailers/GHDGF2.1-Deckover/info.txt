@@ -1,22 +1,22 @@
 ﻿name:TA102x25+5' 16k Gooseneck Deckover
 sku: GHDGF2.1
 category: deckover
-price: 35313
+price: 29803
 thumb: main
-specs: 🚚New! 2027
+specs: 🆕 New 2027 Triumph
 
-L GHDGF2 TA102x25+5' 16k Gooseneck Trailer
+GHDGF2.1 TA102x25+5' 16k Gooseneck Trailer
 
 Features:
 Tandem 16,000 lb Axles
 Electric Brakes
-GVWR:38,400 lbs
+GVWR: 38,400 lbs
 Load Rating:29,200 lbs
 
-🛠️ Warranty:
-1-Year Structural
-5-Year Axle
-Lifetime Lights
+🛡️ Warranty:
+Structural: 1 Year
+Axles: 5 Years
+Lights: Lifetime
 
 Optional Addons:
 Side Winch Tracking with 5 Straps $943+HST

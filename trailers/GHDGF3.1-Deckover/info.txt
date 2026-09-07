@@ -1,22 +1,22 @@
 ﻿name: TAG102x30+5'-16k Gooseneck Deckover
 sku: GHDGF3.1
 category: deckover
-price: 38469
+price: 32478
 thumb: main
-specs: 🚚New! 2027
+specs: 🆕 New 2027 Triumph
 
-L GHDGF3 TAG102x30+5'-16k Galvanized Gooseneck Trailer
+GHDGF3.1 TAG102x30+5'-16k Galvanized Gooseneck Trailer
 
 Features:
 Tandem 16,000 lb Axles
 Electric Brakes
-GVWR:38,400 lbs
+GVWR: 38,400 lbs
 Load Rating:29,200 lbs
 
-🛠️ Warranty:
-1-Year Structural
-5-Year Axle
-Lifetime Lights
+🛡️ Warranty:
+Structural: 1 Year
+Axles: 5 Years
+Lights: Lifetime
 
 Optional Addons:
 Hydraulic Brakes Upgrade $3,250+HST

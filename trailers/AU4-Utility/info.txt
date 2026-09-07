@@ -1,15 +1,15 @@
-﻿name: SA6x12'-35 Utility
+﻿name: SA6x12'-35 Aluminum Utility
 sku: AU4
 category: utility
-price: 4836
+price: 3932
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L AU4 SA6x12'-35 Aluminum Utility Trailer
+AU4 SA6x12'-35 Aluminum Utility Trailer
 
 🌟 Features:
 One 3,500 Lbs. axles
-GVWR:3,000 lbs.
+GVWR: 3,000 lbs.
 Load Rating: 2,295 lbs.
 Ramp Gate
 8 D-Rings

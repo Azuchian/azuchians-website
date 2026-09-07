@@ -1,15 +1,15 @@
-﻿name: TA80x14'-35 Utility
+﻿name: TA80x14'-35 Galvanized Utility
 sku: GU8
 category: utility
-price: 5955
+price: 4842
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L GU8 TA80x14'-35 Galvanized Utility Trailer
+GU8 TA80x14'-35 Galvanized Utility Trailer
 
 🌟 Features:
 Two 3,500 Lbs. axles
-GVWR:7,000 lbs.
+GVWR: 7,000 lbs.
 Load Rating: 5,415 lbs.
 Electric Brakes
 Ramp Gate

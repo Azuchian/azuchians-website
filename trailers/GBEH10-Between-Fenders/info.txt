@@ -1,15 +1,15 @@
 ﻿name: TRIA82x24+2'-7k Equipment Hauler
 sku: GBEH10
 category: between-fenders
-price: 16043
+price: 13370
 thumb: main
-specs: 🆕2027
+specs: 🆕 New 2027 Triumph
 
-L GBEH10 TRIA82x24+2'-7k Galvanized Equipment Hauler Trailer
+GBEH10 TRIA82x24+2'-7k Galvanized Equipment Hauler Trailer
 
 🌟 Features:
 Three 7,000 Lbs. axles
-GVWR:21,000 lbs.
+GVWR: 21,000 lbs.
 Load Rating: 16,580 lbs.
 
 🛡️ Warranty:
