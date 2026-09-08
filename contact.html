@@ -36,6 +36,17 @@
     }
     .phone-number:hover { color: var(--orange); }
     .phone-sub { font-size: .85rem; color: var(--muted); margin-top: .6rem; }
+    /* The address is shown as selectable TEXT as well as being a mailto link.
+       mailto: hands off to whatever mail client the visitor has configured, and on a
+       desktop where someone lives in webmail that can do nothing at all - the same
+       silent failure the financing form used to have. Text they can copy always works. */
+    .email-addr {
+      font-size: 1.35rem; font-weight: 800; color: var(--white);
+      text-decoration: none; letter-spacing: -.01em; word-break: break-all;
+      -webkit-user-select: all; user-select: all; transition: color .15s;
+    }
+    .email-addr:hover { color: var(--orange); }
+    @media (max-width: 480px) { .email-addr { font-size: 1.1rem; } }
 
     .call-btn {
       display: inline-block; background: var(--orange); color: var(--white);
@@ -85,6 +96,10 @@
       <div class="phone-sub">Azuchian's Triumph Trailers</div>
       <a href="tel:5195504584" class="call-btn" onclick="typeof adsConversion === 'function' && adsConversion('call')">Call Now</a>
       <div class="phone-sub" style="margin-top:1rem">Or text us — we usually reply within the hour.</div>
+
+      <div class="phone-label" style="margin-top:1.9rem">Email</div>
+      <a href="mailto:isaak.loewen@yahoo.ca" class="email-addr">isaak.loewen@yahoo.ca</a>
+      <div class="phone-sub">Click to open your email app, or copy the address.</div>
       <div class="phone-sub" style="margin-top:.85rem">Viewings and delivery <strong>by appointment</strong> — call or text and we’ll arrange a time.</div>
     </div>
 

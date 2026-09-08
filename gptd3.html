@@ -77,6 +77,28 @@
       text-align: center; color: var(--muted); font-size: .78rem;
       margin: .8rem 0 0 !important;
     }
+    /* The escape hatch. Hidden until Send is pressed, then shown and left up. */
+    .fin-fallback { display: none; margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
+    .fin-fallback.show { display: block; }
+    .fin-fb-title { color: var(--white); font-weight: 800; font-size: .95rem; margin-bottom: .35rem; }
+    .fin-fb-note { color: var(--muted); font-size: .78rem; margin: .45rem 0 !important; text-align: center; }
+    .fin-fb-note a { color: var(--orange); }
+    .fin-fb-btn {
+      display: block; text-align: center; background: var(--orange); color: var(--white);
+      font-weight: 700; font-size: .95rem; padding: .8rem 1rem; border-radius: 8px;
+      text-decoration: none; margin: .6rem 0;
+    }
+    .fin-fb-text {
+      width: 100%; box-sizing: border-box; background: var(--black); color: var(--white);
+      border: 1px solid var(--border); border-radius: 8px; padding: .6rem .7rem;
+      font-size: .78rem; line-height: 1.5; font-family: inherit; resize: vertical;
+    }
+    .fin-fb-copy {
+      width: 100%; margin-top: .5rem; background: none; color: var(--white); cursor: pointer;
+      border: 1px solid var(--border); border-radius: 8px; padding: .65rem 1rem;
+      font-size: .88rem; font-weight: 700; font-family: inherit;
+    }
+    .fin-fb-copy:hover { border-color: var(--orange); }
 
     .t-header {
       background: var(--dark); border-bottom: 1px solid var(--border);
@@ -397,7 +419,7 @@
     <div class="sms-box">
       <button class="sms-close" onclick="closeFin()">✕</button>
       <h3>Apply for Financing</h3>
-      <p>Fill in your details to start a financing application. We'll pass it to our financing partner, who will contact you to go over credit and terms. Sending opens your texting app with everything ready to send.</p>
+      <p>Fill in your details to start a financing application. We'll pass it to our financing partner, who will contact you to go over credit and terms. Sending opens your texting app with everything ready to send &mdash; or you can email it instead.</p>
       <label for="fin-name">Full name</label>
       <input id="fin-name" type="text" autocomplete="name" placeholder="First & last name" />
       <label for="fin-address">Address</label>
@@ -409,6 +431,19 @@
       <div class="sms-err" id="fin-err">Please fill in your name, address, phone, and email.</div>
       <button class="sms-send" onclick="sendFinancing()">Send Application</button>
       <p class="sms-reply-note">Your info is texted to us, then forwarded to our financing partner. We don't store it on this site.</p>
+
+      <!-- Shown after Send is pressed, and never hidden again until the modal closes.
+           On a phone the texting app opens over the top and this is never seen. On a
+           desktop with no SMS handler NOTHING happened - which is how applications
+           used to disappear silently while the modal closed as if they had sent. -->
+      <div class="fin-fallback" id="fin-fallback">
+        <div class="fin-fb-title">Texting app didn&#39;t open?</div>
+        <p class="fin-fb-note">Your application is ready below. Email it, or copy it and send it however suits you.</p>
+        <a class="fin-fb-btn" id="fin-mail" href="#">&#9993;&#65039; Email it instead</a>
+        <textarea class="fin-fb-text" id="fin-text" readonly rows="7"></textarea>
+        <button type="button" class="fin-fb-copy" id="fin-copy" onclick="copyFin()">Copy the text</button>
+        <p class="fin-fb-note">Or call <a href="tel:5195504584">519-550-4584</a>.</p>
+      </div>
     </div>
   </div>
 
@@ -607,6 +642,12 @@
     function closeFin() {
       document.getElementById('fin-modal').classList.remove('open');
       document.getElementById('fin-err').style.display = 'none';
+      // Reset the escape hatch so the next visitor starts on the form, not on
+      // someone else's finished application.
+      const fb = document.getElementById('fin-fallback');
+      if (fb) fb.classList.remove('show');
+      const ft = document.getElementById('fin-text');
+      if (ft) ft.value = '';
     }
     function sendFinancing() {
       const name  = document.getElementById('fin-name').value.trim();
@@ -628,8 +669,35 @@
         `${location.href}`;
       trackEvent('_finance_', 'Financing Apply');
       typeof adsConversion === 'function' && adsConversion('text');
+      // Fill in and REVEAL the escape hatch before handing off, and leave the modal
+      // open. There is no reliable way to detect that an sms: handler did nothing, so
+      // do not try to guess - show the alternative every time. On a phone the texting
+      // app opens over the top and the visitor never sees this. On a desktop with no
+      // SMS handler it is the only thing standing between them and a lost application:
+      // this used to call closeFin() here, so the window shut and the details vanished.
+      try {
+        document.getElementById('fin-text').value = body;
+        document.getElementById('fin-mail').href =
+          'mailto:isaak.loewen@yahoo.ca?subject=' +
+          encodeURIComponent('Financing Application - ' + (t.name || 'trailer')) +
+          '&body=' + encodeURIComponent(body);
+        const fb = document.getElementById('fin-fallback');
+        if (fb) fb.classList.add('show');
+      } catch (e) {}
       window.location.href = `sms:+15195504584?&body=${encodeURIComponent(body)}`;
-      closeFin();
+    }
+
+    function copyFin() {
+      const el = document.getElementById('fin-text');
+      const btn = document.getElementById('fin-copy');
+      let ok = false;
+      try {
+        el.focus(); el.select(); el.setSelectionRange(0, 99999);
+        if (document.execCommand) { ok = document.execCommand('copy'); }
+        if (navigator.clipboard) { navigator.clipboard.writeText(el.value).then(function () {}, function () {}); ok = true; }
+      } catch (e) { ok = false; }
+      btn.textContent = ok ? 'Copied' : 'Select the text and press Ctrl+C';
+      setTimeout(function () { btn.textContent = 'Copy the text'; }, 2500);
     }
 
     async function shareTrailer() {
