@@ -719,6 +719,14 @@
             "priceCurrency": "CAD",
             "price": Number(t.price) || 0,
             "availability": (t.available === false) ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+            // Sales are final once delivered. The generated pages state this in
+            // their offers; keep this copy in step, because Google still has the
+            // old ?sku= URLs indexed and reads THIS markup for them.
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "CA",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            },
             "seller": { "@type": "Organization", "name": "Azuchian's Triumph Trailers", "telephone": "+1-519-550-4584" }
           }
         };
