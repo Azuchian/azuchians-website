@@ -79,6 +79,28 @@
       clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
     }
 
+    /* Category pages only. The H1 used to be .sr-only here too, which left
+       /dump.html with no visible heading at all - odd for a reader, and it made
+       five near-identical pages that a search engine could only tell apart by the
+       card titles. .cat-head puts the heading back on screen; .cat-copy carries
+       the category's own paragraph.
+       The paragraph sits BELOW the grid on purpose: someone who lands on
+       /dump.html came to look at dump trailers, so the trailers come first and the
+       supporting copy follows. Both are in the HTML either way. */
+    .cat-head { padding: 1.15rem 1.5rem .1rem; }
+    .cat-head h1 {
+      color: var(--white); font-size: 1.35rem; font-weight: 800;
+      letter-spacing: -.02em; line-height: 1.25;
+    }
+    .cat-copy { max-width: 760px; margin: 2.75rem auto .5rem; padding: 0 1.5rem; }
+    .cat-copy p { color: var(--muted); font-size: .95rem; line-height: 1.75; }
+    @media (max-width: 640px) {
+      .cat-head { padding: 1rem 1rem .1rem; }
+      .cat-head h1 { font-size: 1.12rem; }
+      .cat-copy { margin-top: 2rem; padding: 0 1rem; }
+      .cat-copy p { font-size: .9rem; }
+    }
+
     /* sort bar — only shown on a category view */
     .sort-bar {
       display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
@@ -357,7 +379,7 @@
   </div>
 
   <main>
-    <h1 class="sr-only">Deckover Trailers for Sale in Southwestern Ontario</h1>
+    <div class="cat-head"><h1>Deckover Trailers for Sale in Southwestern Ontario</h1></div>
 
     <div class="sort-bar" id="sort-bar">
       <span class="sort-label">Sort:</span>
@@ -478,6 +500,10 @@
           </div>
         </a>
     </div>
+
+    <section class="cat-copy">
+      <p>A deckover trailer puts the deck above the tires instead of between them, giving you the full trailer width with no fender to work around. That makes them the right choice for wide equipment, bins, pallets, hay and machinery that simply won't fit between fenders. Our 2027 Triumph deckovers run from 7,000 lb tandem axles up to 16,000 lb tandem and tri-axle setups &mdash; load ratings from roughly 9,500 lbs to over 29,000 lbs &mdash; with electric brakes, and gooseneck or bumper-pull hitching depending on the model. Several are galvanized, and selected models add a dovetail or spring-assisted ramps. New units with a 1-year structural warranty, financing available, delivery across southwestern Ontario.</p>
+    </section>
 
     <div class="more-models">
       <h3>Don't see the size you need?</h3>
