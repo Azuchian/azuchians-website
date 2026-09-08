@@ -3,6 +3,7 @@ sku: GHDGF2
 category: deckover
 price: 32695
 thumb: main
+tags: gooseneck
 specs: 🆕 New 2027 Triumph
 
 GHDGF2 TA102x25+5'-12k Galvanized Gooseneck Trailer
