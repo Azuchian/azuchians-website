@@ -6,7 +6,20 @@
   <!--THEAD_START-->
   <title>Trailer Details | Azuchian's Triumph Trailers</title>
   <meta name="description" id="meta-desc" content="Quality trailers for sale in Sarnia, Ontario. Call Azuchian's Triumph Trailers at 519-550-4584." />
-  <link rel="canonical" id="t-canon" href="https://azuchianstriumphtrailers.ca/" />
+  <!-- NO canonical here, and noindex on purpose.
+       This file is the fallback renderer for the legacy trailer.html?sku=XXX links,
+       and it is ONE file: every ?sku= value returns byte-identical HTML, so a crawler
+       sees 30 URLs with the same title ("Trailer Details") before any JS runs.
+       It used to carry canonical="/" - which told Google that all 30 of those URLs
+       were really the HOME PAGE. That is false, and it left the real product pages
+       (gu9.html etc.) looking like the duplicates of a page that does not describe
+       any one trailer. noindex,follow drops this template out of the index while
+       still passing link value through to the slug pages, which each carry their own
+       self-referencing canonical.
+       Generated pages NEVER see this block: build.ps1 keeps only the text up to
+       THEAD_START and from THEAD_END onward, and splices New-AttPageHead in between,
+       which emits index,follow plus the real per-trailer canonical. -->
+  <meta name="robots" content="noindex, follow" />
   <script type="application/ld+json" id="ld-json"></script>
   <!--THEAD_END-->
   <link rel="stylesheet" href="css/style.css?v=2356636623" />
@@ -606,9 +619,10 @@
       // then shares or texts carries the good URL, because those read location.href.
       if (!ownSku && t.slug) {
         try {
-          const pretty = new URL(t.slug + '.html', location.href).href;
-          const canon = document.getElementById('t-canon');
-          if (canon) canon.setAttribute('href', pretty);
+          // No canonical to rewrite any more: this template is noindex,follow (see
+          // the head), and a noindex page pointing a canonical somewhere else is a
+          // contradictory signal. The generated pages carry their own canonical and
+          // never had #t-canon in the first place, so nothing here regressed.
           const q = new URLSearchParams(location.search);
           q.delete('sku');
           const rest = q.toString();

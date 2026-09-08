@@ -675,9 +675,10 @@
       // then shares or texts carries the good URL, because those read location.href.
       if (!ownSku && t.slug) {
         try {
-          const pretty = new URL(t.slug + '.html', location.href).href;
-          const canon = document.getElementById('t-canon');
-          if (canon) canon.setAttribute('href', pretty);
+          // No canonical to rewrite any more: this template is noindex,follow (see
+          // the head), and a noindex page pointing a canonical somewhere else is a
+          // contradictory signal. The generated pages carry their own canonical and
+          // never had #t-canon in the first place, so nothing here regressed.
           const q = new URLSearchParams(location.search);
           q.delete('sku');
           const rest = q.toString();
