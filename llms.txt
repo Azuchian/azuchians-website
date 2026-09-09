@@ -4,7 +4,7 @@
 > A delivery-only dealership: we bring the trailer to you and there is no lot to drive to.
 > Phone or text 519-550-4584. Email isaak.loewen@yahoo.ca. Prices in CAD, plus HST.
 
-Inventory of 30 new models, $3,415 to $63,123 + HST. Last updated 2026-09-09.
+Inventory of 32 new models, $3,415 to $63,123 + HST. Last updated 2026-09-09.
 
 ## Where we sell
 
@@ -49,13 +49,15 @@ Category page: https://azuchianstriumphtrailers.ca/utility.html
 - [AU7 TA80x14'-35 Aluminum Utility](https://azuchianstriumphtrailers.ca/au7.html) - $6,679 + HST
 - [AU4 SA6x12'-35 Aluminum Utility](https://azuchianstriumphtrailers.ca/au4.html) - $4,836 + HST
 
-### Dump - 3 models
+### Dump - 5 models
 
 Category page: https://azuchianstriumphtrailers.ca/dump.html
 
 - [GD5 TA6x12-52 Dump Trailer](https://azuchianstriumphtrailers.ca/gd5.html) - $15,196 + HST
-- [GD2 TA5x10'-35 Dump Trailer](https://azuchianstriumphtrailers.ca/gd2.html) - $11,344 + HST
+- [GDH10 TAG82x16'-10k Gooseneck Dump](https://azuchianstriumphtrailers.ca/gdh10.html) - $29,320 + HST
+- [GD3 TAE6x10'-5200-D Dump](https://azuchianstriumphtrailers.ca/gd3.html) - $13,013 + HST
 - [GD10 TA82x16'-10k Dump Trailer](https://azuchianstriumphtrailers.ca/gd10.html) - $26,752 + HST
+- [GD2 TA5x10'-35 Dump Trailer](https://azuchianstriumphtrailers.ca/gd2.html) - $11,344 + HST
 
 ### Car and Equipment - 5 models
 
