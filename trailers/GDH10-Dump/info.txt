@@ -4,7 +4,7 @@ category: dump
 price: 29320
 thumb: main
 tags: gooseneck
- 🆕 New 2027 Triumph
+specs: 🆕 New 2027 Triumph
 
 GDH10 TAG82x16'-10k Galvanized Gooseneck Dump Trailer
 

@@ -85,7 +85,7 @@ Category page: https://azuchianstriumphtrailers.ca/deckover.html
 - [GHDGF1 TA102x20+5'-12k Gooseneck Deckover](https://azuchianstriumphtrailers.ca/ghdgf1.html) - $30,296 + HST
 - [GHDEF2.1 TA102x25+5'-16k Equipment Hauler](https://azuchianstriumphtrailers.ca/ghdef2-1.html) - $32,661 + HST
 
-### Gooseneck - 8 models
+### Gooseneck - 9 models
 
 Category page: https://azuchianstriumphtrailers.ca/gooseneck.html
 
@@ -93,10 +93,11 @@ Category page: https://azuchianstriumphtrailers.ca/gooseneck.html
 - [GHDGF2.1 TA102x25+5'-16k Gooseneck Deckover](https://azuchianstriumphtrailers.ca/ghdgf2-1.html) - $35,313 + HST
 - [GHDGF8 TA102x35+5'-16k Gooseneck Deckover](https://azuchianstriumphtrailers.ca/ghdgf8.html) - $41,028 + HST
 - [GHDGF3.1 TAG102x30+5'-16k Gooseneck Deckover](https://azuchianstriumphtrailers.ca/ghdgf3-1.html) - $38,469 + HST
-- [GDTGN4 TRI102x43'-12k Gooseneck Dovetail](https://azuchianstriumphtrailers.ca/gdtgn4.html) - $63,123 + HST
-- [GD10 TA82x16'-10k Dump Trailer](https://azuchianstriumphtrailers.ca/gd10.html) - $26,752 + HST
 - [GHDGF1 TA102x20+5'-12k Gooseneck Deckover](https://azuchianstriumphtrailers.ca/ghdgf1.html) - $30,296 + HST
+- [GDH10 TAG82x16'-10k Gooseneck Dump](https://azuchianstriumphtrailers.ca/gdh10.html) - $29,320 + HST
+- [GD10 TA82x16'-10k Dump Trailer](https://azuchianstriumphtrailers.ca/gd10.html) - $26,752 + HST
 - [GGFT2 TA102x24'-12k Gooseneck Deckover](https://azuchianstriumphtrailers.ca/ggft2.html) - $35,346 + HST
+- [GDTGN4 TRI102x43'-12k Gooseneck Dovetail](https://azuchianstriumphtrailers.ca/gdtgn4.html) - $63,123 + HST
 
 ### Enclosed - 1 model
 
