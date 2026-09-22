@@ -45,6 +45,35 @@ img { max-width: 100%; display: block; }
   .site-banner { font-size: .8rem; padding: .55rem .8rem; }
 }
 
+/* ===== SEASONAL SALE BANNER (sale-banner.txt; homepage + category pages) ===== */
+.sale-banner {
+  display: block;
+  background: linear-gradient(90deg, #8a2f0b 0%, #e87722 50%, #8a2f0b 100%);
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: .95rem;
+  line-height: 1.4;
+  padding: .6rem 1rem;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+.sale-banner:hover, .sale-banner:focus { color: #fff; filter: brightness(1.08); }
+.sale-banner .sale-hi { font-weight: 800; letter-spacing: .12em; }
+.sale-banner .sale-phone {
+  display: inline-block;
+  white-space: nowrap;
+  margin-left: .9rem;
+  padding: .05rem .6rem;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 4px;
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .sale-banner { font-size: .85rem; padding: .55rem .8rem; }
+  .sale-banner .sale-phone { display: table; margin: .35rem auto 0; }
+}
+
 /* ===== UTILITY ===== */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 .btn {
