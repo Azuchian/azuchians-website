@@ -105,10 +105,36 @@ function logCall(context) {
 
 /* Fire a Google Ads conversion. type = 'call' or 'text'.
    Safe to call anytime — does nothing until the values above are set. */
-function adsConversion(type) {
+// Count one page view, at most once per visitor per day, using the same
+// localStorage keys as the homepage and trailer pages so one person browsing
+// five category pages is five views, not fifty.
+function trackPage(key, name) {
+  try {
+    if (localStorage.getItem('att_owner') === '1') return;   // skip the owner's own visits
+    var today = new Date().toISOString().slice(0, 10);
+    var seen = {};
+    try { seen = JSON.parse(localStorage.getItem('att_viewed') || '{}'); } catch (e) {}
+    if (seen[key] === today) return;
+    seen[key] = today;
+    try { localStorage.setItem('att_viewed', JSON.stringify(seen)); } catch (e) {}
+    fetch(SUPA_URL + '/rest/v1/rpc/track_view', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + SUPA_KEY
+      },
+      body: JSON.stringify({ p_sku: key, p_name: name })
+    }).catch(function () {});
+  } catch (e) {}
+}
+
+// `context` labels WHICH button was tapped (e.g. the autumn sale banner) so the
+// stats page can tell them apart. Left out, it stays plain 'call' as before.
+function adsConversion(type, context) {
   // Log the call to your own tracker FIRST, so it happens even if Google's tag
   // is blocked (ad blockers) or hasn't finished loading.
-  if (type === 'call') { try { logCall('call'); } catch (e) {} }
+  if (type === 'call') { try { logCall(context || 'call'); } catch (e) {} }
   try {
     if (typeof gtag !== 'function') return;
     var label = (type === 'call') ? CONV_CALL : (type === 'text') ? CONV_TEXT : '';
