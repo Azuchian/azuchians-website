@@ -45,6 +45,16 @@ img { max-width: 100%; display: block; }
   .site-banner { font-size: .8rem; padding: .55rem .8rem; }
 }
 
+/* ===== "WHY TRIUMPH" NAV LINK =====
+   Two words, so it wraps onto two lines and shoves the rest of the header
+   around unless it is told not to. On a phone the header is already tight -
+   the link is dropped there and lives in the footer instead. */
+.nav-about, .p-nav-links a { white-space: nowrap; }
+@media (max-width: 820px) {
+  .home-nav-links a[href="triumph-trailers-ontario.html"],
+  .p-nav-links a[href="triumph-trailers-ontario.html"] { display: none; }
+}
+
 /* ===== SEASONAL SALE BANNER (sale-banner.txt; homepage + category pages) ===== */
 .sale-banner {
   display: block;
