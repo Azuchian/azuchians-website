@@ -51,8 +51,12 @@ img { max-width: 100%; display: block; }
    the link is dropped there and lives in the footer instead. */
 .nav-about, .p-nav-links a { white-space: nowrap; }
 @media (max-width: 820px) {
+  /* !important is deliberate: index.html's own phone media query gives every
+     non-CTA nav link display:inline-flex for a 44px tap target, and that rule
+     sits later in the cascade with equal specificity, so without it the link
+     reappears on phones. */
   .home-nav-links a[href="triumph-trailers-ontario.html"],
-  .p-nav-links a[href="triumph-trailers-ontario.html"] { display: none; }
+  .p-nav-links a[href="triumph-trailers-ontario.html"] { display: none !important; }
 }
 
 /* ===== SEASONAL SALE BANNER (sale-banner.txt; homepage + category pages) ===== */
