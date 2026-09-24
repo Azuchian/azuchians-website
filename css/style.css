@@ -45,6 +45,30 @@ img { max-width: 100%; display: block; }
   .site-banner { font-size: .8rem; padding: .55rem .8rem; }
 }
 
+/* ===== "OTHER LENGTHS OF THIS MODEL" STRIP =====
+   Only appears on a trailer whose model line has more than one length. */
+.sib-strip {
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--dark); margin: 1.25rem 0 0; overflow: hidden;
+}
+.sib-title {
+  font-size: .72rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--muted); padding: .7rem .95rem .55rem;
+}
+.sib-row {
+  display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+  padding: .6rem .95rem; border-top: 1px solid var(--border);
+  text-decoration: none; color: var(--text); font-size: .875rem;
+}
+a.sib-row:hover { background: var(--mid); color: var(--white); }
+.sib-row .sib-name { flex: 1 1 auto; min-width: 0; }
+a.sib-row .sib-name { color: var(--orange); }
+.sib-row .sib-price { font-weight: 700; white-space: nowrap; }
+.sib-self { background: rgba(232,119,34,.07); }
+.sib-self .sib-here {
+  flex-basis: 100%; font-size: .74rem; color: var(--muted);
+}
+
 /* ===== "WHY TRIUMPH" NAV LINK =====
    Two words, so it wraps onto two lines and shoves the rest of the header
    around unless it is told not to. On a phone the header is already tight -
