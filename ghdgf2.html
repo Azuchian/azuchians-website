@@ -836,7 +836,10 @@
             "url": location.href,
             "priceCurrency": "CAD",
             "price": Number(t.price) || 0,
-            "availability": (t.available === false) ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+            // Availability is stated only when it is negative and certain - the site
+            // makes no in-stock claim, because much of the Triumph lineup is built to
+            // order. Mirrors the same rule in build.ps1.
+            ...(t.available === false ? { "availability": "https://schema.org/SoldOut" } : {}),
             // Sales are final once delivered. The generated pages state this in
             // their offers; keep this copy in step, because Google still has the
             // old ?sku= URLs indexed and reads THIS markup for them.
