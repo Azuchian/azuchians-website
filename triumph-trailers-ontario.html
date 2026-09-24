@@ -288,5 +288,9 @@
   </footer>
 
   <script src="ads.js?v=1106902129"></script>
+  <script>
+    // Count this page on the stats dashboard (once per visitor per day).
+    if (typeof trackPage === 'function') trackPage('_page_why-triumph', 'Page: Why Triumph');
+  </script>
 </body>
 </html>
