@@ -1,4 +1,4 @@
-﻿name: TA8.5x24'-52 Galvanized Enclosed
+﻿name: TA8.5x24'-52 Galvanized Enclosed Cargo
 sku: GCT17
 category: enclosed
 price: 22491
