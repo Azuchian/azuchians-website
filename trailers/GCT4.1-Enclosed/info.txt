@@ -1,7 +1,7 @@
 ﻿name: SA6x12'-52 Galvanized Enclosed Cargo
 sku: GCT4.1
 category: enclosed
-price: 8690
+price: 10628
 thumb: main
 specs: 🆕 New 2027 Triumph
 
