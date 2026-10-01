@@ -1,7 +1,7 @@
 ﻿name: TA80x12'-35 Aluminum Utility
 sku: AU13
 category: utility
-price: 6290
+price: 6055
 thumb: main
 specs: 🆕 New 2027 Triumph
 
