@@ -1,0 +1,11 @@
+# DEAL OF THE MONTH - empty (every line commented out) means no deal is running.
+#
+# To start one, delete the # from the lines below and set your own values:
+#
+# sku:   GU5                                     which trailer
+# price: -400                                    -400 = $400 off | -10% = ten percent off | 3410 = flat price
+# ends:  2026-10-31                              optional - it switches itself off after this day
+# note:  Includes delivery within Lambton County  optional - one extra line shown with the deal
+#
+# Save the file and the website updates itself in a minute or two.
+# Comment the lines out again (or empty the file) to end the deal early.

@@ -45,6 +45,63 @@ img { max-width: 100%; display: block; }
   .site-banner { font-size: .8rem; padding: .55rem .8rem; }
 }
 
+/* ===== DEAL OF THE MONTH =====
+   Homepage feature, card ribbon, and the block on the trailer's own page.
+   All of it disappears when deal.txt is empty. */
+.deal-feature {
+  display: flex; gap: 1.5rem; align-items: center;
+  background: var(--dark); border: 1px solid var(--orange);
+  border-radius: 10px; overflow: hidden; text-decoration: none;
+  margin: 0 1.5rem 1.5rem; padding: 1rem 1.5rem 1rem 1rem;
+  transition: background .15s;
+}
+.deal-feature:hover { background: var(--mid); }
+.deal-media { flex: 0 0 360px; max-width: 45%; }
+.deal-img { width: 100%; height: auto; border-radius: 8px; display: block; }
+.deal-body { flex: 1 1 auto; min-width: 0; }
+.deal-kicker {
+  display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+  color: var(--orange); font-size: .78rem; font-weight: 800;
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: .5rem;
+}
+.deal-ends {
+  color: var(--muted); font-weight: 600; letter-spacing: .02em;
+  text-transform: none; font-size: .78rem;
+}
+.deal-name { color: var(--white); font-size: 1.45rem; font-weight: 800; line-height: 1.2; margin: 0 0 .6rem; }
+.deal-prices { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+.deal-now { color: var(--orange); font-size: 2rem; font-weight: 900; letter-spacing: -.02em; }
+.deal-was { color: var(--muted); font-size: 1.05rem; text-decoration: line-through; }
+.deal-hst { color: var(--muted); font-size: .8rem; }
+.deal-save { color: var(--text); font-size: .95rem; font-weight: 700; margin-top: .3rem; }
+.deal-note { color: var(--muted); font-size: .88rem; line-height: 1.6; margin: .5rem 0 0; }
+.deal-cta { display: inline-block; color: var(--orange); font-size: .9rem; font-weight: 700; margin-top: .9rem; }
+@media (max-width: 760px) {
+  .deal-feature { flex-direction: column; align-items: stretch; gap: 1rem; margin: 0 1rem 1.25rem; padding: 1rem; }
+  .deal-media { flex: none; max-width: 100%; }
+  .deal-name { font-size: 1.2rem; }
+  .deal-now { font-size: 1.7rem; }
+}
+
+/* Card ribbon + struck-through old price on the deal's card */
+.tc-deal-badge {
+  position: absolute; top: .6rem; left: .6rem; z-index: 2;
+  background: var(--orange); color: #fff;
+  font-size: .68rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase;
+  padding: .25rem .55rem; border-radius: 4px;
+}
+.tc-was { color: var(--muted); font-size: .8rem; font-weight: 600; text-decoration: line-through; }
+
+/* The block on the deal trailer's own page */
+.t-deal {
+  background: rgba(232,119,34,.1); border: 1px solid var(--orange);
+  border-radius: 8px; padding: .85rem 1rem; margin: 0 0 .9rem;
+}
+.t-deal-title { color: var(--orange); font-size: .78rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.t-deal-save { color: var(--white); font-size: 1.05rem; font-weight: 800; margin-top: .25rem; }
+.t-deal-note, .t-deal-ends { color: var(--muted); font-size: .85rem; margin-top: .3rem; line-height: 1.5; }
+.t-was { color: var(--muted); font-size: .95rem; text-decoration: line-through; margin-left: .1rem; }
+
 /* ===== "OTHER LENGTHS OF THIS MODEL" STRIP =====
    Only appears on a trailer whose model line has more than one length. */
 .sib-strip {
