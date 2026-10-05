@@ -45,6 +45,19 @@ img { max-width: 100%; display: block; }
   .site-banner { font-size: .8rem; padding: .55rem .8rem; }
 }
 
+/* The one-line nudge to the Deal of the Month, on every other trailer's page */
+.deal-promo {
+  display: flex; align-items: center; gap: .7rem;
+  background: rgba(232,119,34,.1); border: 1px solid var(--orange);
+  border-radius: 8px; padding: .6rem .85rem; margin: 0 0 1rem;
+  text-decoration: none; transition: background .15s;
+}
+.deal-promo:hover { background: rgba(232,119,34,.2); }
+.deal-promo-leaf { font-size: 1.15rem; line-height: 1; }
+.deal-promo-text { flex: 1 1 auto; min-width: 0; color: var(--white); font-size: .92rem; font-weight: 700; line-height: 1.3; }
+.deal-promo-sub { display: block; color: var(--orange); font-size: .82rem; font-weight: 600; margin-top: .15rem; }
+.deal-promo-go { color: var(--orange); font-size: 1.3rem; font-weight: 800; line-height: 1; }
+
 /* ===== DEAL OF THE MONTH =====
    Homepage feature, card ribbon, and the block on the trailer's own page.
    All of it disappears when deal.txt is empty. */
