@@ -698,9 +698,9 @@ select option { background: var(--mid); }
      number is a better version of the same thing, so this is a swap, not a loss.
      Financing and About STAY: they were hidden on phones until now, which is
      why financing had 1 click in 260 trailer views. */
-  .home-logo .logo-text,
-  .p-logo .logo-text,
   .t-nav-logo .logo-text { display: none; }
+  .home-logo .logo-text,
+  .p-logo .logo-text { display: block; max-width: 7.2rem; font-size: .74rem; line-height: 1.15; }
 
   .home-nav-links .cta { display: none; }
 
