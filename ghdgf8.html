@@ -1018,10 +1018,22 @@
     }
 
 
-    // Under the desktop "Email your application" button, offer the same pre-filled
-    // message in the three big webmail services, each in a new tab. Reads everything
-    // from the mailto link itself, so it works for server-rendered and script-rendered
-    // pages alike, and is safe to call more than once.
+    // Desktop financing email. Lays the message out as: the model on one line, the
+    // trailer's link, then one bold label per line for the customer to fill in.
+    // Rewrites the mailto button and adds Gmail / Outlook / Yahoo buttons under it,
+    // each in a new tab. Reads the trailer from the existing mailto subject, so it
+    // works for server-rendered and script-rendered pages alike; safe to re-run.
+    // Bold is Unicode bold letters - a compose link can only carry plain text.
+    // Yahoo's compose link strips every line break, so that button copies the form
+    // to the clipboard instead and opens a draft that says to paste it.
+    function boldText(str) {
+      return Array.from(str).map(function (ch) {
+        const c = ch.charCodeAt(0);
+        if (c >= 65 && c <= 90) return String.fromCodePoint(0x1D5D4 + c - 65);
+        if (c >= 97 && c <= 122) return String.fromCodePoint(0x1D5EE + c - 97);
+        return ch;
+      }).join('');
+    }
     function addWebmailLinks() {
       try {
         document.querySelectorAll('a.t-fin-btn[href^="mailto:"]').forEach(function (a) {
@@ -1030,13 +1042,19 @@
           const href = a.getAttribute('href');
           const to = decodeURIComponent(href.slice(7).split('?')[0]);
           const q = new URLSearchParams(href.split('?')[1] || '');
-          const su = q.get('subject') || '';
-          const bo = q.get('body') || '';
+          const su = q.get('subject') || 'Financing Application';
+          const model = su.replace(/^Financing Application\s*-\s*/i, '');
+          const canon = document.querySelector('link[rel="canonical"]');
+          const link = (canon && canon.href) ? canon.href : (location.origin + location.pathname);
+          const NL = '\r\n';
+          const bo = model + NL + link + NL + NL +
+            ['Name:', 'Phone number:', 'Address:', 'Email address:'].map(function (l) { return boldText(l) + ' '; }).join(NL);
           const e = encodeURIComponent;
+          a.setAttribute('href', 'mailto:' + to + '?subject=' + e(su) + '&body=' + e(bo));
           const links = [
             ['Gmail',   'https://mail.google.com/mail/?view=cm&fs=1&to=' + e(to) + '&su=' + e(su) + '&body=' + e(bo)],
             ['Outlook', 'https://outlook.live.com/mail/0/deeplink/compose?to=' + e(to) + '&subject=' + e(su) + '&body=' + e(bo)],
-            ['Yahoo',   'https://compose.mail.yahoo.com/?to=' + e(to) + '&subject=' + e(su) + '&body=' + e(bo)]
+            ['Yahoo',   'https://compose.mail.yahoo.com/?to=' + e(to) + '&subject=' + e(su) + '&body=' + e('Press Ctrl+V here to paste the application form, then fill it in.')]
           ];
           const box = document.createElement('div');
           box.className = 't-fin-web';
@@ -1045,7 +1063,12 @@
           links.forEach(function (l) {
             const x = document.createElement('a');
             x.href = l[1]; x.target = '_blank'; x.rel = 'noopener'; x.textContent = l[0];
-            x.addEventListener('click', function () { typeof trackEvent === 'function' && trackEvent('_finance_', 'Financing Email ' + l[0]); });
+            x.addEventListener('click', function () {
+              if (l[0] === 'Yahoo') {
+                try { navigator.clipboard && navigator.clipboard.writeText(bo.replace(/\r\n/g, '\n')); } catch (err) {}
+              }
+              typeof trackEvent === 'function' && trackEvent('_finance_', 'Financing Email ' + l[0]);
+            });
             row.appendChild(x);
           });
           a.insertAdjacentElement('afterend', box);
