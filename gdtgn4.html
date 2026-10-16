@@ -291,6 +291,15 @@
       text-decoration: none; margin-bottom: .5rem;
     }
     .t-fin-btn:hover { filter: brightness(1.08); }
+    /* Webmail fallbacks: a mailto: link does nothing in a browser with no email app
+       set up, which is most desktops that use Gmail/Yahoo/Outlook.com in a tab. */
+    .t-fin-web { text-align: center; color: var(--muted); font-size: .8rem; margin: -.1rem 0 .7rem; }
+    .t-fin-web-row { display: flex; gap: .4rem; justify-content: center; flex-wrap: wrap; margin-top: .35rem; }
+    .t-fin-web-row a {
+      flex: 1 1 0; min-width: 5.5rem; text-align: center; padding: .5rem .6rem; border-radius: 7px;
+      border: 1px solid var(--orange); color: var(--orange); font-weight: 700; font-size: .85rem; text-decoration: none;
+    }
+    .t-fin-web-row a:hover { background: var(--orange); color: var(--on-accent, #0d0d0d); }
     .t-fin-addr {
       display: block; text-align: center; color: var(--white); font-size: .9rem;
       font-weight: 700; word-break: break-all; margin-bottom: .9rem;
@@ -1012,6 +1021,42 @@
       } catch (e) {}
     }
 
+
+    // Under the desktop "Email your application" button, offer the same pre-filled
+    // message in the three big webmail services, each in a new tab. Reads everything
+    // from the mailto link itself, so it works for server-rendered and script-rendered
+    // pages alike, and is safe to call more than once.
+    function addWebmailLinks() {
+      try {
+        document.querySelectorAll('a.t-fin-btn[href^="mailto:"]').forEach(function (a) {
+          if (a.getAttribute('data-webmail')) return;
+          a.setAttribute('data-webmail', '1');
+          const href = a.getAttribute('href');
+          const to = decodeURIComponent(href.slice(7).split('?')[0]);
+          const q = new URLSearchParams(href.split('?')[1] || '');
+          const su = q.get('subject') || '';
+          const bo = q.get('body') || '';
+          const e = encodeURIComponent;
+          const links = [
+            ['Gmail',   'https://mail.google.com/mail/?view=cm&fs=1&to=' + e(to) + '&su=' + e(su) + '&body=' + e(bo)],
+            ['Outlook', 'https://outlook.live.com/mail/0/deeplink/compose?to=' + e(to) + '&subject=' + e(su) + '&body=' + e(bo)],
+            ['Yahoo',   'https://compose.mail.yahoo.com/?to=' + e(to) + '&subject=' + e(su) + '&body=' + e(bo)]
+          ];
+          const box = document.createElement('div');
+          box.className = 't-fin-web';
+          box.innerHTML = 'Nothing opened? Use your email in the browser:<div class="t-fin-web-row"></div>';
+          const row = box.querySelector('.t-fin-web-row');
+          links.forEach(function (l) {
+            const x = document.createElement('a');
+            x.href = l[1]; x.target = '_blank'; x.rel = 'noopener'; x.textContent = l[0];
+            x.addEventListener('click', function () { typeof trackEvent === 'function' && trackEvent('_finance_', 'Financing Email ' + l[0]); });
+            row.appendChild(x);
+          });
+          a.insertAdjacentElement('afterend', box);
+        });
+      } catch (err) {}
+    }
+
     function loadTrailer(data) {
       const trailer = data.find(t => t.sku === sku);
       if (!trailer) {
@@ -1034,6 +1079,7 @@
       } else {
         buildPage(trailer);
       }
+      addWebmailLinks();
     }
 
     if (!sku) {
@@ -1051,6 +1097,7 @@
             '<div class="t-loading">Could not load inventory. <a href="index.html">Go back</a>.</div>';
         });
     }
+    addWebmailLinks();
   </script>
 </body>
 </html>
