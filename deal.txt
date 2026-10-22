@@ -1,8 +1,8 @@
-# DEAL OF THE MONTH - comment every line out (or empty the file) to end it.
-# price: -2000 = $2,000 off | -10% = ten percent off | 36469 = flat price
-# ends: the deal switches itself off after this day.
+# DEAL OF THE MONTH
+# sku: ONE trailer   |   tag: every trailer in a group (a tag or a category)
+# price: -1000 = $1,000 off | -5% = five percent off | 3500 = flat price
+# starts / ends: optional, both run to the end of the named day.
 
-sku:   GHDGF3.1
-price: -2000
-ends:  2026-10-31
-note:  Includes: Safety, Delivery and Spare Tire
+tag:    gooseneck
+price:  -1000
+ends:   2026-11-30
