@@ -1,4 +1,4 @@
-﻿name: TAG82x16'-10k Gooseneck Dump
+﻿name: TAG82x16'-10k Gooseneck Dump High Walls
 sku: GDH10
 category: dump
 price: 29320
