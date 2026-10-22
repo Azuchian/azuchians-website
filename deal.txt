@@ -2,7 +2,17 @@
 #   sku:   ONE trailer      |   tag: EVERY trailer in a group (a tag or a category)
 #   price: -1000 = $1,000 off | -5% = five percent off | 3500 = a flat price
 #   starts / ends: optional. Both run to the END of the named day.
-# Comment these lines out (or empty the file) to end a deal early.
+#
+# Several deals can live here, separated by a line of dashes. Whichever one's
+# dates cover today is the one that shows, so next month can be written now and
+# the changeover happens by itself. Comment a block out to cancel it early.
+
+sku:    GHDGF3.1
+price:  -2000
+ends:   2026-10-31
+note:   Includes: Safety, Delivery and Spare Tire
+
+---
 
 tag:    gooseneck
 price:  -1000
