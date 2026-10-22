@@ -1,8 +1,10 @@
 # DEAL OF THE MONTH
-# sku: ONE trailer   |   tag: every trailer in a group (a tag or a category)
-# price: -1000 = $1,000 off | -5% = five percent off | 3500 = flat price
-# starts / ends: optional, both run to the end of the named day.
+#   sku:   ONE trailer      |   tag: EVERY trailer in a group (a tag or a category)
+#   price: -1000 = $1,000 off | -5% = five percent off | 3500 = a flat price
+#   starts / ends: optional. Both run to the END of the named day.
+# Comment these lines out (or empty the file) to end a deal early.
 
 tag:    gooseneck
 price:  -1000
+starts: 2026-11-01
 ends:   2026-11-30
