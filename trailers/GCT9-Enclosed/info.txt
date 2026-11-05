@@ -1,7 +1,7 @@
 ﻿name: TA7x14'-35 Galvanized Enclosed Cargo
 sku: GCT9
 category: enclosed
-price: 13127
+price: 7956
 thumb: main
 specs: 🆕 New 2027 Triumph
 

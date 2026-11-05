@@ -4,7 +4,7 @@
 > A delivery-only dealership: we bring the trailer to you and there is no lot to drive to.
 > Phone or text 519-550-4584. Email isaak.loewen@yahoo.ca. Prices in CAD, plus HST.
 
-Inventory of 38 new models, $3,415 to $62,123 + HST. Last updated 2026-11-04.
+Inventory of 38 new models, $3,415 to $62,123 + HST. Last updated 2026-11-05.
 
 ## Where we sell
 
@@ -107,9 +107,9 @@ Category page: https://azuchianstriumphtrailers.ca/gooseneck.html
 
 Category page: https://azuchianstriumphtrailers.ca/enclosed.html
 
-- [GCT9 TA7x14'-35 Galvanized Enclosed Cargo](https://azuchianstriumphtrailers.ca/gct9.html) - $13,127 + HST
-- [GCT4.1 SA6x12'-52 Galvanized Enclosed Cargo](https://azuchianstriumphtrailers.ca/gct4-1.html) - $10,629 + HST
-- [GCT17 TA8.5x24'-52 Galvanized Enclosed Cargo](https://azuchianstriumphtrailers.ca/gct17.html) - $22,491 + HST
+- [GCT9 TA7x14'-35 Galvanized Enclosed Cargo](https://azuchianstriumphtrailers.ca/gct9.html) - $7,956 + HST
+- [GCT4.1 SA6x12'-52 Galvanized Enclosed Cargo](https://azuchianstriumphtrailers.ca/gct4-1.html) - $7,679 + HST
+- [GCT17 TA8.5x24'-52 Galvanized Enclosed Cargo](https://azuchianstriumphtrailers.ca/gct17.html) - $15,646 + HST
 
 ## Machine-readable
 
