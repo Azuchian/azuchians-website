@@ -22,7 +22,7 @@
   <meta name="robots" content="noindex, follow" />
   <script type="application/ld+json" id="ld-json"></script>
   <!--THEAD_END-->
-  <link rel="stylesheet" href="css/style.css?v=2882498899" />
+  <link rel="stylesheet" href="css/style.css?v=217476357" />
   <style>
     html, body { overflow-x: hidden; max-width: 100%; }
     body { background: var(--black); }
@@ -264,6 +264,43 @@
     .t-cta-wa:hover { background: transparent; color: #25d366; }
     .t-cta-wa-icon { font-size: 1.05em; }
 
+    /* Enquiry form. Collapsed by default: the call and WhatsApp buttons are the
+       loud options, and an always-open form would push them up the page. */
+    .lead-form-wrap { margin: .25rem 0 .5rem; }
+    .lf-summary {
+      cursor: pointer; list-style: none; text-align: center;
+      padding: .7rem; font-size: .9rem; color: var(--muted);
+      border: 1px dashed var(--border); border-radius: 8px;
+    }
+    .lf-summary::-webkit-details-marker { display: none; }
+    .lf-summary:hover { color: var(--orange); border-color: var(--orange); }
+    details[open] .lf-summary { margin-bottom: .6rem; }
+    .lead-form { display: flex; flex-direction: column; gap: .5rem; }
+    .lf-in {
+      width: 100%; box-sizing: border-box;
+      padding: .75rem .85rem; border-radius: 8px;
+      border: 1px solid var(--border); background: rgba(255,255,255,.04);
+      color: var(--text); font-size: 1rem; font-family: inherit;
+    }
+    .lf-in:focus { outline: none; border-color: var(--orange); }
+    .lf-in::placeholder { color: var(--muted); }
+    .lf-ta { resize: vertical; min-height: 4.5rem; }
+    .lf-send {
+      padding: .8rem 1rem; border: 2px solid var(--orange); border-radius: 8px;
+      background: var(--orange); color: var(--black);
+      font-size: 1rem; font-weight: 700; font-family: inherit; cursor: pointer;
+    }
+    .lf-send:hover { background: transparent; color: var(--orange); }
+    .lf-send:disabled { opacity: .6; cursor: default; }
+    .lf-note { font-size: .85rem; color: var(--muted); min-height: 1rem; }
+    .lf-err { color: #ff8a80; }
+    .lf-done {
+      display: flex; gap: .7rem; align-items: flex-start;
+      border: 1px solid #25d366; border-radius: 10px;
+      padding: 1rem; font-size: .92rem; line-height: 1.5;
+    }
+    .lf-done-tick { color: #25d366; font-size: 1.3rem; font-weight: 700; }
+
     /* Financing: two routes, one per device.
        A phone gets the button and the pre-filled text message. A pointer-driven
        machine has no SMS app, so there the button opened a form whose only exit was
@@ -458,8 +495,8 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="ads.js?v=2882498899"></script>
-  <script src="inventory.js?v=2882498899"></script>
+  <script src="ads.js?v=217476357"></script>
+  <script src="inventory.js?v=217476357"></script>
   <script>
     let images = [];          // image srcs only (used by the lightbox)
     let media = [];           // ordered gallery items: { type:'video'|'image', src }

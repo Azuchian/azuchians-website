@@ -142,3 +142,77 @@ function adsConversion(type, context) {
     gtag('event', 'conversion', { send_to: GADS_ID + '/' + label });
   } catch (e) {}
 }
+
+// ---------------------------------------------------------------------------
+// Enquiry form. Writes one row to `leads`. The anon key can INSERT and cannot
+// SELECT, so the key sitting in this file - which anyone can read - never
+// exposes a customer's name or number. Reading is the local-only dashboard's
+// job, through a token-checked function.
+//
+// No validation theatre: a name and some way to reply is all that is actually
+// required to phone someone back.
+function submitLead(form) {
+  try {
+    var btn  = form.querySelector('.lf-send');
+    var note = form.querySelector('.lf-note');
+    var name = (form.querySelector('[name=lf-name]').value || '').trim();
+    var ctc  = (form.querySelector('[name=lf-contact]').value || '').trim();
+    var msg  = (form.querySelector('[name=lf-message]').value || '').trim();
+
+    if (!name || !ctc) {
+      note.textContent = 'Please add your name and a phone number or email.';
+      note.className = 'lf-note lf-err';
+      return false;
+    }
+
+    var src = '';
+    try { src = sessionStorage.getItem('att_src') || ''; } catch (e) {}
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    note.textContent = '';
+    note.className = 'lf-note';
+
+    fetch(SUPA_URL + '/rest/v1/leads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + SUPA_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        name:       name.slice(0, 120),
+        contact:    ctc.slice(0, 160),
+        message:    msg.slice(0, 2000) || null,
+        sku:        form.getAttribute('data-sku') || null,
+        trailer:    form.getAttribute('data-trailer') || null,
+        price:      parseFloat(form.getAttribute('data-price')) || null,
+        page:       location.pathname,
+        source:     src,
+        referrer:   document.referrer || '',
+        user_agent: navigator.userAgent || ''
+      })
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      // Replace the whole <details> wrapper, not its contents. Overwriting the
+      // innerHTML leaves a <details> with no <summary>, which the browser then
+      // draws as a bare "Details" triangle under the thank-you message.
+      var wrap = (form.closest && form.closest('details')) || form.parentNode;
+      var done = document.createElement('div');
+      done.className = 'lf-done';
+      done.innerHTML = '<div class="lf-done-tick">&#10003;</div>' +
+        '<div><strong>Thanks ' + name.replace(/[<>&]/g, '').slice(0, 40) + '.</strong><br>' +
+        'We will get back to you shortly. If it is urgent, call 519-550-4584.</div>';
+      if (wrap.parentNode) { wrap.parentNode.replaceChild(done, wrap); }
+      if (typeof trackEvent === 'function') trackEvent('_lead_', 'Enquiry Form');
+      if (typeof adsConversion === 'function') adsConversion('lead');
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      note.textContent = 'Sorry, that did not send. Please call or text 519-550-4584.';
+      note.className = 'lf-note lf-err';
+    });
+  } catch (e) {}
+  return false;
+}

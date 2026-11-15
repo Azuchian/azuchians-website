@@ -28,7 +28,7 @@
   <meta name="twitter:image" content="https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/main.jpeg" />
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Product","@id":"https://azuchianstriumphtrailers.ca/gct17.html#product","url":"https://azuchianstriumphtrailers.ca/gct17.html","name":"2027 Triumph Galvanized Enclosed Cargo Trailer TA8.5x24\u0027-52","sku":"GCT17","mpn":"GCT17","category":"Enclosed Trailers","brand":{"@type":"Brand","name":"Triumph"},"description":"New 2027 Triumph Galvanized Enclosed Cargo Trailer for sale at Azuchian\u0027s Triumph Trailers in Sarnia, Ontario. Enclosed trailers with financing and delivery across southwestern Ontario.","image":["https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/GCT17-Enclosed%201.jpeg","https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/GCT17-Enclosed%202.jpeg","https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/GCT17-Enclosed%203.jpeg","https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/GCT17-Enclosed%204.jpeg","https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/GCT17-Enclosed%205.jpeg","https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/GCT17-Enclosed%206.jpeg","https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/GCT17-Enclosed%207.jpeg","https://azuchianstriumphtrailers.ca/trailers/GCT17-Enclosed/main.jpeg"],"offers":{"@type":"Offer","@id":"https://azuchianstriumphtrailers.ca/gct17.html#offer","url":"https://azuchianstriumphtrailers.ca/gct17.html","price":"21591","priceCurrency":"CAD","itemCondition":"https://schema.org/NewCondition","priceSpecification":{"@type":"UnitPriceSpecification","price":"21591","priceCurrency":"CAD","valueAddedTaxIncluded":false},"hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"CA","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted"},"seller":{"@id":"https://azuchianstriumphtrailers.ca/#dealer"}}},{"@type":"AutoDealer","@id":"https://azuchianstriumphtrailers.ca/#dealer","name":"Azuchian\u0027s Triumph Trailers","url":"https://azuchianstriumphtrailers.ca/","telephone":"+1-519-550-4584","address":{"@type":"PostalAddress","addressLocality":"Sarnia","addressRegion":"ON","addressCountry":"CA"},"areaServed":"Southwestern Ontario"},{"@type":"BreadcrumbList","@id":"https://azuchianstriumphtrailers.ca/gct17.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"All Trailers","item":"https://azuchianstriumphtrailers.ca/"},{"@type":"ListItem","position":2,"name":"Enclosed","item":"https://azuchianstriumphtrailers.ca/enclosed.html"},{"@type":"ListItem","position":3,"name":"2027 Triumph Galvanized Enclosed Cargo Trailer TA8.5x24\u0027-52"}]}]}</script>
   <!--THEAD_END-->
-  <link rel="stylesheet" href="css/style.css?v=2882498899" />
+  <link rel="stylesheet" href="css/style.css?v=217476357" />
   <style>
     html, body { overflow-x: hidden; max-width: 100%; }
     body { background: var(--black); }
@@ -270,6 +270,43 @@
     .t-cta-wa:hover { background: transparent; color: #25d366; }
     .t-cta-wa-icon { font-size: 1.05em; }
 
+    /* Enquiry form. Collapsed by default: the call and WhatsApp buttons are the
+       loud options, and an always-open form would push them up the page. */
+    .lead-form-wrap { margin: .25rem 0 .5rem; }
+    .lf-summary {
+      cursor: pointer; list-style: none; text-align: center;
+      padding: .7rem; font-size: .9rem; color: var(--muted);
+      border: 1px dashed var(--border); border-radius: 8px;
+    }
+    .lf-summary::-webkit-details-marker { display: none; }
+    .lf-summary:hover { color: var(--orange); border-color: var(--orange); }
+    details[open] .lf-summary { margin-bottom: .6rem; }
+    .lead-form { display: flex; flex-direction: column; gap: .5rem; }
+    .lf-in {
+      width: 100%; box-sizing: border-box;
+      padding: .75rem .85rem; border-radius: 8px;
+      border: 1px solid var(--border); background: rgba(255,255,255,.04);
+      color: var(--text); font-size: 1rem; font-family: inherit;
+    }
+    .lf-in:focus { outline: none; border-color: var(--orange); }
+    .lf-in::placeholder { color: var(--muted); }
+    .lf-ta { resize: vertical; min-height: 4.5rem; }
+    .lf-send {
+      padding: .8rem 1rem; border: 2px solid var(--orange); border-radius: 8px;
+      background: var(--orange); color: var(--black);
+      font-size: 1rem; font-weight: 700; font-family: inherit; cursor: pointer;
+    }
+    .lf-send:hover { background: transparent; color: var(--orange); }
+    .lf-send:disabled { opacity: .6; cursor: default; }
+    .lf-note { font-size: .85rem; color: var(--muted); min-height: 1rem; }
+    .lf-err { color: #ff8a80; }
+    .lf-done {
+      display: flex; gap: .7rem; align-items: flex-start;
+      border: 1px solid #25d366; border-radius: 10px;
+      padding: 1rem; font-size: .92rem; line-height: 1.5;
+    }
+    .lf-done-tick { color: #25d366; font-size: 1.3rem; font-weight: 700; }
+
     /* Financing: two routes, one per device.
        A phone gets the button and the pre-filled text message. A pointer-driven
        machine has no SMS app, so there the button opened a form whose only exit was
@@ -438,6 +475,17 @@
           <span class="t-cta-wa-icon" aria-hidden="true">&#128172;</span> Ask on WhatsApp
         </a>
         <p class="desktop-text-note">Or text us at 519-550-4584 &mdash; we usually reply within the hour.</p>
+
+        <details class="lead-form-wrap">
+          <summary class="lf-summary">Prefer to type? Send a question &rsaquo;</summary>
+          <form class="lead-form" data-sku="GCT17" data-trailer="Galvanized Enclosed Cargo Trailer TA8.5x24&#39;-52" data-price="21591" onsubmit="return submitLead(this)">
+            <input class="lf-in" type="text" name="lf-name" placeholder="Your name" autocomplete="name" maxlength="120" />
+            <input class="lf-in" type="text" name="lf-contact" placeholder="Phone or email" autocomplete="tel" maxlength="160" />
+            <textarea class="lf-in lf-ta" name="lf-message" rows="3" maxlength="2000" placeholder="Anything you want to know? (optional)"></textarea>
+            <button class="lf-send" type="submit">Send</button>
+            <div class="lf-note"></div>
+          </form>
+        </details>
               <button type="button" class="t-cta t-cta-finance" onclick="openFin()">&#128179; Apply for Financing</button>
               <div class="t-fin-email">
                 <div class="t-fin-title">&#128179; Apply for Financing</div>
@@ -527,8 +575,8 @@
     <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
   </div>
 
-  <script src="ads.js?v=2882498899"></script>
-  <script src="inventory.js?v=2882498899"></script>
+  <script src="ads.js?v=217476357"></script>
+  <script src="inventory.js?v=217476357"></script>
   <script>
     let images = [];          // image srcs only (used by the lightbox)
     let media = [];           // ordered gallery items: { type:'video'|'image', src }
