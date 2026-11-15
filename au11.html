@@ -265,6 +265,10 @@
     .t-cta-secondary:hover { border-color: var(--orange); color: var(--orange); }
     .t-cta-finance { background: transparent; color: var(--orange); border-color: var(--orange); font-family: inherit; }
     .t-cta-finance:hover { background: var(--orange); color: var(--black); }   /* 6.57:1, was 2.961:1 */
+    /* WhatsApp green is the brand's own #25D366; black label on it is 11.4:1. */
+    .t-cta-wa { background: #25d366; color: #0d0d0d; border-color: #25d366; }
+    .t-cta-wa:hover { background: transparent; color: #25d366; }
+    .t-cta-wa-icon { font-size: 1.05em; }
 
     /* Financing: two routes, one per device.
        A phone gets the button and the pre-filled text message. A pointer-driven
@@ -429,6 +433,9 @@
               
         <a href="tel:5195504584" class="t-cta t-cta-primary" onclick="trackEvent('_call_','Call Button');typeof adsConversion === 'function' && adsConversion('call')">
           Call to Inquire &mdash; 519-550-4584
+        </a>
+        <a href="https://wa.me/15195504584?text=Hi%2C%20I%20am%20interested%20in%20the%20Aluminum%20Utility%20Trailer%20TA6x12%27-35%20(AU11)%20at%20%246%2C211%20on%20your%20website.%20Is%20it%20available%3F" class="t-cta t-cta-wa" target="_blank" rel="noopener" onclick="trackEvent('_whatsapp_','WhatsApp Button');typeof adsConversion === 'function' && adsConversion('whatsapp')">
+          <span class="t-cta-wa-icon" aria-hidden="true">&#128172;</span> Ask on WhatsApp
         </a>
         <p class="desktop-text-note">Or text us at 519-550-4584 &mdash; we usually reply within the hour.</p>
               <button type="button" class="t-cta t-cta-finance" onclick="openFin()">&#128179; Apply for Financing</button>
