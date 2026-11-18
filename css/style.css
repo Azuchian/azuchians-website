@@ -156,7 +156,7 @@ a.sib-row .sib-name { color: var(--orange); }
 /* ===== SEASONAL SALE BANNER (sale-banner.txt; homepage + category pages) ===== */
 .sale-banner {
   display: block;
-  background: linear-gradient(90deg, #8a2f0b 0%, #e87722 50%, #8a2f0b 100%);
+  background: linear-gradient(90deg, #11253f 0%, #2d5d8f 50%, #11253f 100%);
   color: #fff;
   text-align: center;
   font-weight: 600;
@@ -167,7 +167,8 @@ a.sib-row .sib-name { color: var(--orange); }
   text-shadow: 0 1px 2px rgba(0,0,0,.35);
 }
 .sale-banner:hover, .sale-banner:focus { color: #fff; filter: brightness(1.08); }
-.sale-banner .sale-hi { font-weight: 800; letter-spacing: .12em; }
+.sale-banner .sale-ico { font-size: 1.05em; opacity: .95; }
+.sale-banner .sale-hi { font-weight: 800; letter-spacing: .12em; color: var(--orange); }
 .sale-banner .sale-phone {
   display: inline-block;
   white-space: nowrap;
