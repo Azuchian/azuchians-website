@@ -340,6 +340,24 @@
       padding: 0; margin: -1px; overflow: hidden;
       clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
     }
+    /* "We can order far more than this" - sits directly under the (hidden) H1 so it is
+       the first thing read on a category whose grid is much shorter than the range. */
+    .cat-more {
+      display: flex; gap: .85rem; align-items: flex-start;
+      max-width: 1100px; margin: 1.25rem auto 0; padding: 1rem 1.15rem;
+      border: 1px solid var(--orange); border-radius: 10px;
+      background: rgba(255,255,255,.03);
+    }
+    .cat-more-i { font-size: 1.35rem; line-height: 1.2; }
+    .cat-more p {
+      margin: 0; color: var(--text);
+      font-size: .93rem; line-height: 1.65;
+    }
+    .cat-more strong { color: var(--orange); }
+    @media (max-width: 760px) {
+      .cat-more { margin: 1rem; padding: .9rem 1rem; }
+      .cat-more p { font-size: .88rem; }
+    }
   </style>
 </head>
 <body style="background:var(--black)">
@@ -382,6 +400,7 @@
 
   <main>
     <div class="cat-head"><h1>Enclosed Cargo Trailers for Sale in Southwestern Ontario</h1></div>
+    <div class="cat-more"><span class="cat-more-i" aria-hidden="true">&#128230;</span><p><strong>We can order 20 enclosed cargo sizes.</strong> Three are shown here with photos and prices; the rest we quote the same day. The galvanized range runs from a 5x8 single axle up to an 8.5x24 tandem &mdash; 6x10, 6x12, 7x12, 7x14, 7.5x14, 7x16, 7.5x16, 8.5x16, 8.5x18, 8.5x20 and 8.5x22 in between &mdash; with 3,500 lb or 5,200 lb axles, plus aluminum models. The 5% sale price applies to any size you order, not only the three below.</p></div>
 
     <div class="sort-bar" id="sort-bar">
       <span class="sort-label">Sort:</span>
@@ -429,7 +448,7 @@
 
     <div class="more-models">
       <h3>Don't see the size you need?</h3>
-      <p>We have <strong>30+ trailer models</strong> available to order beyond what's shown here. Tell us what you're hauling and we'll match you to the right trailer.</p>
+      <p>We stock a few of each line and order the rest &mdash; <strong>30+ models</strong> in all, and every enclosed cargo size Triumph builds. Tell us what you're hauling and we'll match you to the right trailer.</p>
       <a href="tel:5195504584" class="mm-btn" onclick="typeof adsConversion === 'function' &amp;&amp; adsConversion('call')">&#128222; Call 519-550-4584</a>
     </div>
   </main>
