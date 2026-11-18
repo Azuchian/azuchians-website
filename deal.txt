@@ -17,4 +17,16 @@ note:   Includes: Safety, Delivery and Spare Tire
 tag:    gooseneck
 price:  -1000
 starts: 2026-11-01
-ends:   2026-11-30
+ends:   2026-11-17
+
+---
+
+# Switched 18 Nov: enclosed cargo pulls 11.5 clicks per Marketplace ad against 4.0 for
+# goosenecks - it is the winter trailer. 5%, not a flat $1,000: these are $10k-$22k units
+# and $1,000 would have left about $551 of margin on the GCT4.1.
+# The 39 gooseneck Marketplace ads keep their $1,000 price until 30 Nov as advertised.
+
+tag:    enclosed
+price:  -5%
+starts: 2026-11-18
+ends:   2026-12-31
